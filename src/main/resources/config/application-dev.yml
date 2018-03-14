@@ -42,7 +42,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/webDealer
         username: webDealer
-        password:
+        password: web@dealer!123
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -59,8 +59,8 @@ spring:
     mail:
         host: localhost
         port: 25
-        username:
-        password:
+        username: ddweb.gamesocial@gmail.com
+        password: penis1234
     messages:
         cache-seconds: 1
     thymeleaf:
