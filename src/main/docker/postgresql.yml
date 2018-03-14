@@ -1,0 +1,11 @@
+version: '2'
+services:
+    webdealer-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/webDealer/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=webDealer
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
