@@ -38,7 +38,7 @@ public class JWTFilterTest {
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
             "test-user",
             "test-password",
-            Collections.singletonList(new SimpleGrantedAuthority(AuthoritiesConstants.USER))
+            Collections.singletonList(new SimpleGrantedAuthority(AuthoritiesConstants.ADMIN))
         );
         String jwt = tokenProvider.createToken(authentication, false);
         MockHttpServletRequest request = new MockHttpServletRequest();
@@ -89,11 +89,11 @@ public class JWTFilterTest {
     }
 
     @Test
-    public void testJWTFilterWrongScheme() throws Exception {
+    public void testJWTFilterWrongScheme() {
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
             "test-user",
             "test-password",
-            Collections.singletonList(new SimpleGrantedAuthority(AuthoritiesConstants.USER))
+            Collections.singletonList(new SimpleGrantedAuthority(AuthoritiesConstants.ADMIN))
         );
         String jwt = tokenProvider.createToken(authentication, false);
         MockHttpServletRequest request = new MockHttpServletRequest();

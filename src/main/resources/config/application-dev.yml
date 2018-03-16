@@ -59,8 +59,8 @@ spring:
     mail:
         host: localhost
         port: 25
-        username: ddweb.gamesocial@gmail.com
-        password: penis1234
+        username:
+        password:
     messages:
         cache-seconds: 1
     thymeleaf:

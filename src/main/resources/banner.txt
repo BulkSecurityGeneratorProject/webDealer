@@ -1,10 +1,12 @@
 
-  ${AnsiColor.GREEN}      ██╗${AnsiColor.RED} ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝
-  ${AnsiColor.GREEN}██╗   ██║${AnsiColor.RED} ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║
-  ${AnsiColor.GREEN}╚██████╔╝${AnsiColor.RED} ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗
-  ${AnsiColor.GREEN} ╚═════╝ ${AnsiColor.RED} ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝
 
-${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} ::
-:: http://www.jhipster.tech ::${AnsiColor.DEFAULT}
+${AnsiColor.RED}                          ,,      ${AnsiColor.GREEN}                                 ,,
+${AnsiColor.RED}                         *MM      ${AnsiColor.GREEN}`7MM"""Yb.                     `7MM
+${AnsiColor.RED}                          MM       ${AnsiColor.GREEN} MM    `Yb.                     MM
+${AnsiColor.RED}`7M'    ,A    `MF'.gP"Ya  MM,dMMb. ${AnsiColor.GREEN} MM     `Mb  .gP"Ya   ,6"Yb.    MM  .gP"Ya `7Mb,od8
+${AnsiColor.RED}  VA   ,VAA   ,V ,M'   Yb MM    `Mb ${AnsiColor.GREEN}MM      MM ,M'   Yb 8)   MM    MM ,M'   Yb  MM' "'
+${AnsiColor.RED}   VA ,V  VA ,V  8M"""""" MM     M8 ${AnsiColor.GREEN}MM     ,MP 8M""""""  ,pm9MM    MM 8M""""""  MM
+${AnsiColor.RED}    VVV    VVV   YM.    , MM.   ,M9 ${AnsiColor.GREEN}MM    ,dP' YM.    , 8M   MM    MM YM.    ,  MM
+${AnsiColor.RED}     W      W     `Mbmmd' P^YbmdP'${AnsiColor.GREEN}.JMMmmmdP'    `Mbmmd' `Moo9^Yo..JMML.`Mbmmd'.JMML.
+
+${AnsiColor.BRIGHT_BLUE}:: DDWeb :: Running Spring Boot ${spring-boot.version} ::
