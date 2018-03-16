@@ -7,12 +7,6 @@ import { WebDealerSharedModule } from '../shared';
 import {
     adminState,
     AuditsComponent,
-    UserMgmtComponent,
-    UserDialogComponent,
-    UserDeleteDialogComponent,
-    UserMgmtDetailComponent,
-    UserMgmtDialogComponent,
-    UserMgmtDeleteDialogComponent,
     LogsComponent,
     JhiMetricsMonitoringModalComponent,
     JhiMetricsMonitoringComponent,
@@ -24,10 +18,7 @@ import {
     JhiConfigurationService,
     JhiHealthService,
     JhiMetricsService,
-    LogsService,
-    UserResolvePagingParams,
-    UserResolve,
-    UserModalService
+    LogsService
 } from './';
 
 @NgModule({
@@ -38,12 +29,6 @@ import {
     ],
     declarations: [
         AuditsComponent,
-        UserMgmtComponent,
-        UserDialogComponent,
-        UserDeleteDialogComponent,
-        UserMgmtDetailComponent,
-        UserMgmtDialogComponent,
-        UserMgmtDeleteDialogComponent,
         LogsComponent,
         JhiConfigurationComponent,
         JhiHealthCheckComponent,
@@ -53,8 +38,6 @@ import {
         JhiMetricsMonitoringModalComponent
     ],
     entryComponents: [
-        UserMgmtDialogComponent,
-        UserMgmtDeleteDialogComponent,
         JhiHealthModalComponent,
         JhiMetricsMonitoringModalComponent,
     ],
@@ -63,10 +46,7 @@ import {
         JhiConfigurationService,
         JhiHealthService,
         JhiMetricsService,
-        LogsService,
-        UserResolvePagingParams,
-        UserResolve,
-        UserModalService
+        LogsService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
