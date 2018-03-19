@@ -57,8 +57,6 @@ import java.util.*;
 @RequestMapping("/api")
 public class UserResource {
 
-    private final Logger log = LoggerFactory.getLogger(UserResource.class);
-
     private final UserService userService;
 
     public UserResource(UserService userService) {
