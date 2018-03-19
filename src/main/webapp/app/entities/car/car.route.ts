@@ -64,7 +64,7 @@ export const carRoute: Routes = [
 
 export const carPopupRoute: Routes = [
     {
-        path: 'car-new',
+        path: 'car-new/:received',
         component: CarPopupComponent,
         data: {
             authorities: ['ROLE_ADMIN'],

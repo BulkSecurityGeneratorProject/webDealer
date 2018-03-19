@@ -15,6 +15,7 @@ import {
     carPopupRoute,
     CarResolvePagingParams,
 } from './';
+import {ShippedPipe} from '../../pipes/shipped.pipe';
 
 const ENTITY_STATES = [
     ...carRoute,
@@ -33,6 +34,7 @@ const ENTITY_STATES = [
         CarDeleteDialogComponent,
         CarPopupComponent,
         CarDeletePopupComponent,
+        ShippedPipe,
     ],
     entryComponents: [
         CarComponent,

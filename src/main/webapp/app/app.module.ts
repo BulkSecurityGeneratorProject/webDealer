@@ -23,6 +23,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { ShippedPipe } from './pipes/shipped.pipe';
 
 @NgModule({
     imports: [
@@ -41,7 +42,7 @@ import {
         NavbarComponent,
         ErrorComponent,
         ActiveMenuDirective,
-        FooterComponent
+        FooterComponent,
     ],
     providers: [
         ProfileService,

@@ -17,6 +17,7 @@ import { CarService } from './car.service';
 export class CarDialogComponent implements OnInit {
 
     car: Car;
+    isEdit: boolean;
     isSaving: boolean;
 
     constructor(
@@ -77,6 +78,7 @@ export class CarDialogComponent implements OnInit {
     private onSaveError() {
         this.isSaving = false;
     }
+
 }
 
 @Component({
@@ -94,12 +96,13 @@ export class CarPopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
+            const received = params['received'] ? ( params['received'] === 'received' ) : null;
             if ( params['id'] ) {
                 this.carPopupService
-                    .open(CarDialogComponent as Component, params['id']);
+                    .open(CarDialogComponent as Component, received, params['id']);
             } else {
                 this.carPopupService
-                    .open(CarDialogComponent as Component);
+                    .open(CarDialogComponent as Component, received);
             }
         });
     }

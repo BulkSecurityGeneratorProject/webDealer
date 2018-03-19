@@ -89,11 +89,11 @@ public class CarResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of cars in body
      */
-    @GetMapping("/cars")
+    @GetMapping("/cars/list/{received}")
     @Timed
-    public ResponseEntity<List<Car>> getAllCars(Pageable pageable) {
+    public ResponseEntity<List<Car>> getAllCars(@PathVariable String received, Pageable pageable) {
         log.debug("REST request to get a page of Cars");
-        Page<Car> page = carRepository.findAll(pageable);
+        Page<Car> page = carRepository.findAllByReceived(received.equals("true"),pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cars");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
