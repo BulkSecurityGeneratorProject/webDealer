@@ -1,0 +1,164 @@
+﻿--- Angular 4 tipy ---
+
+1. Konstruktor działa jak w scali.  Można w nim zapisać constructor (public arg: string){}
+I pola od razu dostaja akcesor i mutator.  Ważne jest tutaj słowo kluczowe public. 
+
+2. Fajne są tzw. pipe
+Czyli {{dog | uppercase}} ale najlepsze jest to że radzenie sobie z cyklem życia jest super bo gdy komponent załaduje się szybciej to zamiast sprawdzać w controllerze czy był undefined wystarczy zrobić  {{dog?.name}} lub {{dog && dog.name}}
+Pipe można sobie dograc przez npm ale istnieją również wbudowane w angular. 
+
+3. Można tworzyć tzw line component czyli bez definiowania plików html.  Stosujemy wtedy odwrócone cudzyslowy.
+
+
+--- Angular 4 pętle ---
+
+1. Pętlę możemy zapisywać w neutralnych dyrektywach. WRESZCIE . Nie trzeba tworzyć dla nich divow.  Istnieje <ng-container> super!
+
+2. *ngFor="let elem of tab; let i = index lub even lub first lub last" itd
+Even czyli parzyste.  Wartość boolean
+
+
+--- Angular 4 Ify ----
+
+<div *ngIf="dog.age > 0; else noDogs">
+Coś
+</div>
+<ng-template #noDogs>
+Brak !
+</ng-template>
+
+Da się również!
+
+<div *ngIf="dog.age > 0; then areDogs; else noDogs"></div>
+
+<ng-template #areDogs>
+Cos
+</ng-template>
+
+<ng-template #noDogs>
+Brak !
+</ng-template>
+
+
+--- Angular 4 data binding ---
+
+1. Property binding możemy zbindowac każdy jaki chcemy property. 
+Np ng-show to teraz [hidden]="expression"
+[(ngModel)]
+(click) eventy
+
+2. Dzięki @Input() W child componencie możemy mu przekazywać różne parametry z parenta. Zajebiste!! Poprzez property binding . [nazwaPropertyOznaczonegoInput]=""
+
+Można też w ciele dyrektyw componentu przekazać np kod html ale wtedy w childzie trzeba pokazać gdzie ma być on wyświetlony.  Do tego celu używamy  <ng-content></ng-content>
+
+
+3. Dzięki @Output możemy z childa do parenta.  Oznaczamy property które jest new EventEmitter<typ>()
+I w metodzie wysyłamy property.emit(wysylka).
+
+W parencie odbieramy poprzez event binding. (nazwaPropertyOznaczonegoOutput)="metoda ($event)"
+I tym eventem jest nasza wysylka
+
+--- Angular 4 cykl życia ---
+
+1.Pola klasy
+
+2.Konstruktor
+
+3.Interfejs onChanges.  Jego.metoda uruchamia się przed ngOnOnit i sprawdza czy zmieniły się  zbindowane pola componentu.  Uwaga ! Musi się zmienić referencja . Jego metoda przyjmuje parametr w którym znajdują się informacje o wszystkich zmienionych polach !
+
+4.interfejs ngOnOnit uruchamia się po konstruktorze i po onChanges.  Uruchamia się tylko jeden raz podczas inicjalizacji komponentu !
+
+5. Interfejs doCheck.  Reaguje na każdą zmianę w componencie ! Na każdy event . Na wszystko!
+
+6. Interfejs NgAfterContentInit uruchamia się po załadowaniu przesłanego do childa ng-content
+Przydatne by być pewnym że już jest załadowane
+
+7. Interfejs ngAfterContentChecked po każdej zmianie contentu.
+
+8. Interfejs ngAfterViewInit po inicjalizacji widoku
+
+9. Interfejs ngAfterViewChecked po każdej zmianie w widoku
+
+10. Interfejs ngOnDestroy wywołuje się przed usunięciem .  Przykład gdy komponent dziecka umieścimy w ngIf i później zmieniamy flagę ifa na false to dany komponent dziecka się usunie i wtedy wywoływana jest ta metoda interfejsu
+
+--- Angular 4 referencje ---
+
+Każdemu elementowi w DOMIe można nadać referencje poprzez #nazwaReferencji
+
+Później w metodach np. (click) można przekazywać referencje . Referencje przed przesłaniem do componentu są widoczne tylko z DOMu
+
+Np Referencja inputu jest typu HTMLInputElement .
+
+ ---- Angular 4 referencje do componentow. ------
+
+Możemy nadać referencje child componentowi w domie poprzez #nazwaReferencji
+
+A później możemy odnieść się do tej referencji z parent componentu poprzez oznaczenie pola typu childComponent: ChildComponent
+adnotacja @ViewChild ('nazwaReferencji')
+
+Przez ViewChild można dostać się również np. Do referencji zwykłych inputow ale wtedy pole oznaczane ta adnotacja musi być typu ElementRef
+
+--- Angular 4 style ---
+
+By chcemy żeby styl działał na cały projekt a nie tylko na dany component musimy wyłączyć mu enkapsulacje.  W tym celu w adnotacji @Component dodajemy Envapsulation: ViewEncapsulation.NONE .
+Klasycznie jest EMULATED
+
+Ale istnieje również globalny plik o nazwie styles.css
+
+--- Angular 4 serwisy i ich instancje ---
+
+Dany serwis jest widoczny tylko w parencie i jego dzieciach jeżeli umieścimy to w componencie w sekcji providers.
+
+Jak chcemy globalnie na wszystkie moduly to trzeba w ngModule
+
+--- Angular 4 RXJS(programowanie reaktywne) ---
+
+Służy do pobierania z serwisów zmienionych danych .  Zamiast pobierać zegar co sekundę można pobierać tylko zmienione dane. Więc jest to super mechanizm. 
+
+Takie bindowanie elementow pomiędzy serwisem a componentem
+
+Jest to mechanizm obserwatorow. 
+Wpierw w serwisie tworzymy obiekt typu Subject <typDoWysylki>()
+
+Wpierw do subjectu ladujemy co chcemy dzięki metodzie next()
+
+A później go zwracamy jakimś getterem wywołując return pole.asObservable
+
+I na koniec w jakimś componencie getujemy ten observable wywołując na nim metodę subscribe ()
+Od tego momentu te pola są już połączone .  Coś jak ngModel
+
+--- Angular 4 adnotacja @Injectable ---
+
+Ona jest po to by móc coś wstrzykiwac w serwis
+
+W componentach jej nie ma bo one automatycznie implementuja @Injectable
+
+--- Angular 4 dyrektywy
+
+Konstruktor przyjmuje ElementRef oraz Renderer2
+
+I później np w onInit można posługiwać się metodami renderer2 i zmieniać elementref
+
+Dodanie listeneru . Przed nowo dodaną metodą ktora opcjonalnie przyjmuje parametr event dajemy adnotacje @HostListener ('nazwaEventu')
+
+Do dyrektyw w domie można dopisywać Pola zbindowane w dyrektyw componencie oznaczone jako @Input.  I przekazywać je [nazwaPolaOxnaczonegoJaloInput]
+
+--- Angular 4 pipe
+
+Pipe możemy dodać nawet do tablicy w ngfor
+Czyli
+let i of tab | wlasnyPipe
+
+Możemy ja wtedy sortowac.  Ale sortuje się tylko przy onInit
+Jak chcemy sortowac ja po dodaniu elementu to możemy w adnotacji @Pipe
+Dodać property pure: false
+Ale jest to czasochlonne
+
+Hack jest taki że slice() zwraca nową referencje ! I wtedy subscripe wykrywa zmiane
+
+--- Angular 4 async pipes
+Bez subscribe samymi pipe można iteriwac po kolekcji observable
+
+| async
+
+I nie trzeba subscribe
