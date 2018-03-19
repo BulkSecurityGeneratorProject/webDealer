@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
@@ -27,6 +27,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    received: boolean;
 
     constructor(
         private carService: CarService,
@@ -45,6 +46,7 @@ currentAccount: any;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.received = activatedRoute.snapshot.data.received;
     }
 
     loadAll() {

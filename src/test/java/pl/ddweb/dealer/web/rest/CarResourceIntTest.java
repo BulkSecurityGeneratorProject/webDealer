@@ -51,8 +51,8 @@ public class CarResourceIntTest {
     private static final String DEFAULT_COLOR = "AAAAAAAAAA";
     private static final String UPDATED_COLOR = "BBBBBBBBBB";
 
-    private static final String DEFAULT_MILEAGE = "AAAAAAAAAA";
-    private static final String UPDATED_MILEAGE = "BBBBBBBBBB";
+    private static final Long DEFAULT_MILEAGE = 1L;
+    private static final Long UPDATED_MILEAGE = 2L;
 
     private static final byte[] DEFAULT_IMG = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_IMG = TestUtil.createByteArray(2, "1");

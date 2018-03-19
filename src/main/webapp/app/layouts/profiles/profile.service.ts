@@ -19,7 +19,6 @@ export class ProfileService {
                     const data = res.json();
                     const pi = new ProfileInfo();
                     pi.activeProfiles = data.activeProfiles;
-                    pi.ribbonEnv = data.ribbonEnv;
                     pi.inProduction = data.activeProfiles.includes('prod');
                     pi.swaggerEnabled = data.activeProfiles.includes('swagger');
                     return pi;

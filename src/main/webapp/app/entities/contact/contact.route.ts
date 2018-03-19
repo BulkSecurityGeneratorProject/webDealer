@@ -11,18 +11,14 @@ export const contactRoute: Routes = [
         path: 'contact',
         component: ContactComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'webDealerApp.contact.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        }
     }, {
         path: 'contact/:id',
         component: ContactDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'webDealerApp.contact.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        }
     }
 ];
 
@@ -31,7 +27,7 @@ export const contactPopupRoute: Routes = [
         path: 'contact-new',
         component: ContactPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.contact.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +37,7 @@ export const contactPopupRoute: Routes = [
         path: 'contact/:id/edit',
         component: ContactPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.contact.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +47,7 @@ export const contactPopupRoute: Routes = [
         path: 'contact/:id/delete',
         component: ContactDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.contact.home.title'
         },
         canActivate: [UserRouteAccessService],

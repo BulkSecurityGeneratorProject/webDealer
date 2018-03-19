@@ -7,7 +7,7 @@ export class Car implements BaseEntity {
         public model?: string,
         public price?: number,
         public color?: string,
-        public mileage?: string,
+        public mileage?: number,
         public imgContentType?: string,
         public img?: any,
         public received?: boolean,

@@ -1,6 +1,13 @@
 {
     "webDealerApp": {
         "car" : {
+            "shipping":{
+                "home": {
+                    "title": "Cars shipping",
+                    "createLabel": "Dodaj Car",
+                    "createOrEditLabel": "Dodaj lub edytuj: Car"
+                }
+            },
             "home": {
                 "title": "Cars",
                 "createLabel": "Dodaj Car",

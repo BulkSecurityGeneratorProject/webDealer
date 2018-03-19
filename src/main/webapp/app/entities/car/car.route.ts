@@ -32,18 +32,33 @@ export const carRoute: Routes = [
             'pagingParams': CarResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            received: true,
             pageTitle: 'webDealerApp.car.home.title'
-        },
-        canActivate: [UserRouteAccessService]
+        }
     }, {
         path: 'car/:id',
         component: CarDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            received: true,
             pageTitle: 'webDealerApp.car.home.title'
+        }
+    }, {
+        path: 'car-shipping',
+        component: CarComponent,
+        resolve: {
+            'pagingParams': CarResolvePagingParams
         },
-        canActivate: [UserRouteAccessService]
+        data: {
+            received: false,
+            pageTitle: 'webDealerApp.car.shipping.home.title'
+        }
+    }, {
+        path: 'car-shipping/:id',
+        component: CarDetailComponent,
+        data: {
+            received: false,
+            pageTitle: 'webDealerApp.car.shipping.home.title'
+        }
     }
 ];
 
@@ -52,7 +67,7 @@ export const carPopupRoute: Routes = [
         path: 'car-new',
         component: CarPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.car.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +77,7 @@ export const carPopupRoute: Routes = [
         path: 'car/:id/edit',
         component: CarPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.car.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +87,7 @@ export const carPopupRoute: Routes = [
         path: 'car/:id/delete',
         component: CarDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'webDealerApp.car.home.title'
         },
         canActivate: [UserRouteAccessService],

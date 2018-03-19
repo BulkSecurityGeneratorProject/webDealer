@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="webDealerApp.car.mileage" for="field_mileage">Mileage</label>
-            <input type="text" class="form-control" name="mileage" id="field_mileage"
+            <input type="number" class="form-control" name="mileage" id="field_mileage"
                 [(ngModel)]="car.mileage" required/>
             <div [hidden]="!(editForm.controls.mileage?.dirty && editForm.controls.mileage?.invalid)">
                 <small class="form-text text-danger"

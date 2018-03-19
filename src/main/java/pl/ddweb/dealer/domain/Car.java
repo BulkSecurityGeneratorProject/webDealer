@@ -42,7 +42,7 @@ public class Car implements Serializable {
 
     @NotNull
     @Column(name = "mileage", nullable = false)
-    private String mileage;
+    private Long mileage;
 
     @Lob
     @Column(name = "img")
@@ -120,16 +120,16 @@ public class Car implements Serializable {
         this.color = color;
     }
 
-    public String getMileage() {
+    public Long getMileage() {
         return mileage;
     }
 
-    public Car mileage(String mileage) {
+    public Car mileage(Long mileage) {
         this.mileage = mileage;
         return this;
     }
 
-    public void setMileage(String mileage) {
+    public void setMileage(Long mileage) {
         this.mileage = mileage;
     }
 
