@@ -1,0 +1,20 @@
+entity Contact{
+name String required,
+surname String required,
+city String required,
+address String required,
+phone String required
+}
+
+entity Car{
+make String required,
+model String required,
+price Long required,
+color String required,
+mileage String required,
+img ImageBlob,
+received Boolean required,
+description TextBlob
+} 
+
+paginate Car with pagination

@@ -1,0 +1,59 @@
+
+<div *ngIf="car">
+    <h2><span jhiTranslate="webDealerApp.car.detail.title">Car</span> {{car.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="webDealerApp.car.make">Make</span></dt>
+        <dd>
+            <span>{{car.make}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.model">Model</span></dt>
+        <dd>
+            <span>{{car.model}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.price">Price</span></dt>
+        <dd>
+            <span>{{car.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.color">Color</span></dt>
+        <dd>
+            <span>{{car.color}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.mileage">Mileage</span></dt>
+        <dd>
+            <span>{{car.mileage}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.img">Img</span></dt>
+        <dd>
+            <div *ngIf="car.img">
+                <a (click)="openFile(car.imgContentType, car.img)">
+                    <img [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-width: 100%;" alt="car image"/>
+                </a>
+                {{car.imgContentType}}, {{byteSize(car.img)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.received">Received</span></dt>
+        <dd>
+            <span>{{car.received}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.description">Description</span></dt>
+        <dd>
+            <span>{{car.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

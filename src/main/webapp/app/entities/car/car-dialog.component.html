@@ -1,0 +1,117 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCarLabel" jhiTranslate="webDealerApp.car.home.createOrEditLabel">Create or edit a Car</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!car.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="car.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.make" for="field_make">Make</label>
+            <input type="text" class="form-control" name="make" id="field_make"
+                [(ngModel)]="car.make" required/>
+            <div [hidden]="!(editForm.controls.make?.dirty && editForm.controls.make?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.make?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.model" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                [(ngModel)]="car.model" required/>
+            <div [hidden]="!(editForm.controls.model?.dirty && editForm.controls.model?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.model?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.price" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                [(ngModel)]="car.price" required/>
+            <div [hidden]="!(editForm.controls.price?.dirty && editForm.controls.price?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.price?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.price?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.color" for="field_color">Color</label>
+            <input type="text" class="form-control" name="color" id="field_color"
+                [(ngModel)]="car.color" required/>
+            <div [hidden]="!(editForm.controls.color?.dirty && editForm.controls.color?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.color?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.mileage" for="field_mileage">Mileage</label>
+            <input type="text" class="form-control" name="mileage" id="field_mileage"
+                [(ngModel)]="car.mileage" required/>
+            <div [hidden]="!(editForm.controls.mileage?.dirty && editForm.controls.mileage?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.mileage?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.img" for="field_img">Img</label>
+            <div>
+                <img [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-height: 100px;" *ngIf="car.img" alt="car image"/>
+                <div *ngIf="car.img" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{car.imgContentType}}, {{byteSize(car.img)}}</span>
+                    <button type="button" (click)="clearInputImage('img', 'imgContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_img" (change)="setFileData($event, car, 'img', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="img" id="field_img"
+                [(ngModel)]="car.img" />
+            <input type="hidden" class="form-control" name="imgContentType" id="field_imgContentType"
+                [(ngModel)]="car.imgContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.received" for="field_received">Received</label>
+            <input type="checkbox" class="form-control" name="received" id="field_received"
+                [(ngModel)]="car.received" />
+            <div [hidden]="!(editForm.controls.received?.dirty && editForm.controls.received?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.received?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.description" for="field_description">Description</label>
+            <textarea class="form-control" name="description" id="field_description"
+                [(ngModel)]="car.description" ></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
