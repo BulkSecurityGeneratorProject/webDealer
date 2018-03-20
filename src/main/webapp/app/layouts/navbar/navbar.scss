@@ -1,37 +1,37 @@
+@import '../../../content/scss/variables';
 
-/* ==========================================================================
-Navbar
-========================================================================== */
+//==========================================================================
+//Navbar
+//==========================================================================
 .navbar-version {
-    font-size: 10px;
-    color: #ccc
+  color: #ccc;
+  font-size: 10px
 }
 
 .jh-navbar {
-    background-color: #353d47;
-    padding: .2em 1em;
-    .profile-image {
-        margin: -10px 0px;
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
+  background-color: rgba(45,45,45,.8);
+  padding: 0 1em;
+  .profile-image {
+      border-radius: 50%;
+      height: 40px;
+      margin: -10px 0px;
+      width: 40px;
     }
-    .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+  .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
         background-color: #353d47;
     }
-    .dropdown-toggle::after {
+  .dropdown-toggle::after {
         margin-left: 0.15em;
     }
-    ul.navbar-nav {
-        padding: 0.5em;
+  ul.navbar-nav {
         .nav-item {
-            margin-left: 1.5rem;
+            margin-left: 0;
         }
     }
-    a.nav-link {
+  a.nav-link {
         font-weight: 400;
     }
-    .jh-navbar-toggler {
+  .jh-navbar-toggler {
         color: #ccc;
         font-size: 1.5em;
         padding: 10px;
@@ -48,29 +48,44 @@ Navbar
 }
 
 @media screen and (max-width: 992px) {
-    .jh-logo-container {
-        width: 100%;
-    }
+  .jh-logo-container {
+    width: 100%;
+  }
 }
 
 .navbar-title {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* ==========================================================================
-Logo styles
-========================================================================== */
+.navbar-dark .navbar-nav .nav-link {
+  color: $white;
+  padding: 2rem 1rem 1rem;
+  transition: .5s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  background-color: $red;
+}
+
+.navbar-dark .navbar-nav .active {
+  background-color: $red;
+}
+
+//==========================================================================
+//Logo styles
+//==========================================================================
 .navbar-brand {
-    &.logo {
-        padding: 5px 15px;
-        .logo-img {
-            height: 45px;
-            width: 70px;
+  &.logo {
+    padding: 5px 15px;
+
+    .logo-img {
+      background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+      background-size: contain;
             display: inline-block;
+            height: 45px;
             vertical-align: middle;
-            background: url("../../../content/images/logo-jhipster.png") no-repeat center center;
-            background-size: contain;
+            width: 70px;
         }
     }
 }
