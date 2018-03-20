@@ -23,6 +23,7 @@ import org.springframework.web.filter.CorsFilter;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
 
 import javax.annotation.PostConstruct;
+import java.lang.reflect.Method;
 
 @Configuration
 @Import(SecurityProblemSupport.class)
@@ -99,6 +100,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
             .antMatchers("/api/profile-info").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/cars/**").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/contacts/**").permitAll()
+            .antMatchers("/api/cars/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .antMatchers("/api/contacts/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)

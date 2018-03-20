@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="webDealerApp.contact.home.title">Contacts</span>
-        <button class="btn btn-primary float-right jh-create-entity create-contact" [routerLink]="['/', { outlets: { popup: ['contact-new'] } }]">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-contact" [routerLink]="['/', { outlets: { popup: ['contact-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="webDealerApp.contact.home.createLabel">
             Create new Contact
@@ -16,24 +16,22 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="webDealerApp.contact.name">Name</span></th>
             <th><span jhiTranslate="webDealerApp.contact.surname">Surname</span></th>
             <th><span jhiTranslate="webDealerApp.contact.city">City</span></th>
             <th><span jhiTranslate="webDealerApp.contact.address">Address</span></th>
             <th><span jhiTranslate="webDealerApp.contact.phone">Phone</span></th>
-            <th></th>
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let contact of contacts ;trackBy: trackId">
-                <td><a [routerLink]="['../contact', contact.id ]">{{contact.id}}</a></td>
                 <td>{{contact.name}}</td>
                 <td>{{contact.surname}}</td>
                 <td>{{contact.city}}</td>
                 <td>{{contact.address}}</td>
                 <td>{{contact.phone}}</td>
-                <td class="text-right">
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'" class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../contact', contact.id ]"

@@ -115,7 +115,7 @@ public class CarResource {
     @Timed
     public ResponseEntity<Car> getCar(@PathVariable("id") Long id) {
         log.debug("REST request to get Car : {}", id);
-        Car car = carRepository.findOneOrderByLastModifiedDate(id);
+        Car car = carRepository.findOneByIdOrderByLastModifiedDate(id);
         car.setLastModified(car.getLastModifiedDate());
         car.setCreated(car.getCreatedDate());
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(car));

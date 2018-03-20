@@ -19,5 +19,5 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     Page<Car> findAllByReceivedOrderByLastModifiedDate(Boolean received, Pageable pageable);
 
-    Car findOneOrderByLastModifiedDate(Long id);
+    Car findOneByIdOrderByLastModifiedDate(Long id);
 }
