@@ -1,5 +1,9 @@
 @import '../../../content/scss/variables';
 
+@font-face {
+    font-family: 'title';
+    src: url('../../../content/fonts/Yellowtail-Regular.ttf') format('truetype');
+}
 //==========================================================================
 //Navbar
 //==========================================================================
@@ -9,7 +13,7 @@
 }
 
 .jh-navbar {
-  background-color: rgba(45,45,45,.8);
+  background-color: $color-navbar-background-lower;
   padding: 0 1em;
   .profile-image {
       border-radius: 50%;
@@ -27,6 +31,7 @@
         .nav-item {
             margin-left: 0;
         }
+        padding-right: 1rem;
     }
   a.nav-link {
         font-weight: 400;
@@ -36,15 +41,31 @@
         font-size: 1.5em;
         padding: 10px;
         &:hover {
-            color: #fff;
+            color: $color-navbar-text;
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .jh-navbar-toggler {
-        display: none;
-    }
+.navbar-desk {
+    background-color: $color-navbar-background-higher;
+    height: $height-navbar-higher;
+    width: 100%
+}
+
+@include media('screen', '>smWidth') {
+  .jh-navbar-toggler {
+    display: none;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    padding: 3rem .5rem 2rem;
+  }
+}
+
+@include media('screen', '<smWidth') {
+  .navbar-dark .navbar-nav .nav-link {
+    padding: 1rem;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -54,22 +75,39 @@
 }
 
 .navbar-title {
-  display: inline-block;
-  vertical-align: middle;
+    display: inline-block;
+    font-family: 'title', sans-serif;
+    font-size: $size-navbar-text-title;
+    font-weight: 500;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.navbar-subtitle {
+    @extend %font-family-uppercase;
+    color: $color-navbar-text;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 10px;
+    text-align: center;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: $white;
-  padding: 2rem 1rem 1rem;
-  transition: .5s;
+    color: $color-navbar-text;
+    font-size: $size-navbar-text-item;
+    font-weight: bold;
+    height: 100%;
+    transition: .5s;
+    white-space: nowrap;
+    @extend %font-family-uppercase
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  background-color: $red;
+  background-color: $color-navbar-active;
 }
 
 .navbar-dark .navbar-nav .active {
-  background-color: $red;
+  background-color: $color-navbar-active;
 }
 
 //==========================================================================

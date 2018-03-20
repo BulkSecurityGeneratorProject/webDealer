@@ -1,6 +1,7 @@
 {
     "global": {
-        "title": "WebDealer",
+        "title": "Samochody z ameryki",
+        "subtitle": "Dworak",
         "browsehappy": "Używasz <strong>przestarzałej</strong> przeglądarki. Proszę <a href=\"http://browsehappy.com/\">uaktualnij swoją przeglądarkę</a> aby poprawić wrażenia z użytkowania tej aplikacji.",
         "menu": {
             "home": "Strona domowa",

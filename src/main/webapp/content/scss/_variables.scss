@@ -1,2 +1,50 @@
-$white: #fff;
-$red: #c7081b;
+$color-navbar-text: #fff;
+$color-navbar-active: #c7081b;
+$color-navbar-background-lower:rgba(45, 45, 45, .8);
+$color-navbar-background-higher:rgba(45, 45, 45, .9);
+$height-navbar-higher: 30px;
+$size-navbar-text-item: small;
+$size-navbar-text-title: 30px;
+
+$media-xs-size: 576px;
+$media-sm-size: 768px;
+$media-md-size: 992px;
+$media-lg-size: 1200px;
+
+
+@function media-condition($c) {
+  $cond-map: (
+        "screen": "only screen",
+        "print": "only print",
+        "retina": "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)",
+        ">xsWidth": "(min-width: #{$media-xs-size - 1})",
+        "<xsWidth": "(max-width: #{$media-xs-size})",
+        ">smWidth": "(min-width: #{$media-sm-size - 1})",
+        "<smWidth": "(max-width: #{$media-sm-size})",
+        ">mdWidth": "(min-width: #{$media-md-size - 1})",
+        "<mdWidth": "(max-width: #{$media-md-size})",
+        ">lgWidth": "(min-width: #{$media-lg-size - 1})",
+        "<lgWidth": "(max-width: #{$media-lg-size})"
+    );
+  @return map-get($cond-map, $c);
+}
+
+@mixin media($args...) {
+  $query: '';
+  @each $arg in $args {
+    $op: '';
+    @if ($query != '') {
+      $op: ' and ';
+    }
+    $query: $query + $op + media-condition($arg);
+  }
+
+@media #{$query}  { @content; }
+}
+
+%font-family-uppercase {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+

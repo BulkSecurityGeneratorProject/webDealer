@@ -1,10 +1,14 @@
+<div class="navbar-desk"></div>
 <nav class="navbar navbar-dark navbar-lower navbar-expand-md jh-navbar">
     <div class="jh-logo-container float-left">
-        <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
+        <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse"
+           data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+           aria-label="Toggle navigation" (click)="toggleNavbar()">
             <i class="fa fa-bars"></i>
         </a>
-        <a class="d-md-none navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-            <span jhiTranslate="global.title" class="navbar-title">WebDealer</span> <span class="navbar-version">{{version}}</span>
+        <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+            <span jhiTranslate="global.title" class="navbar-title">WebDealer</span>
+            <p jhiTranslate="global.subtitle" class="navbar-subtitle"></p>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed"
@@ -13,7 +17,6 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
-                        <i class="fa fa-home" aria-hidden="true"></i>
                         <span jhiTranslate="global.menu.home">Home</span>
                     </span>
                 </a>
@@ -22,21 +25,18 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="contact" routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                    <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                     <span jhiTranslate="global.menu.entities.contact">Contact</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="car" routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                    <i class="fa fa-car" aria-hidden="true"></i>
                     <span jhiTranslate="global.menu.entities.car">Car</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="car-shipping" routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                    <i class="fa fa-ship" aria-hidden="true"></i>
                     <span jhiTranslate="global.menu.entities.car-shipping">Car</span>
                 </a>
             </li>
@@ -45,7 +45,6 @@
                 routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
                         <span jhiTranslate="global.menu.admin.main">Administration</span>
                     </span>
                 </a>
@@ -65,21 +64,6 @@
                         </a>
                     </li>
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
-                </ul>
-            </li>
-            <li ngbDropdown class="nav-item dropdown pointer" *ngIf="languages">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);"
-                   id="languagesnavBarDropdown" *ngIf="languages.length > 1">
-                    <span>
-                        <i class="fa fa-flag" aria-hidden="true"></i>
-                        <span jhiTranslate="global.menu.language">Language</span>
-                    </span>
-                </a>
-                <ul class="dropdown-menu" ngbDropdownMenu *ngIf="languages.length > 1">
-                    <li *ngFor="let language of languages">
-                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);"
-                           (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
-                    </li>
                 </ul>
             </li>
             <li *ngSwitchCase="true" class="nav-item">
