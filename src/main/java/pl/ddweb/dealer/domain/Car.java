@@ -1,5 +1,8 @@
 package pl.ddweb.dealer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,7 +10,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
+
+import org.springframework.data.annotation.LastModifiedDate;
+import pl.ddweb.dealer.domain.enumeration.Gear;
 
 /**
  * A Car.
@@ -15,7 +22,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "car")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Car implements Serializable {
+public class Car extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,11 +44,27 @@ public class Car implements Serializable {
     private Long price;
 
     @NotNull
-    @Column(name = "color", nullable = false)
-    private String color;
+    @Column(name = "jhi_year", nullable = false)
+    private Long year;
 
     @NotNull
-    @Column(name = "mileage", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gear", nullable = false)
+    private Gear gear;
+
+    @Column(name = "version")
+    private String version;
+
+    @Column(name = "capacity")
+    private Double capacity;
+
+    @Column(name = "power")
+    private Long power;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "mileage")
     private Long mileage;
 
     @Lob
@@ -51,13 +74,32 @@ public class Car implements Serializable {
     @Column(name = "img_content_type")
     private String imgContentType;
 
+    @Lob
+    @Column(name = "description")
+    private String description;
+
     @NotNull
     @Column(name = "received", nullable = false)
     private Boolean received;
 
-    @Lob
-    @Column(name = "description")
-    private String description;
+    @NotNull
+    @Column(name = "broken", nullable = false)
+    private Boolean broken;
+
+    @Transient
+    @JsonSerialize
+    @JsonDeserialize
+    private Instant created;
+
+    @JsonSerialize
+    @JsonDeserialize
+    @Transient
+    private Instant lastModified;
+
+    public Car() {
+        this.created = getCreatedDate();
+        this.lastModified = getLastModifiedDate();
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -105,6 +147,71 @@ public class Car implements Serializable {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public Long getYear() {
+        return year;
+    }
+
+    public Car year(Long year) {
+        this.year = year;
+        return this;
+    }
+
+    public void setYear(Long year) {
+        this.year = year;
+    }
+
+    public Gear getGear() {
+        return gear;
+    }
+
+    public Car gear(Gear gear) {
+        this.gear = gear;
+        return this;
+    }
+
+    public void setGear(Gear gear) {
+        this.gear = gear;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public Car version(String version) {
+        this.version = version;
+        return this;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public Double getCapacity() {
+        return capacity;
+    }
+
+    public Car capacity(Double capacity) {
+        this.capacity = capacity;
+        return this;
+    }
+
+    public void setCapacity(Double capacity) {
+        this.capacity = capacity;
+    }
+
+    public Long getPower() {
+        return power;
+    }
+
+    public Car power(Long power) {
+        this.power = power;
+        return this;
+    }
+
+    public void setPower(Long power) {
+        this.power = power;
     }
 
     public String getColor() {
@@ -159,6 +266,19 @@ public class Car implements Serializable {
         this.imgContentType = imgContentType;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public Car description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Boolean isReceived() {
         return received;
     }
@@ -172,18 +292,35 @@ public class Car implements Serializable {
         this.received = received;
     }
 
-    public String getDescription() {
-        return description;
+    public Boolean isBroken() {
+        return broken;
     }
 
-    public Car description(String description) {
-        this.description = description;
+    public Car broken(Boolean broken) {
+        this.broken = broken;
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBroken(Boolean broken) {
+        this.broken = broken;
     }
+
+    public Instant getCreated() {
+        return created;
+    }
+
+    public void setCreated(Instant created) {
+        this.created = created;
+    }
+
+    public Instant getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Instant lastModified) {
+        this.lastModified = lastModified;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -210,15 +347,22 @@ public class Car implements Serializable {
     public String toString() {
         return "Car{" +
             "id=" + getId() +
+            ", date='" + getCreatedDate() + "'" +
             ", make='" + getMake() + "'" +
             ", model='" + getModel() + "'" +
             ", price=" + getPrice() +
+            ", year=" + getYear() +
+            ", gear='" + getGear() + "'" +
+            ", version='" + getVersion() + "'" +
+            ", capacity=" + getCapacity() +
+            ", power=" + getPower() +
             ", color='" + getColor() + "'" +
             ", mileage='" + getMileage() + "'" +
             ", img='" + getImg() + "'" +
             ", imgContentType='" + getImgContentType() + "'" +
-            ", received='" + isReceived() + "'" +
             ", description='" + getDescription() + "'" +
+            ", received='" + isReceived() + "'" +
+            ", broken='" + isBroken() + "'" +
             "}";
     }
 }

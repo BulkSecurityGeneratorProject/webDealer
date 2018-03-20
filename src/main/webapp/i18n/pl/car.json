@@ -25,11 +25,17 @@
             "make": "Make",
             "model": "Model",
             "price": "Price",
+            "year": "Year",
+            "gear": "Gear",
+            "version": "Version",
+            "capacity": "Capacity",
+            "power": "Power",
             "color": "Color",
             "mileage": "Mileage",
             "img": "Img",
+            "description": "Description",
             "received": "Received",
-            "description": "Description"
+            "broken": "Broken"
         }
     }
 }

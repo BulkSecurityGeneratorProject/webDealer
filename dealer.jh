@@ -10,11 +10,22 @@ entity Car{
 make String required,
 model String required,
 price Long required,
-color String required,
-mileage String required,
+year Long required,
+gear Gear required,
+version String,
+capacity Double,
+power Long,
+color String,
+mileage String,
 img ImageBlob,
+description TextBlob,
 received Boolean required,
-description TextBlob
-} 
+broken Boolean required,
+}
+
+enum Gear{
+MANUAL,
+AUTOMATIC
+}
 
 paginate Car with pagination

@@ -16,6 +16,26 @@
         <dd>
             <span>{{car.price}}</span>
         </dd>
+        <dt><span jhiTranslate="webDealerApp.car.year">Year</span></dt>
+        <dd>
+            <span>{{car.year}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.gear">Gear</span></dt>
+        <dd>
+            <span jhiTranslate="{{'webDealerApp.Gear.' + car.gear}}">{{car.gear}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.version">Version</span></dt>
+        <dd>
+            <span>{{car.version}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.capacity">Capacity</span></dt>
+        <dd>
+            <span>{{car.capacity}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.power">Power</span></dt>
+        <dd>
+            <span>{{car.power}}</span>
+        </dd>
         <dt><span jhiTranslate="webDealerApp.car.color">Color</span></dt>
         <dd>
             <span>{{car.color}}</span>
@@ -33,15 +53,21 @@
                 {{car.imgContentType}}, {{byteSize(car.img)}}
             </div>
         </dd>
-        <dt><span jhiTranslate="webDealerApp.car.received">Received</span></dt>
-        <dd>
-            <span>{{car.received}}</span>
-        </dd>
         <dt><span jhiTranslate="webDealerApp.car.description">Description</span></dt>
         <dd>
             <span>{{car.description}}</span>
         </dd>
+        <dt><span jhiTranslate="webDealerApp.car.received">Received</span></dt>
+        <dd>
+            <span>{{car.received}}</span>
+        </dd>
+        <dt><span jhiTranslate="webDealerApp.car.broken">Broken</span></dt>
+        <dd>
+            <span>{{car.broken}}</span>
+        </dd>
     </dl>
+    <h1>{{car.created | date:'short'}}</h1>
+    <h1>{{car.lastModified | date:'short'}}</h1>
 
     <button type="submit"
             (click)="previousState()"

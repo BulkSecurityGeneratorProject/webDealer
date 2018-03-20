@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +56,7 @@ public class CarResource {
         if (car.getId() != null) {
             throw new BadRequestAlertException("A new car cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        car.setCreatedDate(car.getCreated());
         Car result = carRepository.save(car);
         return ResponseEntity.created(new URI("/api/cars/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -77,6 +79,7 @@ public class CarResource {
         if (car.getId() == null) {
             return createCar(car);
         }
+        car.setCreatedDate(car.getCreated());
         Car result = carRepository.save(car);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))
@@ -93,7 +96,11 @@ public class CarResource {
     @Timed
     public ResponseEntity<List<Car>> getAllCars(@PathVariable String received, Pageable pageable) {
         log.debug("REST request to get a page of Cars");
-        Page<Car> page = carRepository.findAllByReceived(received.equals("true"),pageable);
+        Page<Car> page = carRepository.findAllByReceivedOrderByLastModifiedDate(received.equals("true"),pageable);
+        page.getContent().forEach(c -> {
+            c.setCreated(c.getCreatedDate());
+            c.setLastModified(c.getLastModifiedDate());
+        });
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cars");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -106,9 +113,11 @@ public class CarResource {
      */
     @GetMapping("/cars/{id}")
     @Timed
-    public ResponseEntity<Car> getCar(@PathVariable Long id) {
+    public ResponseEntity<Car> getCar(@PathVariable("id") Long id) {
         log.debug("REST request to get Car : {}", id);
-        Car car = carRepository.findOne(id);
+        Car car = carRepository.findOneOrderByLastModifiedDate(id);
+        car.setLastModified(car.getLastModifiedDate());
+        car.setCreated(car.getCreatedDate());
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(car));
     }
 

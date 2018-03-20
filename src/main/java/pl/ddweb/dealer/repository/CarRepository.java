@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.time.Instant;
+
 
 /**
  * Spring Data JPA repository for the Car entity.
@@ -15,5 +17,7 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    Page<Car> findAllByReceived(Boolean received, Pageable pageable);
+    Page<Car> findAllByReceivedOrderByLastModifiedDate(Boolean received, Pageable pageable);
+
+    Car findOneOrderByLastModifiedDate(Long id);
 }

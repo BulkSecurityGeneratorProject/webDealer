@@ -33,12 +33,32 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="color" type="varchar(255)">
+            <column name="jhi_year" type="bigint">
                 <constraints nullable="false" />
             </column>
 
-            <column name="mileage" type="bigint">
+            <column name="gear" type="varchar(255)">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="version" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="capacity" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="power" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mileage" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <column name="img" type="longblob">
@@ -48,13 +68,23 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="description" type="clob">
+                <constraints nullable="true" />
+            </column>
+
             <column name="received" type="boolean">
                 <constraints nullable="false" />
             </column>
 
-            <column name="description" type="clob">
-                <constraints nullable="true" />
+            <column name="broken" type="boolean">
+                <constraints nullable="false" />
             </column>
+
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_modified_date" type="timestamp"/>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

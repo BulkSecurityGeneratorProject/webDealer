@@ -1,0 +1,9 @@
+{
+    "webDealerApp": {
+        "Gear" : {
+            "null": "",
+            "MANUAL": "MANUAL",
+            "AUTOMATIC": "AUTOMATIC"
+        }
+    }
+}

@@ -7,9 +7,7 @@ export class User {
     public activated?: Boolean;
     public langKey?: string;
     public authorities?: any[];
-    public createdBy?: string;
     public createdDate?: Date;
-    public lastModifiedBy?: string;
     public lastModifiedDate?: Date;
     public password?: string;
 
@@ -36,9 +34,7 @@ export class User {
         this.activated = activated ? activated : false;
         this.langKey = langKey ? langKey : null;
         this.authorities = authorities ? authorities : null;
-        this.createdBy = createdBy ? createdBy : null;
         this.createdDate = createdDate ? createdDate : null;
-        this.lastModifiedBy = lastModifiedBy ? lastModifiedBy : null;
         this.lastModifiedDate = lastModifiedDate ? lastModifiedDate : null;
         this.password = password ? password : null;
     }
