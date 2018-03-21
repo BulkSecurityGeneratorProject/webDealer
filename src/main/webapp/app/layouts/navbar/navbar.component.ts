@@ -5,8 +5,8 @@ import { JhiLanguageService } from 'ng-jhipster';
 
 import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
-
 import { VERSION } from '../../app.constants';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'jhi-navbar',
@@ -37,6 +37,17 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 30) {
+                $('nav').addClass('lower');
+                $('.navbar-desk').slideUp(600);
+                $('.toolbar').hide();
+            } else {
+                $('nav').removeClass('lower');
+                $('.navbar-desk').slideDown(600);
+                $('.toolbar').show(900);
+            }
+        });
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
@@ -45,10 +56,6 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
-    }
-
-    changeLanguage(languageKey: string) {
-      this.languageService.changeLanguage(languageKey);
     }
 
     collapseNavbar() {

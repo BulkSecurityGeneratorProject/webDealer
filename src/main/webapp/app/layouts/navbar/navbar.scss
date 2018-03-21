@@ -14,7 +14,7 @@
 
 .jh-navbar {
   background-color: $color-navbar-background-lower;
-  padding: 0 1em;
+  padding: 0 $padding-navbar-leftright;
   .profile-image {
       border-radius: 50%;
       height: 40px;
@@ -31,7 +31,6 @@
         .nav-item {
             margin-left: 0;
         }
-        padding-right: 1rem;
     }
   a.nav-link {
         font-weight: 400;
@@ -49,7 +48,23 @@
 .navbar-desk {
     background-color: $color-navbar-background-higher;
     height: $height-navbar-higher;
-    width: 100%
+    width: 100%;
+    padding-right: $padding-navbar-leftright;
+    a{
+    margin-right: 8px;
+        color: $color-navbar-text-desk;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: .7s ease;
+        padding-left: 8px;
+    }
+    a:hover{
+        color: $color-navbar-text;
+        transition: .7s linear;
+    }
 }
 
 @include media('screen', '>smWidth') {
@@ -81,15 +96,17 @@
     font-weight: 500;
     padding-bottom: 0;
     vertical-align: middle;
+    transition: .6s;
 }
 
 .navbar-subtitle {
     @extend %font-family-uppercase;
     color: $color-navbar-text;
-    font-size: 16px;
+    font-size: $size-navbar-text-subtitle;
     font-weight: normal;
     letter-spacing: 10px;
     text-align: center;
+    transition: .6s;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -99,7 +116,10 @@
     height: 100%;
     transition: .5s;
     white-space: nowrap;
-    @extend %font-family-uppercase
+    @extend %font-family-uppercase;
+    span {
+        transition: .4s;
+    }
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -108,6 +128,39 @@
 
 .navbar-dark .navbar-nav .active {
   background-color: $color-navbar-active;
+}
+
+.toolbar{
+    background: url('../../../content/images/toolbar_shadow.png') no-repeat;
+    background-size: contain;
+    height: 21px;
+    left: 0;
+    z-index: 1;
+    position: absolute;
+    top: $height-navbar-higher;
+    width: 100%;
+}
+
+.lower{
+    transition: 1s;
+    .navbar-title{
+        font-size: $size-navbar-text-title - 5px;
+        transition: .6s;
+     }
+    .navbar-subtitle{
+        font-size: $size-navbar-text-subtitle - 5px;
+        transition: .6s;
+    }
+    .nav-link{
+        padding: 2rem .5rem 1.4rem !important;
+        span {
+            transition: .4s;
+            font-size: 11px;
+        }
+    }
+}
+nav{
+    transition: 1s;
 }
 
 //==========================================================================
