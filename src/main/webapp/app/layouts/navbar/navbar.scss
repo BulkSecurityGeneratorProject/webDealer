@@ -7,12 +7,6 @@
 //==========================================================================
 //Navbar
 //==========================================================================
-.navbar-version {
-  color: #ccc;
-  font-size: 10px;
-}
-
-
 .jh-navbar {
   background-color: $color-navbar-background-lower;
   padding: 0 $padding-navbar-leftright;
@@ -24,73 +18,83 @@
     width: 40px;
   }
 
-.dropdown-item.active,
-.dropdown-item.active:focus,
-.dropdown-item.active:hover {
-   background-color: #353d47;
-}
+  .dropdown-item.active,
+  .dropdown-item.active:focus,
+  .dropdown-item.active:hover {
+    background-color: $color-navbar-item-background;
+  }
 
   .dropdown-toggle::after {
-        margin-left: .15em;
+    margin-left: .15em;
+  }
+
+  .navbar-nav {
+    .nav-item {
+      margin-left: 0;
     }
-  ul.navbar-nav {
-        .nav-item {
-            margin-left: 0;
-        }
-    }
-  a.nav-link {
-        font-weight: 400;
-    }
+  }
+
+  .nav-link {
+    font-weight: 400;
+  }
+
   .jh-navbar-toggler {
-        color: #ccc;
-        font-size: 1.5em;
-        padding: 10px;
-        &:hover {
-            color: $color-navbar-text;
-        }
+    color: $color-navbar-toggler-background;
+    font-size: 1.5em;
+    padding: 10px;
+
+    &:hover {
+      color: $color-navbar-text;
     }
+  }
 }
 
 
 .navbar-desk {
-    background-color: $color-navbar-background-higher;
-    height: $height-navbar-higher;
-    padding-right: $padding-navbar-leftright;
-    transition: all .7s ease;
-    width: 100%;
-    a{
-        color: $color-navbar-text-desk;
-        font-size: 10px;
-        font-weight: 600;
-        line-height: 30px;
-        margin-right: 8px;
-        padding-left: 8px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-    a:hover{
-        color: $color-navbar-text;
-    }
+  background-color: $color-navbar-background-higher;
+  height: $height-navbar-higher;
+  padding-right: $padding-navbar-leftright;
+  transition: all .7s ease;
+  width: 100%;
+
+  a {
+    color: $color-navbar-text-desk;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-right: 8px;
+    padding-left: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    color: $color-navbar-text;
+  }
 }
 
-@include media('screen','<smWidth'){
-    .navbar-desk {
-        padding-right: 0%;
-    }
-    .jh-navbar{
-        padding-left: 0%;
-        padding-right: 0%;
-    }
+@include media('screen', '<smWidth') {
+
+  .navbar-desk {
+    padding-right: 0;
+  }
+
+  .jh-navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
-@include media('screen','<mdWidth','>smWidth'){
-    .navbar-desk {
-        padding-right: $padding-navbar-leftright - 10%;
-    }
-    .jh-navbar{
-        padding-left: $padding-navbar-leftright - 10%;
-        padding-right: $padding-navbar-leftright - 10%;
-    }
+@include media('screen', '<mdWidth', '>smWidth') {
+
+  .navbar-desk {
+    padding-right: $padding-navbar-leftright - 10%;
+  }
+
+  .jh-navbar {
+    padding-left: $padding-navbar-leftright - 10%;
+    padding-right: $padding-navbar-leftright - 10%;
+  }
 }
 
 @include media('screen', '>smWidth') {
@@ -200,14 +204,15 @@ nav {
 .slideup {
   max-height: 0;
   overflow-y: hidden;
-  -webkit-transition: max-height .5s ease-in-out;
+  // scss-lint:disable VendorPrefix
   -moz-transition: max-height .5s ease-in-out;
   -o-transition: max-height .5s ease-in-out;
+  -webkit-transition: max-height .5s ease-in-out;
   transition: max-height .5s ease-in-out;
 }
 
 .slidedown {
-  max-height: $height-navbar-higher ;
+  max-height: $height-navbar-higher;
 }
 //==========================================================================
 //Logo styles
