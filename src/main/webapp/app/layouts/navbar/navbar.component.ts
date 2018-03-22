@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
-import { VERSION } from '../../app.constants';
+import {ProfileService} from '../profiles/profile.service';
+import {JhiLanguageHelper, Principal, LoginModalService, LoginService} from '../../shared';
+import {VERSION} from '../../app.constants';
 import * as $ from 'jquery';
 
 @Component({
@@ -23,15 +23,13 @@ export class NavbarComponent implements OnInit {
     modalRef: NgbModalRef;
     version: string;
 
-    constructor(
-        private loginService: LoginService,
-        private languageService: JhiLanguageService,
-        private languageHelper: JhiLanguageHelper,
-        private principal: Principal,
-        private loginModalService: LoginModalService,
-        private profileService: ProfileService,
-        private router: Router
-    ) {
+    constructor(private loginService: LoginService,
+                private languageService: JhiLanguageService,
+                private languageHelper: JhiLanguageHelper,
+                private principal: Principal,
+                private loginModalService: LoginModalService,
+                private profileService: ProfileService,
+                private router: Router) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
     }
@@ -40,11 +38,12 @@ export class NavbarComponent implements OnInit {
         $(window).scroll(function() {
             if ($(document).scrollTop() > 30) {
                 $('nav').addClass('lower');
-                $('.navbar-desk').slideUp(600);
                 $('.toolbar').hide();
+                    $('.navbar-desk').removeClass('slidedown').addClass('slideup');
+
             } else {
+                    $('.navbar-desk').removeClass('slideup').addClass('slidedown');
                 $('nav').removeClass('lower');
-                $('.navbar-desk').slideDown(600);
                 $('.toolbar').show(900);
             }
         });
