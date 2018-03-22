@@ -51,6 +51,7 @@
     }
 }
 
+
 .navbar-desk {
     background-color: $color-navbar-background-higher;
     height: $height-navbar-higher;
@@ -69,6 +70,26 @@
     }
     a:hover{
         color: $color-navbar-text;
+    }
+}
+
+@include media('screen','<smWidth'){
+    .navbar-desk {
+        padding-right: 0%;
+    }
+    .jh-navbar{
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+}
+
+@include media('screen','<mdWidth','>smWidth'){
+    .navbar-desk {
+        padding-right: $padding-navbar-leftright - 10%;
+    }
+    .jh-navbar{
+        padding-left: $padding-navbar-leftright - 10%;
+        padding-right: $padding-navbar-leftright - 10%;
     }
 }
 
