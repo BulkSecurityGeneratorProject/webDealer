@@ -1,32 +1,37 @@
 @import '../../../content/scss/variables';
 
 @font-face {
-    font-family: 'title';
-    src: url('../../../content/fonts/Yellowtail-Regular.ttf') format('truetype');
+  font-family: 'title';
+  src: url('../../../content/fonts/Yellowtail-Regular.ttf') format('truetype');
 }
 //==========================================================================
 //Navbar
 //==========================================================================
 .navbar-version {
   color: #ccc;
-  font-size: 10px
+  font-size: 10px;
 }
 
 
 .jh-navbar {
   background-color: $color-navbar-background-lower;
   padding: 0 $padding-navbar-leftright;
+
   .profile-image {
-      border-radius: 50%;
-      height: 40px;
-      margin: -10px 0px;
-      width: 40px;
-    }
-  .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
-        background-color: #353d47;
-    }
+    border-radius: 50%;
+    height: 40px;
+    margin: -10px 0;
+    width: 40px;
+  }
+
+.dropdown-item.active,
+.dropdown-item.active:focus,
+.dropdown-item.active:hover {
+   background-color: #353d47;
+}
+
   .dropdown-toggle::after {
-        margin-left: 0.15em;
+        margin-left: .15em;
     }
   ul.navbar-nav {
         .nav-item {
@@ -49,22 +54,21 @@
 .navbar-desk {
     background-color: $color-navbar-background-higher;
     height: $height-navbar-higher;
-    width: 100%;
     padding-right: $padding-navbar-leftright;
+    transition: all .7s ease;
+    width: 100%;
     a{
-    margin-right: 8px;
         color: $color-navbar-text-desk;
         font-size: 10px;
         font-weight: 600;
         line-height: 30px;
+        margin-right: 8px;
+        padding-left: 8px;
         text-decoration: none;
         text-transform: uppercase;
-        transition: .7s ease;
-        padding-left: 8px;
     }
     a:hover{
         color: $color-navbar-text;
-        transition: .7s linear;
     }
 }
 
@@ -72,15 +76,15 @@
   .jh-navbar-toggler {
     display: none;
   }
-
-  .navbar-dark .navbar-nav .nav-link {
-    padding: 3rem .5rem 2rem;
-  }
+  //dlugi navbar
+  //.navbar-dark .navbar-nav .nav-link {
+  //  padding: 3rem .5rem 2rem;
+  //}
 }
 
 @include media('screen', '<smWidth') {
   .navbar-dark .navbar-nav .nav-link {
-    padding: 1rem;
+    padding: 1rem 0;
   }
 }
 
@@ -91,36 +95,37 @@
 }
 
 .navbar-title {
-    display: inline-block;
-    font-family: 'title', sans-serif;
-    font-size: $size-navbar-text-title;
-    font-weight: 500;
-    padding-bottom: 0;
-    vertical-align: middle;
-    transition: .6s;
+  display: inline-block;
+  font-family: 'title', sans-serif;
+  font-size: $size-navbar-text-title;
+  font-weight: 500;
+  padding-bottom: 0;
+  transition: .6s;
+  vertical-align: middle;
 }
 
 .navbar-subtitle {
-    @extend %font-family-uppercase;
-    color: $color-navbar-text;
-    font-size: $size-navbar-text-subtitle;
-    font-weight: normal;
-    letter-spacing: 10px;
-    text-align: center;
-    transition: .6s;
+  @extend %font-family-uppercase;
+  color: $color-navbar-text;
+  font-size: $size-navbar-text-subtitle;
+  font-weight: normal;
+  letter-spacing: 10px;
+  text-align: center;
+  transition: .6s;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: $color-navbar-text;
-    font-size: $size-navbar-text-item;
-    font-weight: bold;
-    height: 100%;
-    transition: .5s;
-    white-space: nowrap;
-    @extend %font-family-uppercase;
-    span {
-        transition: .4s;
-    }
+  @extend %font-family-uppercase;
+  color: $color-navbar-text;
+  font-size: $size-navbar-text-item;
+  font-weight: bold;
+  height: 100%;
+  transition: .5s;
+  white-space: nowrap;
+}
+
+.navbar-nav .nav-link > span {
+  transition: .5s;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -131,48 +136,57 @@
   background-color: $color-navbar-active;
 }
 
-.toolbar{
-    background: url('../../../content/images/toolbar_shadow.png') no-repeat;
-    background-size: contain;
-    height: 21px;
-    left: 0;
-    z-index: 1;
-    position: absolute;
-    top: $height-navbar-higher;
-    width: 100%;
+.toolbar {
+  background: url('../../../content/images/toolbar_shadow.png') no-repeat;
+  background-size: contain;
+  height: 21px;
+  left: 0;
+  position: absolute;
+  top: $height-navbar-higher;
+  width: 100%;
+  z-index: 1;
 }
 
-.lower{
-    transition: 1s;
-    .navbar-title{
-        font-size: $size-navbar-text-title - 5px;
-        transition: .6s;
-     }
-    .navbar-subtitle{
-        font-size: $size-navbar-text-subtitle - 5px;
-        transition: .6s;
+.lower {
+  transition: 1s;
+
+  .navbar-title {
+    font-size: $size-navbar-text-title - 5px;
+    transition: .6s;
+  }
+
+  .navbar-subtitle {
+    font-size: $size-navbar-text-subtitle - 5px;
+    transition: .6s;
+  }
+
+  .nav-link {
+    //dluzsze linki
+    //padding: 2rem .5rem 1.4rem !important;
+
+    span {
+      font-size: 11px;
+      transition: .4s;
     }
-    .nav-link{
-        padding: 2rem .5rem 1.4rem !important;
-        span {
-            transition: .4s;
-            font-size: 11px;
-        }
-    }
+  }
 }
-nav{
-    transition: 1s;
+
+nav {
+  transition: 1s;
 }
-.slidedown, .slideup {
-    max-height: 0;
-    overflow-y: hidden;
-    -webkit-transition: max-height 0.5s ease-in-out;
-    -moz-transition: max-height 0.5s ease-in-out;
-    -o-transition: max-height 0.5s ease-in-out;
-    transition: max-height 0.5s ease-in-out;
+
+.slidedown,
+.slideup {
+  max-height: 0;
+  overflow-y: hidden;
+  -webkit-transition: max-height .5s ease-in-out;
+  -moz-transition: max-height .5s ease-in-out;
+  -o-transition: max-height .5s ease-in-out;
+  transition: max-height .5s ease-in-out;
 }
+
 .slidedown {
-    max-height: $height-navbar-higher ;
+  max-height: $height-navbar-higher ;
 }
 //==========================================================================
 //Logo styles
@@ -184,10 +198,10 @@ nav{
     .logo-img {
       background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
       background-size: contain;
-            display: inline-block;
-            height: 45px;
-            vertical-align: middle;
-            width: 70px;
-        }
+      display: inline-block;
+      height: 45px;
+      vertical-align: middle;
+      width: 70px;
     }
+  }
 }
