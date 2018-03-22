@@ -23,7 +23,6 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { ShippedPipe } from './pipes/shipped.pipe';
 
 @NgModule({
     imports: [

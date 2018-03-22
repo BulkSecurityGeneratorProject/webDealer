@@ -4,9 +4,13 @@ import { RouterModule } from '@angular/router';
 import { WebDealerSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import {CarouselModule} from "ngx-bootstrap";
 
 @NgModule({
     imports: [
+        CarouselModule.forRoot(),
+        NgbCarouselModule,
         WebDealerSharedModule,
         RouterModule.forChild([ HOME_ROUTE ])
     ],
