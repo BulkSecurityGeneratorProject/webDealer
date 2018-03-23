@@ -28,17 +28,8 @@ only screen and (min-resolution: 2dppx){
 //Carousel styles
 //==========================================================================
 
-.carousel-inner .carousel-item {
-  flex: 1 1 auto;
-  height: 620px;
-
-  img {
-    background: no-repeat center center;
-    background-size: cover;
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-  }
+slide img {
+  max-height: 600px;
 }
 
 
