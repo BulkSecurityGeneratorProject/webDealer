@@ -24,3 +24,40 @@ only screen and (min-resolution: 2dppx){
     background-size: contain;
     }
 }
+
+.message-home{
+    background: #f0f0f0 url('../../content/images/message-shadow.png') top center repeat-x;
+    margin: 5px 0;
+    padding: 22px $padding-navbar-leftright;
+}
+
+@include media('screen', '<mdWidth', '>smWidth') {
+    .message-home {
+        padding: 22px $padding-navbar-leftright - 10%;
+    }
+}
+.message-home h2{
+    font-family: 'Open Sans', sans-serif, Arial;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 30px;
+    margin: 0;
+    padding-left: 0;
+}
+.message-shadow{
+    background: url('../../content/images/message-shadow.png') top center repeat-x;
+    height: 21px;
+    position: absolute;
+    width: 100%;
+    z-index: 77;
+}
+.btn.btn-message{
+    background-color: $color-navbar-active;
+    color: $color-navbar-text;
+    font-weight: 400;
+}
+
+.home-container{
+    background-color: white;
+}
