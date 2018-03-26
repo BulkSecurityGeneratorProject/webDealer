@@ -56,6 +56,11 @@ only screen and (min-resolution: 2dppx){
     background-color: $color-navbar-active;
     color: $color-navbar-text;
     font-weight: 400;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $color-button-hover;
+    }
 }
 
 .home-container{

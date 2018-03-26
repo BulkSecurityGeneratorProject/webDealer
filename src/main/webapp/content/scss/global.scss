@@ -3,6 +3,17 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
+html,body{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    position: relative;
+}
 
 body, h1, h2, h3, h4 {
     font-weight: 300;

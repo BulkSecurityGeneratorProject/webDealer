@@ -1,0 +1,11 @@
+@import '../../../content/scss/variables';
+
+.main-content{
+    padding-bottom: $height-footer;
+}
+
+@media screen and (max-width: 767px) {
+    .main-content {
+        padding-bottom: $height-footer * 2;
+    }
+}

@@ -1,0 +1,131 @@
+@import '../../../content/scss/variables';
+
+.dealer-footer {
+    background-color: $color-footer-backgroud;
+    bottom: 0;
+    height: $height-footer;
+    position: absolute;
+    width: 100%;
+}
+
+.footer-title {
+    display: inline-block;
+    font-family: 'title', sans-serif;
+    font-size: $size-navbar-text-title;
+    font-weight: 500;
+    width: 100%;
+    padding-bottom: 0;
+    color: $color-navbar-text;
+    transition: .6s;
+    vertical-align: middle;
+}
+
+.footer-subtitle {
+    @extend %font-family-uppercase;
+    color: $color-navbar-text;
+    font-size: $size-navbar-text-subtitle;
+    font-weight: normal;
+    letter-spacing: 10px;
+    transition: .6s;
+    padding-left: $size-navbar-text-title / 3;
+}
+
+.footer-container {
+    height: 100%;
+    padding-left: $padding-navbar-leftright / 2;
+    padding-right: $padding-navbar-leftright / 2;
+}
+
+@include media('screen', '<mdWidth', '>smWidth') {
+
+    .footer-container {
+        padding-left: $padding-navbar-leftright - 10%;
+        padding-right: $padding-navbar-leftright - 10%;
+    }
+}
+
+.row.footer-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.footer-logo {
+    margin: auto 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.footer-content {
+    color: $color-navbar-text-desk;
+    padding-top: $height-footer / 10;
+}
+
+.footer-content .footer-title {
+    @extend %font-family-uppercase;
+    font-weight: 400;
+    letter-spacing: -1px;
+    font-size: 22px;
+}
+
+.footer-contact {
+    font-size: 15px;
+    padding-top: 15px;
+    text-align: left;
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    a {
+        color: $color-navbar-text-desk;
+        font-weight: normal;
+        text-decoration: none;
+        transition: .7s ease;
+    }
+    strong {
+        font-weight: 700;
+    }
+    li {
+        transition: .7s ease;
+    }
+    li:hover,
+    li:hover a {
+        color: $color-navbar-text;
+        transition: .7s ease;
+    }
+}
+
+.home-link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .dealer-footer {
+        height: $height-footer * 2;
+        text-align: center;
+    }
+}
+
+.footer-desk {
+    background-color: rgb(40, 40, 40);
+    height: $height-navbar-higher;
+    text-align: center;
+    a {
+        color: $color-navbar-text-desk;
+        font-size: $height-navbar-higher / 2.5;
+        font-weight: 400;
+        text-decoration: none;
+        transition: .7s ease;
+
+        &:hover {
+            color: $color-navbar-text;
+            transition: .7s ease;
+        }
+    }
+}
+.message-shadow{
+    background: url('../../../content/images/message-shadow.png') top center repeat-x;
+    height: 8px;
+    position: absolute;
+    width: 100%;
+    z-index: 77;
+}

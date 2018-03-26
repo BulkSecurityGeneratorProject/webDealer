@@ -1,0 +1,10 @@
+{
+    "footer":{
+        "title": "Kontakt",
+        "contact":{
+            "address":"Adres:",
+            "phone":"Telefon:",
+            "email":"E-mail:"
+        }
+    }
+}
