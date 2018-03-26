@@ -34,23 +34,31 @@ export class NavbarComponent implements OnInit {
         this.isNavbarCollapsed = true;
     }
 
-    ngOnInit() {
+    fixNavbarCollapse() {
+        $('.jh-navbar-toggler').click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        })
+    }
+
+    animateOnScroll() {
         $(window).scroll(function() {
             if ($(document).scrollTop() > 30) {
                 $('nav').addClass('lower');
                 $('.toolbar').hide();
-                    $('.navbar-desk').removeClass('slidedown').addClass('slideup');
+                $('.navbar-desk').removeClass('slidedown').addClass('slideup');
 
             } else {
-                    $('.navbar-desk').removeClass('slideup').addClass('slidedown');
+                $('.navbar-desk').removeClass('slideup').addClass('slidedown');
                 $('nav').removeClass('lower');
                 $('.toolbar').show(900);
             }
         });
-        this.languageHelper.getAll().then((languages) => {
-            this.languages = languages;
-        });
-
+    }
+    ngOnInit() {
+        this.animateOnScroll();
+        this.fixNavbarCollapse();
         this.profileService.getProfileInfo().then((profileInfo) => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
@@ -79,7 +87,4 @@ export class NavbarComponent implements OnInit {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
 
-    getImageUrl() {
-        return this.isAuthenticated() ? this.principal.getImageUrl() : null;
-    }
 }

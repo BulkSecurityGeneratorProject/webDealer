@@ -1,5 +1,21 @@
 {
     "home": {
+        "carousel": {
+            "captions":{
+                "caption1":{
+                    "title":"Import samochodów z ameryki",
+                    "subtitle":"U nas znajdziesz coś dla siebie"
+                },
+                "caption2":{
+                    "title":"Znudzony swoim samochodem?",
+                    "subtitle":"U nas znajdziesz swoje wymarzone auto"
+                },
+                "caption3":{
+                    "title":"Nie możesz znaleźć samochodu?",
+                    "subtitle":"Z nami wybierzesz swoje nowe auto"
+                }
+            }
+        },
         "title": "Witamy, Java Hipsterze!",
         "subtitle": "To jest twoja strona domowa",
         "logged": {

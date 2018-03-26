@@ -29,20 +29,7 @@ export class HomeComponent implements OnInit {
         private eventManager: JhiEventManager
     ) {
     }
-    toggleCaption() {
-        const carouselContainer = $('.carousel');
-        $('.carousel-caption').hide();
-        const caption = carouselContainer.find('.active').find('.carousel-caption');
-        caption.delay(500).animate({'width': 'toggle'});
-    }
-
     ngOnInit() {
-        this.toggleCaption();
-        $('#carousel').carousel({
-            interval: 4000
-        }).on('slid.bs.carousel', () => {
-            this.toggleCaption();
-        });
         this.principal.identity().then((account) => {
             this.account = account;
         });

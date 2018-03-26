@@ -6,6 +6,7 @@ import { WebDealerSharedModule } from '../shared';
 import { HOME_ROUTE, HomeComponent } from './';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {CarouselModule} from 'ngx-bootstrap';
     ],
     declarations: [
         HomeComponent,
+        CarouselComponent,
     ],
     entryComponents: [
     ],

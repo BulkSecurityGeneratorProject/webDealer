@@ -1,0 +1,92 @@
+@import '../../../content/scss/variables';
+
+//==========================================================================
+//Carousel styles
+//==========================================================================
+
+img{
+    cursor: default;
+}
+
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: .6s;
+    transition-property: opacity;
+}
+
+.carousel-fade  .carousel-item.active,
+.carousel-fade  .carousel-item-next.carousel-item-left,
+.carousel-fade  .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-fade .active.carousel-item-left,
+.carousel-fade  .active.carousel-item-right {
+    opacity: 0;
+}
+
+.carousel-fade  .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .active.carousel-item-left,
+.carousel-fade  .active.carousel-item-prev {
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+}
+
+.pattern{
+    background: url('../../../content/images/03.png');
+    height: 100%;
+    cursor: default;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+%carousel-caption-text{
+    font-family: 'Open Sans', sans-serif, Arial;
+    font-weight: 500;
+    text-shadow: 2px 2px 10px black;
+}
+
+.carousel-caption {
+    cursor: default;
+
+    h1 {
+        @extend %carousel-caption-text;
+        font-size: $size-carousel-text-title;
+    }
+
+    p {
+        @extend %carousel-caption-text;
+        font-size: $size-carousel-text-subtitle;
+    }
+}
+
+@include media('screen', '<mdWidth') {
+    img {
+        height: 400px;
+    }
+
+    .pattern,
+    .carousel-caption{
+        display: none;
+    }
+}
+
+@include media('screen', '<smWidth') {
+    img {
+        height: 350px;
+    }
+}
+
+@include media('screen', '<xsWidth') {
+    img {
+        height: 250px;
+    }
+}
+
+
+
+

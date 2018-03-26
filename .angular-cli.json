@@ -22,7 +22,7 @@
             "content/scss/vendor.scss",
             "content/scss/global.scss"
         ],
-        "scripts": ["../../../node_modules/bootstrap/dist/js/bootstrap.min.js"]
+        "scripts": []
     }],
     "lint": [{
             "project": "../../../tsconfig.json"
