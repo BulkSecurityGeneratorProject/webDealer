@@ -9,7 +9,10 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-car',
-    templateUrl: './car.component.html'
+    templateUrl: './car.component.html',
+    styleUrls: [
+        'car.scss'
+    ]
 })
 export class CarComponent implements OnInit, OnDestroy {
 
@@ -65,7 +68,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/car'], {queryParams:
+        this.router.navigate([this.received ? '/car' : '/car-shipping'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -77,7 +80,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/car', {
+        this.router.navigate([this.received ? '/car' : '/car-shipping', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);

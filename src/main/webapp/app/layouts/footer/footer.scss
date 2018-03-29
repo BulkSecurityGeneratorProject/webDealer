@@ -36,11 +36,10 @@
     padding-right: $padding-navbar-leftright / 2;
 }
 
-@include media('screen', '<mdWidth', '>smWidth') {
-
-    .footer-container {
-        padding-left: $padding-navbar-leftright - 10%;
-        padding-right: $padding-navbar-leftright - 10%;
+@media screen and (max-width: 1340px){
+    .footer-container{
+        padding-left: $padding-navbar-leftright - 8%;
+        padding-right: $padding-navbar-leftright - 8%;
     }
 }
 
@@ -121,11 +120,4 @@
             transition: .7s ease;
         }
     }
-}
-.message-shadow{
-    background: url('../../../content/images/message-shadow.png') top center repeat-x;
-    height: 8px;
-    position: absolute;
-    width: 100%;
-    z-index: 77;
 }

@@ -16,6 +16,7 @@ import {
     CarResolvePagingParams,
 } from './';
 import {ShippedPipe} from '../../pipes/shipped.pipe';
+import {CarEntryComponent} from './carEntry/carEntry.component';
 
 const ENTITY_STATES = [
     ...carRoute,
@@ -34,6 +35,7 @@ const ENTITY_STATES = [
         CarDeleteDialogComponent,
         CarPopupComponent,
         CarDeletePopupComponent,
+        CarEntryComponent,
         ShippedPipe,
     ],
     entryComponents: [

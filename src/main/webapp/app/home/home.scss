@@ -31,9 +31,9 @@ only screen and (min-resolution: 2dppx){
     padding: 22px $padding-navbar-leftright;
 }
 
-@include media('screen', '<mdWidth', '>smWidth') {
-    .message-home {
-        padding: 22px $padding-navbar-leftright - 10%;
+@media screen and (max-width: 1340px){
+    .message-home{
+        padding: 22px $padding-navbar-leftright - 8%;
     }
 }
 .message-home h2{
@@ -44,13 +44,6 @@ only screen and (min-resolution: 2dppx){
     line-height: 30px;
     margin: 0;
     padding-left: 0;
-}
-.message-shadow{
-    background: url('../../content/images/message-shadow.png') top center repeat-x;
-    height: 21px;
-    position: absolute;
-    width: 100%;
-    z-index: 77;
 }
 .btn.btn-message{
     background-color: $color-navbar-active;

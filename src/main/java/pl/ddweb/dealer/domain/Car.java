@@ -1,20 +1,16 @@
 package pl.ddweb.dealer.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.ddweb.dealer.domain.enumeration.Gear;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
-
-import org.springframework.data.annotation.LastModifiedDate;
-import pl.ddweb.dealer.domain.enumeration.Gear;
 
 /**
  * A Car.
@@ -30,6 +26,10 @@ public class Car extends AbstractAuditingEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
+
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @NotNull
     @Column(name = "make", nullable = false)
@@ -321,6 +321,14 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         this.lastModified = lastModified;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -348,6 +356,7 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         return "Car{" +
             "id=" + getId() +
             ", date='" + getCreatedDate() + "'" +
+            ", name='" + getName() + "'" +
             ", make='" + getMake() + "'" +
             ", model='" + getModel() + "'" +
             ", price=" + getPrice() +
