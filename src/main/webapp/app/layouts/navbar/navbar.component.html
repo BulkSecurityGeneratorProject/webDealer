@@ -1,91 +1,94 @@
-<div class="fixed-top">
-    <div class="navbar-desk fadein">
-        <div class="float-lg-right">
-            <a href="tel:1-800-567-0123"><i class="fa fa-phone"></i> 1-800-567-0123</a>
-            <a href=""><i class="fa fa-map-marker"></i> SUNSET BLVD., BEVERLY HILLS, CA 90210</a>
+<div [ngSwitch]="isAuthenticated()">
+    <div class="fixed-top">
+        <div class="navbar-desk fadein">
+            <div class="float-lg-right">
+                <a href="tel:1-800-567-0123"><i class="fa fa-phone"></i> 1-800-567-0123</a>
+                <a href=""><i class="fa fa-map-marker"></i> SUNSET BLVD., BEVERLY HILLS, CA 90210</a>
+            </div>
         </div>
-    </div>
-    <div class="toolbar"></div>
-    <nav class="navbar navbar-dark navbar-lower navbar-expand-md jh-navbar">
-        <div class="jh-logo-container float-left">
-            <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse"
-               data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" role="button"
-               aria-label="Toggle navigation" (click)="toggleNavbar()">
-                <i class="fa fa-bars"></i>
-            </a>
-            <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-                <span jhiTranslate="global.title" class="navbar-title">WebDealer</span>
-                <p jhiTranslate="global.subtitle" class="navbar-subtitle"></p>
-            </a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed"
-             [ngSwitch]="isAuthenticated()">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+        <div class="toolbar"></div>
+        <nav class="navbar navbar-dark navbar-lower navbar-expand-md jh-navbar">
+            <div class="jh-logo-container float-left">
+                <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse"
+                   data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" role="button"
+                   aria-label="Toggle navigation" (click)="toggleNavbar()">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+                    <span jhiTranslate="global.title" class="navbar-title">WebDealer</span>
+                    <p jhiTranslate="global.subtitle" class="navbar-subtitle"></p>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
                         <span jhiTranslate="global.menu.home">Home</span>
                     </span>
-                    </a>
-                </li>
-                <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="contact" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                        <span jhiTranslate="global.menu.entities.contact">Contact</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="car" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                        <span jhiTranslate="global.menu.entities.car">Car</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="car-shipping" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                        <span jhiTranslate="global.menu.entities.car-shipping">Car</span>
-                    </a>
-                </li>
-                <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-                <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer"
-                    routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="contact" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <span jhiTranslate="global.menu.entities.contact">Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="car" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <span jhiTranslate="global.menu.entities.car">Car</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="car-shipping" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <span jhiTranslate="global.menu.entities.car-shipping">Car</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer"
+                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);"
+                           id="admin-menu">
                     <span>
-                        <span jhiTranslate="global.menu.admin.main">Administration</span>
+                        <i class="fa fa-user-circle"></i>&nbsp;
+                        <span jhiTranslate="global.menu.admin.main" class="d-inline d-sm-none d-md-none">Administration</span>
                     </span>
-                    </a>
-                    <ul class="dropdown-menu" ngbDropdownMenu>
-                        <li *ngSwitchCase="true">
-                            <a class="dropdown-item" routerLink="settings" routerLinkActive="active"
-                               (click)="collapseNavbar()">
-                                <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.account.settings">Settings</span>
-                            </a>
-                        </li>
-                        <li *ngSwitchCase="true">
-                            <a class="dropdown-item" routerLink="password" routerLinkActive="active"
-                               (click)="collapseNavbar()">
-                                <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
-                                <span jhiTranslate="global.menu.account.password">Password</span>
-                            </a>
-                        </li>
-                        <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
-                    </ul>
-                </li>
-                <li *ngSwitchCase="true" class="nav-item">
-                    <a class="nav-link" (click)="logout()" id="logout">
-                        <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
-                        <span jhiTranslate="global.menu.account.logout">Sign out</span>
-                    </a>
-                </li>
-                <!--<li *ngSwitchCase="false" class="nav-item">-->
-                <!--<a class="nav-link" (click)="login()" id="login">-->
-                <!--<i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>-->
-                <!--<span jhiTranslate="global.menu.account.login">Sign in</span>-->
-                <!--</a>-->
-                <!--</li>-->
-            </ul>
-        </div>
-    </nav>
+                        </a>
+                        <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li *ngSwitchCase="true">
+                                <a class="dropdown-item" routerLink="settings" routerLinkActive="active"
+                                   (click)="collapseNavbar()">
+                                    <i class="fa fa-fw fa-wrench" aria-hidden="true"></i>
+                                    <span jhiTranslate="global.menu.account.settings">Settings</span>
+                                </a>
+                            </li>
+                            <li *ngSwitchCase="true">
+                                <a class="dropdown-item" routerLink="password" routerLinkActive="active"
+                                   (click)="collapseNavbar()">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <span jhiTranslate="global.menu.account.password">Password</span>
+                                </a>
+                            </li>
+                            <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+                        </ul>
+                    </li>
+                    <li *ngSwitchCase="true" class="nav-item">
+                        <a class="nav-link" (click)="logout()" id="logout">
+                            <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.account.logout" class="d-inline d-sm-none d-md-none">Sign out</span>
+                        </a>
+                    </li>
+                    <!--<li *ngSwitchCase="false" class="nav-item">-->
+                    <!--<a class="nav-link" (click)="login()" id="login">-->
+                    <!--<i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>-->
+                    <!--<span jhiTranslate="global.menu.account.login">Sign in</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>
