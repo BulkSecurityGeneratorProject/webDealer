@@ -11,15 +11,12 @@ import {Car} from '../car.model';
 
 export class CarEntryComponent implements OnInit {
 
-    private nazwaKlasy: string;
-
     @Input()
     private car: Car;
     constructor() {
     }
 
     ngOnInit(): void {
-        this.nazwaKlasy = this.car.broken ? 'red' : 'blue';
     }
 
 }

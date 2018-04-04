@@ -2,49 +2,57 @@
     <div class="col-xs-12 car-card">
         <a href="">
             <div [ngClass]="{'ribbon': true, 'red': car.broken,'blue': !car.broken}">
-                <span [hidden]="car.broken">Nowy</span>
+                <span [hidden]="car.broken">Sprawny</span>
                 <span [hidden]="!car.broken">Uszkodzony</span>
 
             </div>
             <div class="title">
-                {{car?.name}}
+                {{car?.make}}&nbsp;{{car?.model}}
             </div>
             <img *ngIf="car.img" [src]="'data:' + car.imgContentType + ';base64,' + car.img" alt="podglad"
                  class="preview">
             <table class="primary-table">
                 <tbody>
                 <tr>
-                    <td class="option primary">Model</td>
-                    <td class="spec">{{car.model}}</td>
-                </tr>
-                <tr>
-                    <td class="option primary">Wersja</td>
-                    <td class="spec">{{car.version}}</td>
+                    <td class="option primary">Wyposażenie</td>
+                    <td class="spec">{{car?.version}}</td>
                 </tr>
                 <tr>
                     <td class="option primary">Pojemność</td>
-                    <td class="spec">{{car.capacity}}</td>
+                    <td class="spec">{{car?.capacity}}</td>
+                </tr>
+                <tr>
+                    <td class="option primary">Przebieg</td>
+                    <td class="spec">{{car?.mileage}}</td>
+                </tr>
+                <tr class="d-lg-none">
+                    <td class="option primary">Rodzaj skrzyni</td>
+                    <td class="spec">{{car?.gear}}</td>
+                </tr>
+                <tr class="d-lg-none">
+                    <td class="option primary">Moc</td>
+                    <td class="spec">{{car?.power}}</td>
+                </tr>
+                <tr class="d-md-none price-small">
+                    <td class="option primary">Cena</td>
+                    <td class="spec"><b>{{car?.price}} zł</b></td>
                 </tr>
                 </tbody>
             </table>
-            <table class="secondary-table">
+            <table class="secondary-table d-none d-lg-inline">
                 <tbody>
                 <tr>
-                    <td class="option secondary">Przebieg</td>
-                    <td class="spec">{{car.mileage}}</td>
-                </tr>
-                <tr>
                     <td class="option secondary">Rodzaj skrzyni</td>
-                    <td class="spec">{{car.gear}}</td>
+                    <td class="spec">{{car?.gear}}</td>
                 </tr>
                 <tr>
                     <td class="option secondary">Moc</td>
-                    <td class="spec">{{car.power}}</td>
+                    <td class="spec">{{car?.power}}</td>
                 </tr>
                 </tbody>
             </table>
-            <div class="price">
-                <b>Cena:</b>
+            <div class="price d-none d-md-inline">
+                <b class="h-md-lg">Cena:</b>
                 <br/>
                 <div class="figure">
                     {{car.price}}zł

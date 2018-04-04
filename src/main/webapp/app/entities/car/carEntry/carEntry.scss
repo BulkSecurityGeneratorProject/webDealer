@@ -1,26 +1,155 @@
 @import '../../../../content/scss/variables';
 
-.car-card{
+@media screen and (max-width: 1010px) {
+    .h-md-lg {
+        display: none;
+    }
+
+    .title {
+        left: 11px !important;
+    }
+
+    .preview {
+        top: 40px !important;
+    }
+
+    .car-card > a {
+        min-height: 213px !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .car-card > a .primary-table {
+        left: 11px !important;
+        top: 150px !important;
+    }
+    .car-card > a {
+        .preview {
+            left: 131px;
+            top: 70px !important;
+        }
+        min-height: 393px !important;
+        padding-left: 120px !important;
+        padding-top: 30px !important;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .car-card > a {
+        .preview {
+            left: 121px;
+        }
+        padding-left: 110px !important;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .car-card > a {
+        .preview {
+            left: 111px;
+        }
+        padding-left: 100px !important;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .car-card > a {
+        .preview {
+            left: 101px;
+        }
+        padding-left: 90px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .car-card > a {
+        .preview {
+            left: 91px;
+        }
+        padding-left: 80px !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .car-card > a {
+        .preview {
+            left: 81px;
+        }
+        padding-left: 70px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .car-card > a {
+        .preview {
+            left: 71px;
+        }
+        padding-left: 60px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .car-card > a {
+        .preview {
+            left: 61px;
+            top: 130px !important;
+        }
+        min-height: 453px !important;
+        padding-left: 50px !important;
+        padding-top: 90px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .car-card > a {
+        .preview {
+            left: 51px;
+        }
+        padding-left: 40px !important;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .car-card > a {
+        .preview {
+            left: 41px;
+        }
+        padding-left: 30px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .car-card > a {
+        .preview {
+            left: 31px;
+        }
+        padding-left: 20px !important;
+    }
+}
+
+.car-card {
     background: #fff -webkit-linear-gradient(bottom, #f9f9f9 0%, #fff 100%);
     background-clip: padding-box;
     overflow: hidden;
     border: 1px solid #e5e5e5;
     border-radius: 11px / 13px;
-    box-shadow: 0 0 5px rgba(0,0,0,.13);
-    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.13);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .13);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .13);
     font-family: 'Open Sans', sans-serif;
     height: 100%;
     position: relative;
     width: 100%;
 }
-.car-card:hover{
+
+.car-card:hover {
     background-image: -moz-linear-gradient(bottom, #fff 0%, #f9f9f9 100%);
     background-image: -o-linear-gradient(bottom, #fff 0%, #f9f9f9 100%);
     background-image: -webkit-linear-gradient(bottom, #fff 0%, #f9f9f9 100%);
     background-image: linear-gradient(bottom, #fff 0%, #f9f9f9 100%);
 }
 
-.ribbon{
+.ribbon {
     color: #FFF;
     height: 100px;
     position: absolute;
@@ -31,7 +160,7 @@
     z-index: 10;
 }
 
-.ribbon:hover{
+.ribbon:hover {
     cursor: default;
 }
 
@@ -47,14 +176,15 @@
     border-color: rgba(0, 0, 0, 0) #c7081b rgba(0, 0, 0, 0);
 }
 
-.ribbon.blue:before{
+.ribbon.blue:before {
     border-color: rgba(0, 0, 0, 0) #063aab rgba(0, 0, 0, 0);
 }
+
 .ribbon.red:before {
     border-color: rgba(0, 0, 0, 0) #c7081b rgba(0, 0, 0, 0);
 }
 
-.ribbon span{
+.ribbon span {
     display: block;
     font-size: 11px;
     font-weight: 600;
@@ -69,7 +199,7 @@
     width: 100%;
 }
 
-.car-card > a{
+.car-card > a {
     display: block;
     width: 100%;
     height: 100%;
@@ -81,7 +211,7 @@
     text-decoration: none;
 }
 
-.car-card > a > .title{
+.car-card > a > .title {
     overflow: hidden;
     position: relative;
     white-space: nowrap;
@@ -90,7 +220,7 @@
     margin-bottom: 8px;
     max-width: 690px;
     margin-right: 0;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 600;
     color: #3d3d3d;
     clear: left;
@@ -98,11 +228,12 @@
     line-height: 24px;
 }
 
-.car-card > a > .preview{
+.car-card > a > .preview {
     height: 150px;
     width: 200px;
 }
-.car-card > a .primary-table{
+
+.car-card > a .primary-table {
     border: 0;
     float: left;
     font-size: 12px;
@@ -114,7 +245,7 @@
     width: 230px;
 }
 
-.car-card > a .secondary-table{
+.car-card > a .secondary-table {
     border: 0;
     float: left;
     font-size: 12px;
@@ -126,14 +257,14 @@
     width: 250px;
 }
 
-table td.primary,.primary{
+table td.primary, .primary {
     border: 0;
     padding: 0;
     white-space: nowrap;
     width: 90px;
 }
 
-table td.secondary,.secondary{
+table td.secondary, .secondary {
     border: 0;
     border-right: 10px solid transparent;
     padding: 0;
@@ -141,14 +272,14 @@ table td.secondary,.secondary{
     width: 92px;
 }
 
-table td.option,.option{
+table td.option, .option {
     font-weight: 700;
     line-height: 18px;
     color: #3d3d3d;
     font-size: 12px;
 }
 
-table td.spec,.spec{
+table td.spec, .spec {
     line-height: 18px;
     color: #3d3d3d;
     font-weight: normal;
@@ -159,7 +290,7 @@ table td.spec,.spec{
     border: 0;
 }
 
-.preview{
+.preview {
     position: absolute;
     left: 11px;
     top: 11px;
@@ -167,7 +298,7 @@ table td.spec,.spec{
     border: 1px solid #3d3d3d;
 }
 
-.price{
+.price {
     color: #3d3d3d;
     font-size: 15px;
     float: left;
@@ -176,7 +307,14 @@ table td.spec,.spec{
     right: 50px;
     top: 46px;
 }
-.figure{
+
+.price-small {
+    color: #3d3d3d;
+    font-size: 25px;
+    margin: 3px 0 33px 0;
+}
+
+.figure {
     color: #3d3d3d;
     font-size: 32px;
     font-weight: 700;
@@ -185,7 +323,8 @@ table td.spec,.spec{
     position: relative;
     top: 4px;
 }
-.vat{
+
+.vat {
     font-size: 12px;
     font-style: italic;
     font-weight: normal;
@@ -193,7 +332,8 @@ table td.spec,.spec{
     position: relative;
     top: 6px;
 }
-.view-details.gradient-button{
+
+.view-details.gradient-button {
     border-radius: 5px;
     bottom: 10px;
     height: 26px;
@@ -203,7 +343,7 @@ table td.spec,.spec{
     position: absolute;
 }
 
-.view-details.gradient-button{
+.view-details.gradient-button {
     background-color: #f9f9f9;
     border: 1px solid #dcdcdc;
     color: #3a3a3a;
@@ -220,17 +360,23 @@ table td.spec,.spec{
     text-indent: 0px;
     text-shadow: 1px 1px 0px #ffffff;
 }
-.gradient-button:hover{
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
-    background: -moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+
+.gradient-button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
+    background: -moz-linear-gradient(center top, #e9e9e9 5%, #f9f9f9 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
     background-color: #e9e9e9;
 }
 
-.view-details{
+.view-details {
     right: 10px;
     padding: 6px 4px;
 }
-.view-details span{
+
+.view-details span {
     font-size: 12px;
+}
+
+.row {
+    padding-bottom: 33px;
 }

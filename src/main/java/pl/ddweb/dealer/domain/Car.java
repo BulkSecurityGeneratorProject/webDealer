@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
 import pl.ddweb.dealer.domain.enumeration.Gear;
 
 import javax.persistence.*;
@@ -75,7 +76,8 @@ public class Car extends AbstractAuditingEntity implements Serializable {
     private String imgContentType;
 
     @Lob
-    @Column(name = "description")
+    @Type(type = "text")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @NotNull
