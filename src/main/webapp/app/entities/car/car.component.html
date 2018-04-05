@@ -4,8 +4,8 @@
             <div class="col-md-8 col-sm-6 banner-caption">
                 <div class="banner-text">
                     <h2>Samochody</h2>
-                    <h4 [hidden]="!received" >Na miejscu</h4>
-                    <h4 [hidden]="received">W drodze</h4>
+                    <h4 [hidden]="!received" jhiTranslate="webDealerApp.car.home.subtitle">Na miejscu</h4>
+                    <h4 [hidden]="received" jhiTranslate="webDealerApp.car.shipping.home.subtitle">W drodze</h4>
                 </div>
             </div>
         </div>
@@ -18,9 +18,8 @@
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-car"
                 [routerLink]="['/' , { outlets: { popup: 'car-new/' + (received | shipped)  } }]">
             <span class="fa fa-plus"></span>
-            <span jhiTranslate="webDealerApp.car.home.createLabel">
-            Create new Car
-            </span>
+            <span [hidden]="!received" jhiTranslate="webDealerApp.car.home.createLabel">Create new Car</span>
+            <span [hidden]="received" jhiTranslate="webDealerApp.car.shipping.home.createLabel">Create new Car</span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
@@ -28,76 +27,108 @@
     </div>
     <br/>
     <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
-    <br/>
+        <br/>
     </div>
-    <div *ngIf="cars">
-        <div *ngFor="let car of cars; trackBy: trackId">
-    <jhi-car-entry [car]="car"></jhi-car-entry>
+    <div *ngIf="cars?.length;then exist else empty"></div>
+    <ng-template #exist>
+        <div jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <button class="btn btn-default" jhiSortBy="make"><span jhiTranslate="webDealerApp.car.make">Make</span>
+                <span
+                    class="fa fa-sort">
+                </span>
+            </button>
+            <button class="btn btn-default" jhiSortBy="model"><span jhiTranslate="webDealerApp.car.model">Model</span>
+                <span
+                    class="fa fa-sort">
+                </span>
+            </button>
+            <button class="btn btn-default" jhiSortBy="price"><span jhiTranslate="webDealerApp.car.price">Price</span>
+                <span
+                    class="fa fa-sort">
+                </span>
+            </button>
+            <button class="btn btn-default" jhiSortBy="year"><span jhiTranslate="webDealerApp.car.year">Year</span>
+                <span
+                    class="fa fa-sort">
+                </span>
+            </button>
+            <button class="btn btn-default" jhiSortBy="lastModifiedDate"><span jhiTranslate="webDealerApp.car.date">Data</span>
+                <span
+                    class="fa fa-sort">
+                </span>
+            </button>
         </div>
-    </div>
-    <!--<div class="table-responsive" *ngIf="cars">-->
-        <!--<table class="table table-striped">-->
-            <!--<thead>-->
-            <!--&lt;!&ndash;<tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">&ndash;&gt;-->
-            <!--&lt;!&ndash;<th jhiSortBy="make"><span jhiTranslate="webDealerApp.car.make">Make</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;<th jhiSortBy="model"><span jhiTranslate="webDealerApp.car.model">Model</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;<th jhiSortBy="price"><span jhiTranslate="webDealerApp.car.price">Price</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;<th jhiSortBy="year"><span jhiTranslate="webDealerApp.car.year">Year</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;<th jhiSortBy="img"><span jhiTranslate="webDealerApp.car.img">Img</span> <span class="fa fa-sort"></span></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;<th *jhiHasAnyAuthority="'ROLE_ADMIN'"></th>&ndash;&gt;-->
-            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr *ngFor="let car of cars ;trackBy: trackId">-->
-                <!--<td>{{car.make}}</td>-->
-                <!--<td>{{car.model}}</td>-->
-                <!--<td>{{car.price}}</td>-->
-                <!--<td>{{car.year}}</td>-->
-                <!--<td>-->
-                    <!--<a *ngIf="car.img" (click)="openFile(car.imgContentType, car.img)">-->
-                        <!--<img [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-height: 30px;"-->
-                             <!--alt="car image"/>-->
-                    <!--</a>-->
-                    <!--<span *ngIf="car.img">{{car.imgContentType}}, {{byteSize(car.img)}}</span>-->
-                <!--</td>-->
-                <!--<td *jhiHasAnyAuthority="'ROLE_ADMIN'" class="text-right">-->
-                    <!--<div class="btn-group flex-btn-group-container">-->
-                        <!--<button type="submit"-->
-                                <!--[routerLink]="['../car', car.id ]"-->
-                                <!--class="btn btn-info btn-sm">-->
-                            <!--<span class="fa fa-eye"></span>-->
-                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
-                        <!--</button>-->
-                        <!--<button type="submit"-->
-                                <!--[routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"-->
-                                <!--replaceUrl="true"-->
-                                <!--queryParamsHandling="merge"-->
-                                <!--class="btn btn-primary btn-sm">-->
-                            <!--<span class="fa fa-pencil"></span>-->
-                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
-                        <!--</button>-->
-                        <!--<button type="submit"-->
-                                <!--[routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"-->
-                                <!--replaceUrl="true"-->
-                                <!--queryParamsHandling="merge"-->
-                                <!--class="btn btn-danger btn-sm">-->
-                            <!--<span class="fa fa-remove"></span>-->
-                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
-    <!--</div>-->
-    <!--<div *ngIf="cars && cars.length">-->
-        <!--<div class="row justify-content-center">-->
-            <!--<jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"-->
-                            <!--[itemsPerPage]="itemsPerPage"></jhi-item-count>-->
-        <!--</div>-->
-        <!--<div class="row justify-content-center">-->
-            <!--<ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"-->
-                            <!--[rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>-->
-        <!--</div>-->
-    <!--</div>-->
+        <ng-container *ngFor="let car of cars; trackBy: trackId">
+            <jhi-car-entry [car]="car"></jhi-car-entry>
+        </ng-container>
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </ng-template>
+    <ng-template #empty>
+        <h2>Brak wyników</h2>
+    </ng-template>
+</div>
+<!--<div class="table-responsive" *ngIf="cars">-->
+<!--<table class="table table-striped">-->
+<!--<thead>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr *ngFor="let car of cars ;trackBy: trackId">-->
+<!--<td>{{car.make}}</td>-->
+<!--<td>{{car.model}}</td>-->
+<!--<td>{{car.price}}</td>-->
+<!--<td>{{car.year}}</td>-->
+<!--<td>-->
+<!--<a *ngIf="car.img" (click)="openFile(car.imgContentType, car.img)">-->
+<!--<img [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-height: 30px;"-->
+<!--alt="car image"/>-->
+<!--</a>-->
+<!--<span *ngIf="car.img">{{car.imgContentType}}, {{byteSize(car.img)}}</span>-->
+<!--</td>-->
+<!--<td *jhiHasAnyAuthority="'ROLE_ADMIN'" class="text-right">-->
+<!--<div class="btn-group flex-btn-group-container">-->
+<!--<button type="submit"-->
+<!--[routerLink]="['../car', car.id ]"-->
+<!--class="btn btn-info btn-sm">-->
+<!--<span class="fa fa-eye"></span>-->
+<!--<span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+<!--</button>-->
+<!--<button type="submit"-->
+<!--[routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"-->
+<!--replaceUrl="true"-->
+<!--queryParamsHandling="merge"-->
+<!--class="btn btn-primary btn-sm">-->
+<!--<span class="fa fa-pencil"></span>-->
+<!--<span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+<!--</button>-->
+<!--<button type="submit"-->
+<!--[routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/delete'} }]"-->
+<!--replaceUrl="true"-->
+<!--queryParamsHandling="merge"-->
+<!--class="btn btn-danger btn-sm">-->
+<!--<span class="fa fa-remove"></span>-->
+<!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!--<div *ngIf="cars && cars.length">-->
+<!--<div class="row justify-content-center">-->
+<!--<jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"-->
+<!--[itemsPerPage]="itemsPerPage"></jhi-item-count>-->
+<!--</div>-->
+<!--<div class="row justify-content-center">-->
+<!--<ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"-->
+<!--[rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>-->
+<!--</div>-->
+<!--</div>-->
 </div>

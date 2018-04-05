@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12 car-card">
-        <a href="">
+        <a [routerLink]="['../car', car.id ]">
             <div [ngClass]="{'ribbon': true, 'red': car.broken,'blue': !car.broken}">
                 <span [hidden]="car.broken">Sprawny</span>
                 <span [hidden]="!car.broken">Uszkodzony</span>
@@ -14,27 +14,28 @@
             <table class="primary-table">
                 <tbody>
                 <tr>
-                    <td class="option primary">Wyposażenie</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.version">Wyposażenie</td>
                     <td class="spec">{{car?.version}}</td>
                 </tr>
                 <tr>
-                    <td class="option primary">Pojemność</td>
-                    <td class="spec">{{car?.capacity}}</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.capacity">Pojemność</td>
+                    <td class="spec">{{car?.capacity | number : '1.1'}}</td>
                 </tr>
                 <tr>
-                    <td class="option primary">Przebieg</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.mileage">Przebieg</td>
                     <td class="spec">{{car?.mileage}}</td>
                 </tr>
                 <tr class="d-lg-none">
-                    <td class="option primary">Rodzaj skrzyni</td>
-                    <td class="spec">{{car?.gear}}</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.gear">Rodzaj skrzyni</td>
+                    <td [hidden]="gear === 'MANUAL'" class="spec" jhiTranslate="webDealerApp.Gear.AUTOMATIC">Automatyczna</td>
+                    <td [hidden]="gear === 'AUTOMATIC'" class="spec" jhiTranslate="webDealerApp.Gear.MANUAL">Manualna</td>
                 </tr>
                 <tr class="d-lg-none">
-                    <td class="option primary">Moc</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.power">Moc</td>
                     <td class="spec">{{car?.power}}</td>
                 </tr>
                 <tr class="d-md-none price-small">
-                    <td class="option primary">Cena</td>
+                    <td class="option primary" jhiTranslate="webDealerApp.car.price">Cena</td>
                     <td class="spec"><b>{{car?.price}} zł</b></td>
                 </tr>
                 </tbody>
@@ -42,11 +43,12 @@
             <table class="secondary-table d-none d-lg-inline">
                 <tbody>
                 <tr>
-                    <td class="option secondary">Rodzaj skrzyni</td>
-                    <td class="spec">{{car?.gear}}</td>
+                    <td class="option secondary" jhiTranslate="webDealerApp.car.gear">Rodzaj skrzyni</td>
+                    <td [hidden]="gear === 'MANUAL'" class="spec" jhiTranslate="webDealerApp.Gear.AUTOMATIC">Automatyczna</td>
+                    <td [hidden]="gear === 'AUTOMATIC'" class="spec" jhiTranslate="webDealerApp.Gear.MANUAL">Manualna</td>
                 </tr>
                 <tr>
-                    <td class="option secondary">Moc</td>
+                    <td class="option secondary" jhiTranslate="webDealerApp.car.power">Moc</td>
                     <td class="spec">{{car?.power}}</td>
                 </tr>
                 </tbody>

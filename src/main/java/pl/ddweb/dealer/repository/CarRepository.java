@@ -17,6 +17,8 @@ import java.time.Instant;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
+    Page<Car> findAllByReceived(Boolean received, Pageable pageable);
+
     Page<Car> findAllByReceivedOrderByLastModifiedDate(Boolean received, Pageable pageable);
 
     Car findOneByIdOrderByLastModifiedDate(Long id);

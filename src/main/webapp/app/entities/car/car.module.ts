@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { WebDealerSharedModule } from '../../shared';
@@ -16,7 +16,7 @@ import {
     CarResolvePagingParams,
 } from './';
 import {ShippedPipe} from '../../pipes/shipped.pipe';
-import {CarEntryComponent} from './carEntry/carEntry.component';
+import {CarEntryComponent} from './carEntry/car-entry.component';
 
 const ENTITY_STATES = [
     ...carRoute,
@@ -49,6 +49,9 @@ const ENTITY_STATES = [
         CarService,
         CarPopupService,
         CarResolvePagingParams,
+        {
+          provide: LOCALE_ID, useValue: 'en_US'
+        },
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

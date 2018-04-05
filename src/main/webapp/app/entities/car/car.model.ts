@@ -8,7 +8,6 @@ export const enum Gear {
 export class Car implements BaseEntity {
     constructor(
         public id?: number,
-        public name?: string,
         public make?: string,
         public model?: string,
         public price?: number,

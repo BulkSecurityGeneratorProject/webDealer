@@ -3,40 +3,42 @@
         "car" : {
             "shipping":{
                 "home": {
-                    "title": "Cars shipping",
-                    "createLabel": "Dodaj Car",
-                    "createOrEditLabel": "Dodaj lub edytuj: Car"
+                    "title": "Samochody transportowane",
+                    "subtitle": "Transportowane",
+                    "createLabel": "Dodaj samochód transportowany",
+                    "createOrEditLabel": "Dodaj lub edytuj samochód transportowany"
                 }
             },
             "home": {
-                "title": "Cars",
-                "createLabel": "Dodaj Car",
-                "createOrEditLabel": "Dodaj lub edytuj: Car"
+                "title": "Samochody sprowadzone",
+                "subtitle": "Sprowadzone",
+                "createLabel": "Dodaj samochód sprowadzony",
+                "createOrEditLabel": "Dodaj lub edytuj samochód sprowadzony"
             },
-            "created": "Utworzono nowy Car z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Car z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Car z identyfikatorem {{ param }}",
+            "created": "Utworzono nowy samochód z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono samochód z identyfikatorem {{ param }}",
+            "deleted": "Usunięto samochód z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Car {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć samochód o id {{ id }}?"
             },
             "detail": {
-                "title": "Car"
+                "title": "Samochód"
             },
-            "name": "Nazwa",
-            "make": "Make",
+            "make": "Producent",
             "model": "Model",
-            "price": "Price",
-            "year": "Year",
-            "gear": "Gear",
-            "version": "Version",
-            "capacity": "Capacity",
-            "power": "Power",
-            "color": "Color",
-            "mileage": "Mileage",
-            "img": "Img",
-            "description": "Description",
-            "received": "Received",
-            "broken": "Broken"
+            "price": "Cena (zł)",
+            "year": "Rok",
+            "gear": "Skrzynia biegów",
+            "version": "Wyposażenie",
+            "capacity": "Pojemność silnika",
+            "power": "Moc (KM)",
+            "color": "Kolor",
+            "mileage": "Przebieg (km)",
+            "img": "Zdjęcie",
+            "description": "Opis",
+            "received": "Sprowadzony",
+            "broken": "Uszkodzony",
+            "date": "Data Dodania"
         }
     }
 }

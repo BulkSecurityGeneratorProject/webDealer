@@ -85,7 +85,7 @@
         "field": {
             "id" : "ID"
         },
-        "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+        "item-count": "Wyświetlono od {{first}} do {{second}} z {{total}} elementów."
     },
     "entity": {
         "action": {

@@ -1,6 +1,7 @@
 package pl.ddweb.dealer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.data.domain.Sort;
 import pl.ddweb.dealer.domain.Car;
 
 import pl.ddweb.dealer.repository.CarRepository;
@@ -22,6 +23,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.time.Instant;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,7 +98,11 @@ public class CarResource {
     @Timed
     public ResponseEntity<List<Car>> getAllCars(@PathVariable String received, Pageable pageable) {
         log.debug("REST request to get a page of Cars");
-        Page<Car> page = carRepository.findAllByReceivedOrderByLastModifiedDate(received.equals("true"),pageable);
+        Iterator<Sort.Order> iter = pageable.getSort().iterator();
+        Sort.Order order = iter.next();
+        Page<Car> page = order.getProperty().equals("id") ?
+            carRepository.findAllByReceivedOrderByLastModifiedDate(received.equals("true"),pageable) :
+            carRepository.findAllByReceived(received.equals("true"), pageable);
         page.getContent().forEach(c -> {
             c.setCreated(c.getCreatedDate());
             c.setLastModified(c.getLastModifiedDate());

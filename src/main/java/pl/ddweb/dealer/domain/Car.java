@@ -29,10 +29,6 @@ public class Car extends AbstractAuditingEntity implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @NotNull
     @Column(name = "make", nullable = false)
     private String make;
 
@@ -323,14 +319,6 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         this.lastModified = lastModified;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -358,7 +346,6 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         return "Car{" +
             "id=" + getId() +
             ", date='" + getCreatedDate() + "'" +
-            ", name='" + getName() + "'" +
             ", make='" + getMake() + "'" +
             ", model='" + getModel() + "'" +
             ", price=" + getPrice() +
