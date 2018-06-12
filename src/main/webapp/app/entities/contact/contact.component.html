@@ -1,64 +1,36 @@
-<div>
-    <h2>
-        <span jhiTranslate="webDealerApp.contact.home.title">Contacts</span>
-        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-contact" [routerLink]="['/', { outlets: { popup: ['contact-new'] } }]">
-            <span class="fa fa-plus"></span>
-            <span  jhiTranslate="webDealerApp.contact.home.createLabel">
-            Create new Contact
-            </span>
-        </button>
-    </h2>
-    <jhi-alert></jhi-alert>
-    <div class="row">
+<div class="contact-banner image-banner">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 banner-caption">
+                <div class="banner-text">
+                    <h2>Kontakt</h2>
+                </div>
+            </div>
+        </div>
     </div>
-    <br/>
-    <div class="table-responsive" *ngIf="contacts">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-            <th><span jhiTranslate="webDealerApp.contact.name">Name</span></th>
-            <th><span jhiTranslate="webDealerApp.contact.surname">Surname</span></th>
-            <th><span jhiTranslate="webDealerApp.contact.city">City</span></th>
-            <th><span jhiTranslate="webDealerApp.contact.address">Address</span></th>
-            <th><span jhiTranslate="webDealerApp.contact.phone">Phone</span></th>
-            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let contact of contacts ;trackBy: trackId">
-                <td>{{contact.name}}</td>
-                <td>{{contact.surname}}</td>
-                <td>{{contact.city}}</td>
-                <td>{{contact.address}}</td>
-                <td>{{contact.phone}}</td>
-                <td *jhiHasAnyAuthority="'ROLE_ADMIN'" class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../contact', contact.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'contact/'+ contact.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'contact/'+ contact.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+</div>
+<div class="message-shadow"></div>
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<div>
+    <h3 class="margin-bottom-25 margin-top-none contact-title">CONTACT INFORMATION</h3>
+    <div class="margin-right-25 padding-bottom-40">
+        <div class="icon_address">
+            <p><i class="fa fa-map-marker"></i><strong>Address:</strong></p>
+        </div>
+        <div class="contact_address">
+            <p class="margin-bottom-none">Company Name<br>
+                1234 Street Name <br>
+                City Name, AB  12345 <br>
+                United States</p>
+        </div>
+    </div>
+    <div>
+        <ul class="margin-bottom-none">
+            <li><i class="fa fa-phone"></i><strong>Phone:</strong> <span>1-800-123-4567</span></li>
+            <li><i class="fa fa-envelope-o"></i><strong>Email:</strong> <a href="mailto:sales@company.com">sales@company.com</a></li>
+            <li class="padding-bottom-none"><i class="fa fa-laptop"></i><strong>Web:</strong> <a href="http://company.com">www.company.com</a></li>
+        </ul>
     </div>
 </div>

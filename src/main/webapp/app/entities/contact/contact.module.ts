@@ -15,6 +15,11 @@ import {
     contactPopupRoute,
 } from './';
 
+import { AgmCoreModule } from '@agm/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+
 const ENTITY_STATES = [
     ...contactRoute,
     ...contactPopupRoute,
@@ -23,7 +28,13 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         WebDealerSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyAruHAyKEm0IAqW7WJVb9r9hEhZhqWm_N8'
+        }),
+        BrowserModule,
+        CommonModule,
+        FormsModule
     ],
     declarations: [
         ContactComponent,

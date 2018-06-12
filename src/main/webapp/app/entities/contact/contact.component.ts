@@ -8,12 +8,18 @@ import { Principal, ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-contact',
-    templateUrl: './contact.component.html'
+    templateUrl: './contact.component.html',
+    styleUrls: [
+        'contact.scss'
+    ]
 })
 export class ContactComponent implements OnInit, OnDestroy {
 contacts: Contact[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    title = 'My first AGM project';
+    lat = 51.678418;
+    lng = 7.809007;
 
     constructor(
         private contactService: ContactService,

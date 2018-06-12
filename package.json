@@ -8,6 +8,7 @@
     "node_modules"
   ],
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.3",
     "@angular/common": "5.1.0",
     "@angular/compiler": "5.1.0",
     "@angular/core": "5.1.0",
