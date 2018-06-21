@@ -2,7 +2,7 @@
     "webDealerApp": {
         "contact" : {
             "home": {
-                "title": "Contacts",
+                "title": "Kontakt",
                 "createLabel": "Dodaj Contact",
                 "createOrEditLabel": "Dodaj lub edytuj: Contact"
             },
@@ -13,13 +13,15 @@
                 "question": "Czy na pewno chcesz usunąć Contact {{ id }}?"
             },
             "detail": {
-                "title": "Contact"
+                "title": "Informacje kontaktowe"
             },
-            "name": "Name",
-            "surname": "Surname",
-            "city": "City",
-            "address": "Address",
-            "phone": "Phone"
+            "name": "Imię",
+            "surname": "Nazwisko",
+            "city": "Miasto",
+            "address": " Adres:",
+            "phone": " Telefon:",
+            "email": " Email:",
+            "web": " Web:"
         }
     }
 }

@@ -14,7 +14,7 @@ import { Principal, ResponseWrapper } from '../../shared';
     ]
 })
 export class ContactComponent implements OnInit, OnDestroy {
-contacts: Contact[];
+    contact: Contact;
     currentAccount: any;
     eventSubscriber: Subscription;
     title = 'My first AGM project';
@@ -32,7 +32,7 @@ contacts: Contact[];
     loadAll() {
         this.contactService.query().subscribe(
             (res: ResponseWrapper) => {
-                this.contacts = res.json;
+                this.contact = res.json[0];
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
