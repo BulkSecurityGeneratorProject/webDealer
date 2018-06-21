@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12 car-card">
-        <a [routerLink]="['../car', car.id ]">
+        <a [routerLink]="[received ? '../car' : '../car-shipping', car.id ]">
             <div [ngClass]="{'ribbon': true, 'red': car.broken,'blue': !car.broken}">
                 <span [hidden]="car.broken">Sprawny</span>
                 <span [hidden]="!car.broken">Uszkodzony</span>

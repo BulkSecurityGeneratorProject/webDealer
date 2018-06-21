@@ -52,7 +52,8 @@ export const carRoute: Routes = [
             received: false,
             pageTitle: 'webDealerApp.car.shipping.home.title'
         }
-    }, {
+    },
+    {
         path: 'car-shipping/:id',
         component: CarDetailComponent,
         data: {

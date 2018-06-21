@@ -13,6 +13,10 @@ export class CarEntryComponent implements OnInit {
 
     @Input()
     private car: Car;
+
+    @Input()
+    private received: boolean;
+
     private gear: string;
     constructor() {
     }

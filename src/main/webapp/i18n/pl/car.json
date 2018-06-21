@@ -22,7 +22,17 @@
                 "question": "Czy na pewno chcesz usunąć samochód o id {{ id }}?"
             },
             "detail": {
-                "title": "Samochód"
+                "title": "Samochód",
+                "subtitle": "Sczegóły",
+                "year": "Rok produkcji",
+                "broken": "Uszkodzony",
+                "version": "Wyposażenie",
+                "capacity": "Pojemność",
+                "power": "Moc (KM)",
+                "color": "Kolor",
+                "mileage": "Przebieg (KM)",
+                "description": "Opis",
+                "added": "Dodano"
             },
             "make": "Producent",
             "model": "Model",
@@ -38,7 +48,8 @@
             "description": "Opis",
             "received": "Sprowadzony",
             "broken": "Uszkodzony",
-            "date": "Data Dodania"
+            "date": "Data Dodania",
+            "noCars": "Brak danego samochodu."
         }
     }
 }

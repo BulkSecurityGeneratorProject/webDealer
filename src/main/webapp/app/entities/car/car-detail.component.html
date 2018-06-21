@@ -1,85 +1,155 @@
-
-<div *ngIf="car">
-    <h2><span jhiTranslate="webDealerApp.car.detail.title">Car</span> {{car.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="webDealerApp.car.make">Make</span></dt>
-        <dd>
-            <span>{{car.make}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.model">Model</span></dt>
-        <dd>
-            <span>{{car.model}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.price">Price</span></dt>
-        <dd>
-            <span>{{car.price}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.year">Year</span></dt>
-        <dd>
-            <span>{{car.year}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.gear">Gear</span></dt>
-        <dd>
-            <span jhiTranslate="{{'webDealerApp.Gear.' + car.gear}}">{{car.gear}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.version">Version</span></dt>
-        <dd>
-            <span>{{car.version}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.capacity">Capacity</span></dt>
-        <dd>
-            <span>{{car.capacity}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.power">Power</span></dt>
-        <dd>
-            <span>{{car.power}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.color">Color</span></dt>
-        <dd>
-            <span>{{car.color}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.mileage">Mileage</span></dt>
-        <dd>
-            <span>{{car.mileage}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.img">Img</span></dt>
-        <dd>
-            <div *ngIf="car.img">
-                <a (click)="openFile(car.imgContentType, car.img)">
-                    <img [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-width: 100%;" alt="car image"/>
-                </a>
-                {{car.imgContentType}}, {{byteSize(car.img)}}
+<div class="car-banner image-banner">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 banner-caption">
+                <div class="banner-text">
+                    <h2 jhiTranslate="webDealerApp.car.detail.title">Samochód</h2>
+                    <h4 jhiTranslate="webDealerApp.car.detail.subtitle">Szczegóły</h4>
+                </div>
             </div>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.description">Description</span></dt>
-        <dd>
-            <span>{{car.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.received">Received</span></dt>
-        <dd>
-            <span>{{car.received}}</span>
-        </dd>
-        <dt><span jhiTranslate="webDealerApp.car.broken">Broken</span></dt>
-        <dd>
-            <span>{{car.broken}}</span>
-        </dd>
-    </dl>
-    <h1>{{car.created | date:'short'}}</h1>
-    <h1>{{car.lastModified | date:'short'}}</h1>
-
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-    </button>
+        </div>
+    </div>
 </div>
+<div class="message-shadow"></div>
+
+<div *ngIf="car ; else noCars">
+
+    <br/>
+
+    <div class="content">
+
+        <button type="submit"
+                (click)="previousState()"
+                class="btn btn-info">
+            <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        </button>
+        <div class="row">
+            <div class="col col-md-6">
+                <div class="title">
+                    {{car?.make}}&nbsp;{{car?.model}}
+                </div>
+                <div class="spec">{{car?.price}} zł</div>
+            </div>
+            <div class="col col-md-6 data">
+                <div class="pull-right">
+                <div class="description"><span jhiTranslate="webDealerApp.car.detail.added">Dodano</span></div>
+                <i class="data">{{car.created | date:'longDate'}}</i>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div *ngIf="car.img">
+                    <a (click)="openFile(car.imgContentType, car.img)">
+                        <img class="img-thumbnail img-responsive img-car"
+                             [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-width: 100%;"
+                             alt="car image"/>
+                    </a>
+                </div>
+            </div>
+            <div class="col col-md-6 col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.year">Rok produkcji</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.year}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.broken">Uszkodzony</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.broken ? 'Tak': 'Nie'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <span class="detail-title">Skrzynia biegów:</span>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span [hidden]="gear === 'MANUAL'" class="pull-right"
+                              jhiTranslate="webDealerApp.Gear.AUTOMATIC">Automatyczna</span>
+                        <span [hidden]="gear === 'AUTOMATIC'" class="pull-right"
+                              jhiTranslate="webDealerApp.Gear.MANUAL">Manualna</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span
+                            jhiTranslate="webDealerApp.car.detail.version">Wyposażenie</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.version}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.capacity">Pojemność</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.capacity}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.power">Moc (KM)</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.power}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.color">Kolor</span>:</div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.color}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-6">
+                        <div class="detail-title"><span
+                            jhiTranslate="webDealerApp.car.detail.mileage">Przebieg (KM)</span>:
+                        </div>
+                    </div>
+                    <div class="col col-xs-6">
+                        <span class="pull-right">{{car?.mileage}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" class="description-row" *ngIf="car.description">
+            <br>
+            <div class="col col-xs-12">
+                <p class="description"><span jhiTranslate="webDealerApp.car.detail.description">Opis</span>:</p>
+                <span class="justify">{{car?.description}}</span>
+            </div>
+            <br>
+        </div>
+        <div class="text-center car-edit-button" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+            <br/>
+            <button type="button"
+                    [routerLink]="['/', { outlets: { popup: 'car/'+ car.id + '/edit'} }]"
+                    replaceUrl="true"
+                    queryParamsHandling="merge"
+                    class="btn btn-primary">
+                <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+<ng-template #noCars>
+    <span jhiTranslate="webDealerApp.car.noCars" class="text-center">Brak danego samochodu.</span>
+</ng-template>
