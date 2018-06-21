@@ -44,6 +44,10 @@ public class Contact implements Serializable {
     @Column(name = "phone", nullable = false)
     private String phone;
 
+    @NotNull
+    @Column(name = "email", nullable = false)
+    private String email;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -51,6 +55,14 @@ public class Contact implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
