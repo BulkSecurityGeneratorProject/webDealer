@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { Contact } from './contact.model';
-import { ContactService } from './contact.service';
-import { Principal, ResponseWrapper } from '../../shared';
+import {Contact} from './contact.model';
+import {ContactService} from './contact.service';
+import {Principal, ResponseWrapper} from '../../shared';
+import {} from 'googlemaps';
+import {MapsAPILoader} from '@agm/core';
 
 @Component({
     selector: 'jhi-contact',
@@ -13,20 +15,23 @@ import { Principal, ResponseWrapper } from '../../shared';
         'contact.scss'
     ]
 })
+
+// TODO odswiezanie mapy
 export class ContactComponent implements OnInit, OnDestroy {
     contact: Contact;
     currentAccount: any;
     eventSubscriber: Subscription;
-    title = 'My first AGM project';
-    lat = 51.678418;
-    lng = 7.809007;
+    lat: number;
+    lng: number;
 
-    constructor(
-        private contactService: ContactService,
-        private jhiAlertService: JhiAlertService,
-        private eventManager: JhiEventManager,
-        private principal: Principal
-    ) {
+    @ViewChild('agm')
+    agmElementRef: ElementRef;
+
+    constructor(private contactService: ContactService,
+                private jhiAlertService: JhiAlertService,
+                private eventManager: JhiEventManager,
+                private principal: Principal,
+                private mapsAPILoader: MapsAPILoader) {
     }
 
     loadAll() {
@@ -37,12 +42,33 @@ export class ContactComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.registerChangeInContacts();
+        this.mapsAPILoader.load().then(() => {
+            new google.maps.Geocoder().geocode({'address': this.contact.city + ' ' + this.contact.address}, (results, status) => {
+                if (status.toString() === 'OK') {
+                    const loc = results[0].geometry.location;
+                    this.lat = loc.lat();
+                    this.lng = loc.lng();
+                    // const latLng = new google.maps.LatLng(loc.lat(), loc.lng());
+                    // const mapDiv = document.getElementsByTagName('agm-map')[0];
+                    // const mapOptions = {
+                    //     center: latLng,
+                    //     zoom: 15,
+                    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+                    // };
+                    // const map = new google.maps.Map(mapDiv, mapOptions);
+                    // map.getDiv().setAttribute('style', mapDiv.getAttribute('style') + ' height: 400px; width: 100%')
+                } else {
+                    console.log('error during geocoding');
+                }
+            });
+        });
     }
 
     ngOnDestroy() {
@@ -52,6 +78,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     trackId(index: number, item: Contact) {
         return item.id;
     }
+
     registerChangeInContacts() {
         this.eventSubscriber = this.eventManager.subscribe('contactListModification', (response) => this.loadAll());
     }
