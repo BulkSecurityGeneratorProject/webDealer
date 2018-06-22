@@ -12,24 +12,24 @@
                 <span jhiTranslate="footer.title" class="footer-title">Kontakt</span>
                 <ul>
                     <li>
-                        <a href="">
+                        <a routerLink="contact">
                             <i class="fa fa-map-marker"></i>&nbsp;
                             <strong jhiTranslate="footer.contact.address">Adres:</strong>
-                            &nbsp;1234 Street Name, City Name, AB 12345
+                            &nbsp;{{contact?.address}}, {{contact?.city}}
                         </a>
                     </li>
                     <li>
-                        <a href="tel:1-800-123-4567">
+                        <a href="tel:{{contact?.phone}}">
                             <i class="fa fa-phone"></i>&nbsp;
                             <strong jhiTranslate="footer.contact.phone">Telefon:</strong>
-                            &nbsp;1-800-123-4567
+                            &nbsp;{{contact?.phone}}
                         </a>
                     </li>
                     <li>
                         <a href="mailto:example">
                             <i class="fa fa-envelope-o"></i>&nbsp;
                             <strong jhiTranslate="footer.contact.email">Email:</strong>
-                            &nbsp;sales@company.com
+                            &nbsp;{{contact?.email}}
                         </a>
                     </li>
                 </ul>

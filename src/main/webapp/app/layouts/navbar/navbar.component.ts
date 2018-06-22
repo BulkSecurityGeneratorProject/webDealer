@@ -1,12 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {JhiLanguageService} from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager, JhiLanguageService} from 'ng-jhipster';
 
 import {ProfileService} from '../profiles/profile.service';
-import {JhiLanguageHelper, Principal, LoginModalService, LoginService} from '../../shared';
+import {JhiLanguageHelper, Principal, LoginModalService, LoginService, ResponseWrapper} from '../../shared';
 import {VERSION} from '../../app.constants';
 import * as $ from 'jquery';
+import {ContactService} from '../../entities/contact/contact.service';
+import {Contact} from '../../entities/contact';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'jhi-navbar',
@@ -22,6 +25,8 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    contact: Contact;
+    eventSubscriber: Subscription;
 
     constructor(private loginService: LoginService,
                 private languageService: JhiLanguageService,
@@ -29,7 +34,10 @@ export class NavbarComponent implements OnInit {
                 private principal: Principal,
                 private loginModalService: LoginModalService,
                 private profileService: ProfileService,
-                private router: Router) {
+                private router: Router,
+                private contactService: ContactService,
+                private jhiAlertService: JhiAlertService,
+                private eventManager: JhiEventManager) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
     }
@@ -63,6 +71,8 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+        this.loadData();
+        this.registerChangeInContact();
     }
 
     collapseNavbar() {
@@ -85,6 +95,20 @@ export class NavbarComponent implements OnInit {
 
     toggleNavbar() {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    }
+    loadData() {
+        this.contactService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.contact = res.json[0];
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+    registerChangeInContact() {
+        this.eventSubscriber = this.eventManager.subscribe('contactModification', (response) => this.loadData());
+    }
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 
 }

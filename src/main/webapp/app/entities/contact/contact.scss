@@ -45,13 +45,13 @@ agm-map {
     padding: 10px $padding-navbar-leftright;
 }
 
-.contact-sub-info {
-    padding-top: 40px;
-}
-
 @include media('<smWidth') {
-    .address-container {
+    .info-container {
         padding-left: 45px;
-        padding-top: 10px;
     }
 }
+
+.contact-container{
+    margin-left: 30px;
+}
+

@@ -1,6 +1,6 @@
 {
     "webDealerApp": {
-        "contact" : {
+        "contact": {
             "home": {
                 "title": "Kontakt",
                 "createLabel": "Dodaj Contact",
@@ -13,15 +13,24 @@
                 "question": "Czy na pewno chcesz usunąć Contact {{ id }}?"
             },
             "detail": {
-                "title": "Informacje kontaktowe"
+                "title": "Kontakt",
+                "subtitle": "Zamów swój wymarzony samochód"
+            },
+            "tab": {
+                "main": {
+                    "title": "Informacje kontaktowe",
+                    "phone": " Telefon:",
+                    "email": " Email:",
+                    "address": " Adres:",
+                    "web": " Web:"
+                },
+                "sub": {
+                    "availability": "Dostępność"
+                }
             },
             "name": "Imię",
             "surname": "Nazwisko",
-            "city": "Miasto",
-            "address": " Adres:",
-            "phone": " Telefon:",
-            "email": " Email:",
-            "web": " Web:"
+            "city": "Miasto"
         }
     }
 }

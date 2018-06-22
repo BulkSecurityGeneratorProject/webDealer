@@ -51,7 +51,7 @@ export class ContactDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Contact) {
-        this.eventManager.broadcast({ name: 'contactListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'contactModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
