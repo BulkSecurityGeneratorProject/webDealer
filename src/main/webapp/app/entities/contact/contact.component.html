@@ -12,6 +12,7 @@
 </div>
 
 <div class="message-shadow"></div>
+<button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary contact-button" jhiTranslate="webDealerApp.contact.edit" [routerLink]="['/', { outlets: { popup: 'contact/'+ contact.id + '/edit'} }]"></button>
 <div class="contact-info">
     <h2 class="margin-bottom-25 margin-top-none contact-title"><strong jhiTranslate="webDealerApp.contact.tab.main.title">Informacje kontaktowe</strong></h2>
     <div class="contact-container">

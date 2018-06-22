@@ -7,11 +7,6 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!contact.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="contact.id" readonly />
-        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="webDealerApp.contact.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
@@ -63,6 +58,17 @@
             <div [hidden]="!(editForm.controls.phone?.dirty && editForm.controls.phone?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.phone?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.email" for="field_email">Email</label>
+            <input type="email" class="form-control" name="email" id="field_email"
+                [(ngModel)]="contact.email" required/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>

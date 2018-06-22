@@ -45,6 +45,10 @@ agm-map {
     padding: 10px $padding-navbar-leftright;
 }
 
+.contact-button {
+    margin: 10px $padding-navbar-leftright 0 $padding-navbar-leftright;
+}
+
 @include media('<smWidth') {
     .info-container {
         padding-left: 45px;

@@ -3,8 +3,7 @@
         "contact": {
             "home": {
                 "title": "Kontakt",
-                "createLabel": "Dodaj Contact",
-                "createOrEditLabel": "Dodaj lub edytuj: Contact"
+                "createOrEditLabel": "Edycja danych kontaktowych"
             },
             "created": "Utworzono nowy Contact z identyfikatorem {{ param }}",
             "updated": "Uaktualniono Contact z identyfikatorem {{ param }}",
@@ -30,7 +29,11 @@
             },
             "name": "Imię",
             "surname": "Nazwisko",
-            "city": "Miasto"
+            "city": "Miasto",
+            "address": "Adres",
+            "phone": "Telefon",
+            "email": "Email",
+            "edit": "Edytuj dane"
         }
     }
 }
