@@ -1,6 +1,8 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { LightboxModule } from 'ngx-lightbox';
+
 import { WebDealerSharedModule } from '../../shared';
 import {
     CarService,
@@ -26,7 +28,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         WebDealerSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        LightboxModule
     ],
     declarations: [
         CarComponent,

@@ -7,6 +7,7 @@ import {JhiEventManager, JhiDataUtils} from 'ng-jhipster';
 
 import {Car} from './car.model';
 import {CarService} from './car.service';
+import {Lightbox, LightboxModule} from 'ngx-lightbox';
 
 @Component({
     selector: 'jhi-car-detail',
@@ -20,12 +21,14 @@ export class CarDetailComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     private eventSubscriber: Subscription;
     private gear: string;
+    private album: any;
 
     constructor(private eventManager: JhiEventManager,
                 private dataUtils: JhiDataUtils,
                 private carService: CarService,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                private lightbox: Lightbox) {
     }
 
     ngOnInit() {
@@ -40,14 +43,22 @@ export class CarDetailComponent implements OnInit, OnDestroy {
         this.carService.find(id).subscribe((car) => {
             this.car = car;
             this.gear = String(this.car.gear);
+            this.album = {
+                src: 'data:' + car.imgContentType + ';base64,' + car.img
+            }
         }, (res) => {
             if (this.route.snapshot.url[0].path === 'car-shipping') {
                 this.router.navigateByUrl('/car-shipping');
-            }
-            else if (this.route.snapshot.url[0].path === 'car') {
+            } else if (this.route.snapshot.url[0].path === 'car') {
                 this.router.navigateByUrl('/car');
             }
         });
+    }
+
+    open() {
+        const albums = [];
+        albums.push(this.album);
+        this.lightbox.open(albums, 0);
     }
 
     byteSize(field) {

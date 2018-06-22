@@ -5,10 +5,14 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
+import {Principal} from '../auth/principal.service';
 
 @Component({
     selector: 'jhi-login-modal',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls: [
+        'login.scss'
+    ]
 })
 export class JhiLoginModalComponent implements AfterViewInit {
     authenticationError: boolean;
@@ -24,7 +28,7 @@ export class JhiLoginModalComponent implements AfterViewInit {
         private elementRef: ElementRef,
         private renderer: Renderer,
         private router: Router,
-        public activeModal: NgbActiveModal
+        private principal: Principal
     ) {
         this.credentials = {};
     }
@@ -40,7 +44,6 @@ export class JhiLoginModalComponent implements AfterViewInit {
             rememberMe: true
         };
         this.authenticationError = false;
-        this.activeModal.dismiss('cancel');
     }
 
     login() {
@@ -50,7 +53,6 @@ export class JhiLoginModalComponent implements AfterViewInit {
             rememberMe: this.rememberMe
         }).then(() => {
             this.authenticationError = false;
-            this.activeModal.dismiss('login success');
             if (this.router.url === '/register' || (/^\/activate\//.test(this.router.url)) ||
                 (/^\/reset\//.test(this.router.url))) {
                 this.router.navigate(['']);
@@ -72,14 +74,7 @@ export class JhiLoginModalComponent implements AfterViewInit {
             this.authenticationError = true;
         });
     }
-
-    register() {
-        this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']);
-    }
-
-    requestResetPassword() {
-        this.activeModal.dismiss('to state requestReset');
-        this.router.navigate(['/reset', 'request']);
+    isAuthenticated() {
+        return this.principal.isAuthenticated();
     }
 }

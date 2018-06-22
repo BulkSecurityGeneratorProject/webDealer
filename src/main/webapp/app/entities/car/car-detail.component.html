@@ -42,11 +42,9 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <div *ngIf="car.img">
-                    <a (click)="openFile(car.imgContentType, car.img)">
                         <img class="img-thumbnail img-responsive img-car"
-                             [src]="'data:' + car.imgContentType + ';base64,' + car.img" style="max-width: 100%;"
+                             [src]="'data:' + car.imgContentType + ';base64,' + car.img" (click)="open()" style="max-width: 100%;"
                              alt="car image"/>
-                    </a>
                 </div>
             </div>
             <div class="col col-md-6 col-xs-12 col-sm-12">
