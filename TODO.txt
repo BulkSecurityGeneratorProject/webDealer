@@ -1,0 +1,3 @@
+Description w home do pliku txt
+Wow js do calej aplikacji(fadeIn) oraz do poszczegolnych state'ow(home,car list)
+Translacja na calej stronie i wyglady modali dla admina
