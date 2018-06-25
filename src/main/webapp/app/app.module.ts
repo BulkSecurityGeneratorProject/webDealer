@@ -23,6 +23,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import {NgwWowModule} from 'ngx-wow';
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import {
         WebDealerAdminModule,
         WebDealerAccountModule,
         WebDealerEntityModule,
+        NgwWowModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
