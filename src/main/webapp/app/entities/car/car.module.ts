@@ -19,6 +19,8 @@ import {
 } from './';
 import {ShippedPipe} from '../../pipes/shipped.pipe';
 import {CarEntryComponent} from './carEntry/car-entry.component';
+import { CKEditorModule } from 'ng2-ckeditor';
+import {SafeHtmlPipe} from "../../pipes/safehtml.pipe";
 
 const ENTITY_STATES = [
     ...carRoute,
@@ -29,7 +31,8 @@ const ENTITY_STATES = [
     imports: [
         WebDealerSharedModule,
         RouterModule.forChild(ENTITY_STATES),
-        LightboxModule
+        LightboxModule,
+        CKEditorModule
     ],
     declarations: [
         CarComponent,
@@ -40,6 +43,7 @@ const ENTITY_STATES = [
         CarDeletePopupComponent,
         CarEntryComponent,
         ShippedPipe,
+        SafeHtmlPipe
     ],
     entryComponents: [
         CarComponent,

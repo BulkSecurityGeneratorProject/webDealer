@@ -115,9 +115,8 @@
                    [(ngModel)]="car.imgContentType" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="webDealerApp.car.description" for="field_description">Description</label>
-            <textarea class="form-control" name="description" id="field_description"
-                      [(ngModel)]="car.description" ></textarea>
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.description">Description</label>
+            <ckeditor [(ngModel)]="car.description" name="description"></ckeditor>
         </div>
         <div [hidden]="!isEdit" class="form-group">
             <label class="form-control-label" jhiTranslate="webDealerApp.car.received" for="field_received">Received</label>

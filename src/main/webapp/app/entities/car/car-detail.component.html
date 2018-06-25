@@ -137,7 +137,7 @@
             <br>
             <div class="col col-xs-12">
                 <p class="description"><span jhiTranslate="webDealerApp.car.detail.description">Opis</span>:</p>
-                <span class="justify">{{car?.description}}</span>
+                <span class="justify" [innerHTML]="car.description | safeHTML"></span>
             </div>
             <br>
         </div>
