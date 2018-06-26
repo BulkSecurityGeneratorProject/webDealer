@@ -7,8 +7,8 @@ import {Account, LoginModalService, Principal} from '../shared';
 
 import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
-import {Lightbox} from "ngx-lightbox";
-import {DomSanitizer} from "@angular/platform-browser";
+import {Lightbox} from 'ngx-lightbox';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'jhi-home',

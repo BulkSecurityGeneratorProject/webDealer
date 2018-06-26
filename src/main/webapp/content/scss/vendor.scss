@@ -9,7 +9,8 @@ eg $input-color: red;
 @import "bootstrap-variables";
 // Import Bootstrap source files from node_modules
 @import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/font-awesome/scss/font-awesome';
+//@import 'font-awesome/scss/font-awesome';
+@import '~font-awesome/scss/font-awesome';
 @import 'lightbox.css';
 @import '~animate.css/animate.css';
 

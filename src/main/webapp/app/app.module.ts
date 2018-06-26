@@ -37,7 +37,7 @@ import {CarouselModule} from "ngx-bootstrap";
         WebDealerAccountModule,
         WebDealerEntityModule,
         NgwWowModule.forRoot(),
-        CarouselModule.forRoot()
+        CarouselModule.forRoot(),
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

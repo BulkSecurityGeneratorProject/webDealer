@@ -8,6 +8,7 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import {LightboxModule} from 'ngx-lightbox';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     imports: [
