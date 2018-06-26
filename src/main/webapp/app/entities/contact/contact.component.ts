@@ -66,8 +66,11 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
 
     private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+        if (error) {
+            this.jhiAlertService.error(error.message, null, null);
+        }
     }
+
     private loadMap() {
         this.mapsAPILoader.load().then(() => {
             new google.maps.Geocoder().geocode({'address': this.contact.city + ' ' + this.contact.address}, (results, status) => {
