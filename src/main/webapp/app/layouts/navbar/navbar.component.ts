@@ -64,6 +64,7 @@ export class NavbarComponent implements OnInit {
             }
         });
     }
+
     ngOnInit() {
         this.animateOnScroll();
         this.fixNavbarCollapse();
@@ -96,6 +97,7 @@ export class NavbarComponent implements OnInit {
     toggleNavbar() {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
+
     loadData() {
         this.contactService.query().subscribe(
             (res: ResponseWrapper) => {
@@ -104,11 +106,15 @@ export class NavbarComponent implements OnInit {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
+
     registerChangeInContact() {
         this.eventSubscriber = this.eventManager.subscribe('contactModification', (response) => this.loadData());
     }
+
     private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+        if (error) {
+            this.jhiAlertService.error(error.message, null, null);
+        }
     }
 
 }
