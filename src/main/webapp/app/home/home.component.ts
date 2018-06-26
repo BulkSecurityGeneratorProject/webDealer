@@ -1,9 +1,9 @@
 // <reference path="jquery.d.ts" />
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { Account, LoginModalService, Principal } from '../shared';
+import {Account, LoginModalService, Principal} from '../shared';
 
 import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
@@ -15,7 +15,7 @@ import {CarouselConfig} from 'ngx-bootstrap';
         'home.scss'
     ],
     providers: [
-        { provide: CarouselConfig, useValue: { interval: 4000, noPause: false, showIndicators: false } }
+        {provide: CarouselConfig, useValue: {interval: 4000, noPause: false, showIndicators: false}}
     ]
 
 })

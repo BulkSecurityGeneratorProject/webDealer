@@ -15,8 +15,6 @@ import {Lightbox, LightboxModule} from 'ngx-lightbox';
     styleUrls: ['car-detail.scss']
 })
 export class CarDetailComponent implements OnInit, OnDestroy {
-
-
     car: Car;
     private subscription: Subscription;
     private eventSubscriber: Subscription;

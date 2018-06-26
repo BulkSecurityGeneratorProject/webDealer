@@ -35,6 +35,8 @@ export class FooterComponent implements OnInit {
         this.eventSubscriber = this.eventManager.subscribe('contactModification', (response) => this.loadData());
     }
     private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+        if (error) {
+            this.jhiAlertService.error(error.message, null, null);
+        }
     }
 }
