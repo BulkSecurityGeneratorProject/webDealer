@@ -1,5 +1,5 @@
 // <reference path="jquery.d.ts" />
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiEventManager} from 'ng-jhipster';
 
@@ -7,6 +7,8 @@ import {Account, LoginModalService, Principal} from '../shared';
 
 import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
+import {Lightbox} from "ngx-lightbox";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
     selector: 'jhi-home',
@@ -26,7 +28,9 @@ export class HomeComponent implements OnInit {
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private lightbox: Lightbox,
+        private sanitizer: DomSanitizer
     ) {
     }
     ngOnInit() {
@@ -50,5 +54,14 @@ export class HomeComponent implements OnInit {
 
     login() {
         this.modalRef = this.loginModalService.open();
+    }
+
+    @HostListener('click')
+    open(target) {
+        if (target) {
+            const albums = [];
+            albums.push({src: this.sanitizer.bypassSecurityTrustUrl(target.target.getAttribute('src'))});
+            this.lightbox.open(albums, 0);
+        }
     }
 }

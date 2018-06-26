@@ -59,3 +59,34 @@ only screen and (min-resolution: 2dppx){
 .home-container{
     background-color: white;
 }
+
+.image-home-1{
+    height: 350px;
+    width: 550px;
+    cursor: pointer;
+}
+
+.first-block{
+    padding: 50px 0;
+}
+
+.second-block{
+    padding: 50px 0;
+}
+
+.justify{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.home-belka{
+    background: url('../../content/images/auto-automobile-automotive-305070.jpg') no-repeat fixed center top;
+    background-size: cover;
+    height: 300px;
+    opacity: 0.5;
+    width: 100%;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}

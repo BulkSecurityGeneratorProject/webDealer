@@ -162,3 +162,4 @@ Bez subscribe samymi pipe można iteriwac po kolekcji observable
 | async
 
 I nie trzeba subscribe
+

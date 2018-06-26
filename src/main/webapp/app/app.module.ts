@@ -24,6 +24,7 @@ import {
     ErrorComponent
 } from './layouts';
 import {NgwWowModule} from 'ngx-wow';
+import {CarouselModule} from "ngx-bootstrap";
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import {NgwWowModule} from 'ngx-wow';
         WebDealerAdminModule,
         WebDealerAccountModule,
         WebDealerEntityModule,
-        NgwWowModule.forRoot()
+        NgwWowModule.forRoot(),
+        CarouselModule.forRoot()
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
