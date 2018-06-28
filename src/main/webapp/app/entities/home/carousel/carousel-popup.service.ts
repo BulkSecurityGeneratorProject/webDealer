@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Carousel } from './carousel.model';
 import { CarouselService } from './carousel.service';
+import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
 
 @Injectable()
 export class CarouselPopupService {
@@ -24,22 +25,14 @@ export class CarouselPopupService {
                 resolve(this.ngbModalRef);
             }
 
-            if (id) {
-                this.carouselService.find(id).subscribe((carousel) => {
-                    this.ngbModalRef = this.carouselModalRef(component, carousel);
+                this.carouselService.query().subscribe((res: ResponseWrapper) => {
+                    this.ngbModalRef = this.carouselModalRef(component, res.json);
                     resolve(this.ngbModalRef);
                 });
-            } else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.carouselModalRef(component, new Carousel());
-                    resolve(this.ngbModalRef);
-                }, 0);
-            }
         });
     }
 
-    carouselModalRef(component: Component, carousel: Carousel): NgbModalRef {
+    carouselModalRef(component: Component, carousel: Carousel[]): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.carousel = carousel;
         modalRef.result.then((result) => {

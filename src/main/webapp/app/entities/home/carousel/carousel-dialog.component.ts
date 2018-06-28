@@ -7,7 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import {Carousel} from './carousel.model';
 import {CarouselService} from './carousel.service';
-import {CarouselPopupService} from "./carousel-popup.service";
+import {CarouselPopupService} from './carousel-popup.service';
 
 @Component({
     selector: 'jhi-carousel-dialog',
@@ -15,7 +15,7 @@ import {CarouselPopupService} from "./carousel-popup.service";
 })
 export class CarouselDialogComponent implements OnInit {
 
-    carousel: Carousel;
+    carousel: Carousel[];
     isSaving: boolean;
 
     constructor(
@@ -35,13 +35,8 @@ export class CarouselDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.carousel.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.carouselService.update(this.carousel));
-        } else {
-            this.subscribeToSaveResponse(
-                this.carouselService.create(this.carousel));
-        }
     }
 
     private subscribeToSaveResponse(result: Observable<Carousel>) {

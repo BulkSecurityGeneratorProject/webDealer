@@ -1,0 +1,50 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContactLabel" jhiTranslate="webDealerApp.home.carousel.createOrEditLabel">Edytuj
+            teksty w karuzeli</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;
+        </button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <ng-container *ngFor="let item of carousel ; let i = index">
+            <p>{{index}}. Element</p>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="webDealerApp.home.carousel.title" for="field_name">Caption
+                    Title</label>
+                <input type="text" class="form-control" name="title" id="field_name"
+                       [(ngModel)]="item.title" required/>
+                <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.name?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.title?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="webDealerApp.home.carousel.subtitle"
+                       for="field_surname">Caption SubTitle</label>
+                <input type="text" class="form-control" name="subtitle" id="field_surname"
+                       [(ngModel)]="item.subtitle" required/>
+                <div [hidden]="!(editForm.controls.surname?.dirty && editForm.controls.subtitle?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.subtitle?.errors?.required"
+                           jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -14,15 +14,7 @@ export class CarouselService {
 
     constructor(private http: Http) {}
 
-    create(carousel: Carousel): Observable<Carousel> {
-        const copy = this.convert(carousel);
-        return this.http.post(this.resourceUrl, copy).map((res: Response) => {
-            const jsonResponse = res.json();
-            return this.convertItemFromServer(jsonResponse);
-        });
-    }
-
-    update(carousel: Carousel): Observable<Carousel> {
+    update(carousel: Carousel[]): Observable<Carousel> {
         const copy = this.convert(carousel);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
@@ -67,8 +59,10 @@ export class CarouselService {
     /**
      * Convert a Carousel to a JSON which can be sent to the server.
      */
-    private convert(carousel: Carousel): Carousel {
-        const copy: Carousel = Object.assign({}, carousel);
-        return copy;
+    private convert(carousel: Carousel[]): Carousel[] {
+        for (let i = 0 ; i < carousel.length; i++) {
+            carousel[i] = Object.assign({}, carousel[i]);
+        }
+        return carousel;
     }
 }

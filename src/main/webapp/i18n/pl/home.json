@@ -14,7 +14,10 @@
                     "title":"Nie możesz znaleźć samochodu?",
                     "subtitle":"Z nami wybierzesz swoje nowe auto"
                 }
-            }
+            },
+            "createOrEditLabel": "Edytuj teksty w karuzeli",
+            "title": "Tytul na zdjeciu",
+            "subtitle": "Podtytul na zdjeciu"
         },
         "title": "Witamy, Java Hipsterze!",
         "subtitle": "To jest twoja strona domowa",
