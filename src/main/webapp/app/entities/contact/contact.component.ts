@@ -78,15 +78,6 @@ export class ContactComponent implements OnInit, OnDestroy {
                     const loc = results[0].geometry.location;
                     this.lat = loc.lat();
                     this.lng = loc.lng();
-                    // const latLng = new google.maps.LatLng(loc.lat(), loc.lng());
-                    // const mapDiv = document.getElementsByTagName('agm-map')[0];
-                    // const mapOptions = {
-                    //     center: latLng,
-                    //     zoom: 15,
-                    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-                    // };
-                    // const map = new google.maps.Map(mapDiv, mapOptions);
-                    // map.getDiv().setAttribute('style', mapDiv.getAttribute('style') + ' height: 400px; width: 100%')
                 } else {
                     console.log('error during geocoding');
                 }

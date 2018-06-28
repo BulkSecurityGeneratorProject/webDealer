@@ -3,13 +3,13 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiEventManager} from 'ng-jhipster';
 
-import {Account, LoginModalService, Principal, ResponseWrapper} from '../shared';
+import {Account, LoginModalService, Principal, ResponseWrapper} from '../../shared';
 
 import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
 import {Lightbox} from 'ngx-lightbox';
 import {DomSanitizer} from '@angular/platform-browser';
-import {Carousel, CarouselService, Home, HomeService} from '../entities/home';
+import {Home, HomeService} from './';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({

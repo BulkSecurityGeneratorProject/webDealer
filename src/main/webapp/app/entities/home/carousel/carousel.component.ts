@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import {ResponseWrapper} from '../../shared';
-import {Carousel, CarouselService} from '../../entities/home';
+import {ResponseWrapper} from '../../../shared';
+import {Carousel, CarouselService} from './';
 import {Subscription} from 'rxjs/Subscription';
 import {JhiEventManager} from 'ng-jhipster';
 

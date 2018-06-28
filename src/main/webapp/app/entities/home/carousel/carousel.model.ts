@@ -1,10 +1,11 @@
-import { BaseEntity } from './../../shared';
+import {BaseEntity} from '../../../shared';
 
 export class Carousel implements BaseEntity {
+
     constructor(
         public id?: number,
         public title?: string,
-        public subTitle?: string,
+        public subtitle?: string
     ) {
     }
 }

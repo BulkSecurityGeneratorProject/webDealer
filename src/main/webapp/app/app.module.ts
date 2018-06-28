@@ -6,7 +6,6 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { WebDealerSharedModule, UserRouteAccessService } from './shared';
 import { WebDealerAppRoutingModule} from './app-routing.module';
-import { WebDealerHomeModule } from './home';
 import { WebDealerAdminModule } from './admin/admin.module';
 import { WebDealerAccountModule } from './account/account.module';
 import { WebDealerEntityModule } from './entities/entity.module';
@@ -24,7 +23,7 @@ import {
     ErrorComponent
 } from './layouts';
 import {NgwWowModule} from 'ngx-wow';
-import {CarouselModule} from "ngx-bootstrap";
+import {CarouselModule} from 'ngx-bootstrap';
 
 @NgModule({
     imports: [
@@ -32,7 +31,6 @@ import {CarouselModule} from "ngx-bootstrap";
         WebDealerAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         WebDealerSharedModule,
-        WebDealerHomeModule,
         WebDealerAdminModule,
         WebDealerAccountModule,
         WebDealerEntityModule,

@@ -12,9 +12,13 @@
     </div>
     <div class="message-shadow"></div>
     <div class="content">
+        <div class="btn btn-group">
+            <div [routerLink]="['/', { outlets: { popup: 'carousel/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj carousel</div>
+            <div [routerLink]="['/', { outlets: { popup: 'home/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj teksty</div>
+        </div>
         <div class="row first-block vertical-align">
             <div class="col-md-6 text-center">
-                <img src="../../content/images/auto-automobile-automotive-240833.jpg"
+                <img src="../../../content/images/auto-automobile-automotive-240833.jpg"
                      class="image-home-1 img-thumbnail img-responsive wow fadeInLeft"
                      (click)="open($event)"
                      alt="Obrazek home page pierwszy po lewej stronie">
@@ -57,7 +61,7 @@
             </div>
 
             <div class="col-md-6 wow fadeInRight text-center">
-                <img src="../../content/images/car-close-up-gauge-104836.jpg"
+                <img src="../../../content/images/car-close-up-gauge-104836.jpg"
                      class="image-home-1 img-thumbnail img-responsive wow fadeInLeft"
                      (click)="open($event)"
                      alt="Obrazek home page drugi po prawej stronie">

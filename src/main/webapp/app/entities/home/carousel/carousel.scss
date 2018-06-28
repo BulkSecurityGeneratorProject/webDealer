@@ -1,4 +1,4 @@
-@import '../../../content/scss/variables';
+@import '../../../../content/scss/variables';
 
 //==========================================================================
 //Carousel styles
@@ -35,7 +35,7 @@ img{
 }
 
 .pattern{
-    background: url('../../../content/images/03.png');
+    background: url('../../../../content/images/03.png');
     height: 100%;
     cursor: default;
     position: absolute;
