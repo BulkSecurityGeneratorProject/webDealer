@@ -1,19 +1,16 @@
-import { Injectable, Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Home } from './home.model';
-import { HomeService } from './home.service';
+import {Injectable, Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {Home} from './home.model';
+import {HomeService} from './home.service';
 
 @Injectable()
 export class HomePopupService {
     private ngbModalRef: NgbModalRef;
 
-    constructor(
-        private modalService: NgbModal,
-        private router: Router,
-        private homeService: HomeService
-
-    ) {
+    constructor(private modalService: NgbModal,
+                private router: Router,
+                private homeService: HomeService) {
         this.ngbModalRef = null;
     }
 
@@ -23,30 +20,21 @@ export class HomePopupService {
             if (isOpen) {
                 resolve(this.ngbModalRef);
             }
-
-            if (id) {
-                this.homeService.find(id).subscribe((home) => {
-                    this.ngbModalRef = this.homeModalRef(component, home);
-                    resolve(this.ngbModalRef);
-                });
-            } else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.homeModalRef(component, new Home());
-                    resolve(this.ngbModalRef);
-                }, 0);
-            }
+            this.homeService.get().subscribe((home) => {
+                this.ngbModalRef = this.homeModalRef(component, home);
+                resolve(this.ngbModalRef);
+            });
         });
     }
 
     homeModalRef(component: Component, home: Home): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, {size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.home = home;
         modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true, queryParamsHandling: 'merge'});
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true, queryParamsHandling: 'merge'});
             this.ngbModalRef = null;
         });
         return modalRef;
