@@ -5,38 +5,39 @@
 //==========================================================================
 
 .hipster {
-  background: url('../../content/images/hipster.png') no-repeat center top;
-  background-size: contain;
-  display: inline-block;
-  height: 497px;
-  width: 347px;
+    background: url('../../content/images/hipster.png') no-repeat center top;
+    background-size: contain;
+    display: inline-block;
+    height: 497px;
+    width: 347px;
 }
+
 //wait autoprefixer update to allow simple generation of high pixel density media query
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min--moz-device-pixel-ratio: 2),
 only screen and (-o-min-device-pixel-ratio: 2/1),
 only screen and (min-device-pixel-ratio: 2),
 only screen and (min-resolution: 192dpi),
-only screen and (min-resolution: 2dppx){
-  .hipster {
-    background: url('../../content/images/hipster2x.png') no-repeat center top;
-    background-size: contain;
+only screen and (min-resolution: 2dppx) {
+    .hipster {
+        background: url('../../content/images/hipster2x.png') no-repeat center top;
+        background-size: contain;
     }
 }
 
-.message-home{
+.message-home {
     background: #f0f0f0 url('../../content/images/message-shadow.png') top center repeat-x;
     margin: 5px 0;
     padding: 22px $padding-navbar-leftright;
 }
 
-@media screen and (max-width: 1340px){
-    .message-home{
+@media screen and (max-width: 1340px) {
+    .message-home {
         padding: 22px $padding-navbar-leftright - 10%;
     }
 }
-.message-home h2{
+
+.message-home h2 {
     font-family: 'Open Sans', sans-serif, Arial;
     font-size: 26px;
     font-weight: 300;
@@ -45,48 +46,99 @@ only screen and (min-resolution: 2dppx){
     margin: 0;
     padding-left: 0;
 }
-.btn.btn-message{
+
+.btn.btn-message {
     background-color: $color-navbar-active;
     color: $color-navbar-text;
     font-weight: 400;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         background-color: $color-button-hover;
     }
 }
 
-.home-container{
+.home-container {
     background-color: white;
 }
 
-.image-home-1{
+.image-home-1 {
     height: 350px;
     width: 550px;
     cursor: pointer;
 }
 
-.first-block{
-    padding: 50px 0;
+.first-block {
+    padding: 50px 0 200px;
 }
 
-.second-block{
-    padding: 50px 0;
+.second-block {
+    padding: 200px 0 50px;
 }
 
-.justify{
+.justify {
     text-align: justify;
     text-justify: inter-word;
+    font-size: larger;
 }
-.home-belka{
+
+.home-belka {
     background: url('../../content/images/auto-automobile-automotive-305070.jpg') no-repeat fixed center top;
     background-size: cover;
-    height: 400px;
-    opacity: 0.5;
+    height: 900px;
+    opacity: 0.2;
     width: 100%;
+    margin: -100px 0 0;
+    position: absolute;
 }
 
 .vertical-align {
     display: flex;
     align-items: center;
+}
+
+.home-icon {
+    z-index: 99999;
+    font-size: 80px;
+    color: $color-navbar-active;
+    cursor: pointer;
+}
+.icon-title{
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.icon-description{
+    font-weight: 400;
+}
+
+.second-col{
+    padding-top: 50px;
+}
+
+.third-col{
+    padding-top: 50px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .home-belka{
+        height: 650px;
+    }
+    .second-col{
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .home-belka{
+        height: 400px;
+    }
+    .third-col{
+        padding-top: 0;
+    }
+}
+.third-col{
+    margin: 0 auto;
 }

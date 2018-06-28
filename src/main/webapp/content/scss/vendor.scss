@@ -1,5 +1,5 @@
 /* after changing this file run 'yarn run webpack:build' */
-$fa-font-path: '~font-awesome/fonts';
+//$fa-font-path: '~font-awesome/fonts';
 
 /***************************
 put Sass variables here:
@@ -10,8 +10,6 @@ eg $input-color: red;
 // Import Bootstrap source files from node_modules
 @import 'node_modules/bootstrap/scss/bootstrap';
 //@import 'font-awesome/scss/font-awesome';
-@import '~font-awesome/scss/font-awesome';
 @import 'lightbox.css';
 @import '~animate.css/animate.css';
-
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
