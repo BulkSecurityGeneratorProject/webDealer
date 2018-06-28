@@ -32,7 +32,7 @@ public class CarouselResource {
     }
 
 
-    @PostMapping("/carouesl")
+    @PostMapping("/carousel")
     @Timed
     public ResponseEntity<Carousel> createCarousel(@Valid @RequestBody Carousel carousel) throws URISyntaxException {
         log.debug("REST request to save Contact : {}", carousel);

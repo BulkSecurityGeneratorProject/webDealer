@@ -25,11 +25,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="first_paragraph" type="varchar(255)">
+            <column name="first_paragraph" type="TEXT">
                 <constraints nullable="false" />
             </column>
 
-            <column name="second_paragraph" type="varchar(255)">
+            <column name="second_paragraph" type="TEXT">
                 <constraints nullable="false" />
             </column>
 

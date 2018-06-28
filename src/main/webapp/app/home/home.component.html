@@ -3,7 +3,7 @@
     <div class="message-home">
         <div class="row">
             <div class="col-lg-8 col-md-7">
-                <h2>Sprowadzanie aut z USA</h2>
+                <h2>{{home?.homeLabel}}</h2>
             </div>
             <div class="col-lg-4 col-md-5">
                 <button class="btn btn-message float-right">Skontaktuj się</button>
@@ -20,15 +20,7 @@
                      alt="Obrazek home page pierwszy po lewej stronie">
             </div>
             <div class="col-md-6 wow fadeInRight justify">
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolorum excepturi fugiat laborum
-                    natus quas qui! Doloremque ea in non officia perspiciatis reiciendis, saepe sed ut. Aut doloremque
-                    ducimus sapiente.
-                </div>
-                <div>Ab assumenda, deleniti dicta eaque et exercitationem facere fuga mollitia necessitatibus nisi
-                    perferendis quas repudiandae sunt tenetur voluptatem? A autem ea est eum modi necessitatibus
-                    obcaecati
-                    quibusdam recusandae sed sunt!
-                </div>
+                {{home?.firstParagraph}}
             </div>
         </div>
     </div>
@@ -40,38 +32,28 @@
             <p>
                 <i routerLink="car-shipping" class="fas fa-road home-icon"></i>
             </p>
-            <p routerLink="car-shipping" class="icon-title">Lorem ipsum dolor</p>
-            <span class="icon-description">sit amet, consectetur adipisicing elit. Asperiores deserunt error modi obcaecati porro
-                rerum.</span>
+            <p routerLink="car-shipping" class="icon-title">{{home?.firstIcon}}</p>
+            <span class="icon-description">{{home?.firstIconSubtitle}}</span>
         </div>
         <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn second-col">
             <p>
                 <i routerLink="car" class="fas fa-flag-checkered home-icon"></i>
             </p>
-            <p class="icon-title" routerLink="car">Lorem ipsum dolor</p>
-            <span class="icon-description">sit amet, consectetur adipisicing elit. Asperiores deserunt error modi obcaecati porro
-                rerum.</span>
+            <p class="icon-title" routerLink="car">{{home?.secondIcon}}</p>
+            <span class="icon-description">{{home?.secondIconSubtitle}}</span>
         </div>
         <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn third-col">
             <p>
                 <i routerLink="contact" class="fas fa-phone home-icon"></i>
             </p>
-            <p class="icon-title" routerLink="contacts">Lorem ipsum dolor</p>
-            <span class="icon-description">sit amet, consectetur adipisicing elit. Asperiores deserunt error modi obcaecati porro
-                rerum.</span>
+            <p class="icon-title" routerLink="contacts">{{home?.thirdIcon}}</p>
+            <span class="icon-description">{{home?.thirdIconSubtitle}}</span>
         </div>
     </div>
     <div class="content">
         <div class="row second-block vertical-align">
             <div class="col-md-6 wow fadeInLeft justify">
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur deserunt dignissimos ea
-                    facere modi quis quod rem? Aperiam debitis dicta eaque, libero magnam placeat quam quidem, quod,
-                    ratione sed tempore.
-                </div>
-                <div>Aspernatur dolorum eum illum impedit mollitia nostrum qui quo recusandae suscipit tenetur! Aut
-                    autem cumque excepturi fugit harum hic, illo molestiae omnis optio quasi quidem quisquam sint sit ut
-                    vero.
-                </div>
+                {{home?.secondParagraph}}
             </div>
 
             <div class="col-md-6 wow fadeInRight text-center">

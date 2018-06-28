@@ -1,6 +1,7 @@
 package pl.ddweb.dealer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -73,8 +75,8 @@ public class HomeResource {
      */
     @GetMapping("/home")
     @Timed
-    public Home getHome() {
+    public ResponseEntity<Home> getHome() {
         log.debug("REST request to get first home element");
-        return homeRepository.findAll().get(0);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(homeRepository.findAll().get(0)));
     }
 }

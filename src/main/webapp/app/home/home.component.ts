@@ -3,12 +3,14 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbCarouselConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiEventManager} from 'ng-jhipster';
 
-import {Account, LoginModalService, Principal} from '../shared';
+import {Account, LoginModalService, Principal, ResponseWrapper} from '../shared';
 
 import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
 import {Lightbox} from 'ngx-lightbox';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Carousel, CarouselService, Home, HomeService} from '../entities/home';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'jhi-home',
@@ -24,20 +26,36 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
+    eventSubscriber: Subscription;
+    home: Home;
 
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
         private eventManager: JhiEventManager,
         private lightbox: Lightbox,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private homeService: HomeService,
     ) {
     }
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.account = account;
         });
+        this.loadAll();
         this.registerAuthenticationSuccess();
+        this.registerChangeInHome();
+    }
+    loadAll() {
+        this.homeService.get().subscribe(
+            (res: Home) => {
+                this.home = res;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+    registerChangeInHome() {
+        this.eventSubscriber = this.eventManager.subscribe('homeModification', (response) => this.loadAll());
     }
 
     registerAuthenticationSuccess() {
@@ -63,5 +81,9 @@ export class HomeComponent implements OnInit {
             albums.push({src: this.sanitizer.bypassSecurityTrustUrl(target.target.getAttribute('src'))});
             this.lightbox.open(albums, 0);
         }
+    }
+
+    private onError(err: any) {
+        console.log(err);
     }
 }

@@ -6,8 +6,9 @@ import { WebDealerSharedModule } from '../shared';
 import { HOME_ROUTE, HomeComponent } from './';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './carousel';
 import {LightboxModule} from 'ngx-lightbox';
+import {CarouselService, HomeService} from '../entities/home';
 
 @NgModule({
     imports: [
@@ -24,6 +25,8 @@ import {LightboxModule} from 'ngx-lightbox';
     entryComponents: [
     ],
     providers: [
+        CarouselService,
+        HomeService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

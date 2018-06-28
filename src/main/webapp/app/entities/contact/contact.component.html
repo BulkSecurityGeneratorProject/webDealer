@@ -10,6 +10,7 @@
         </div>
     </div>
 </div>
+Home(firstParagraph, secondParagraph, firstIcon, secondIcon, thirdIcon, homeLabel) | Carousel(title, subtitle)
 
 <div class="message-shadow"></div>
 <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary contact-button" jhiTranslate="webDealerApp.contact.edit" [routerLink]="['/', { outlets: { popup: 'contact/'+ contact.id + '/edit'} }]"></button>
@@ -18,13 +19,13 @@
     <div class="contact-container">
         <h3>{{contact?.name}} {{contact?.surname}}</h3>
         <ul class="margin-bottom-none info-container">
-            <li><i class="fa fa-map-marker"></i><strong jhiTranslate="webDealerApp.contact.tab.main.address">
+            <li><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.address">
                 Adres:</strong> <span>{{contact?.address}}, {{contact?.city}}</span></li>
-            <li><i class="fa fa-phone"></i><strong jhiTranslate="webDealerApp.contact.tab.main.phone"> Telefon:</strong>
+            <li><i class="fa fa-phone"></i>&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.phone">Telefon:</strong>
                 <a href="tel:{{contact?.phone}}">{{contact?.phone}}</a>
             </li>
-            <li class="padding-bottom-none"><i class="fa fa-envelope-o"></i><strong
-                jhiTranslate="webDealerApp.contact.tab.main.email"> Email:</strong>
+            <li class="padding-bottom-none"><i class="fa fa-envelope"></i>&nbsp;<strong
+                jhiTranslate="webDealerApp.contact.tab.main.email">Email:</strong>
                 <a href="mailto:{{contact?.email}}">{{contact?.email}}</a>
             </li>
         </ul>

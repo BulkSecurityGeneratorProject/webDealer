@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import {ResponseWrapper} from '../../shared';
+import {Carousel, CarouselService} from '../../entities/home';
+import {Subscription} from 'rxjs/Subscription';
+import {JhiEventManager} from 'ng-jhipster';
 
 @Component({
   selector: 'jhi-carousel',
@@ -7,7 +11,17 @@ import * as $ from 'jquery';
   styleUrls: ['carousel.scss']
 })
 export class CarouselComponent implements OnInit {
-  constructor() { }
+    eventSubscriber: Subscription;
+    carousel1: Carousel;
+    carousel2: Carousel;
+    carousel3: Carousel;
+  constructor(private carouselService: CarouselService,
+              private eventManager: JhiEventManager) { }
+  ngOnInit() {
+      this.carouselInit();
+      this.loadAll();
+      this.registerChangeInCarousel();
+  }
     toggleCaption() {
       if (window.innerWidth > 992) {
           const carouselContainer = $('.carousel');
@@ -16,7 +30,6 @@ export class CarouselComponent implements OnInit {
           caption.delay(500).fadeIn(1000);
       }
     }
-
     carouselInit() {
         this.toggleCaption();
         $('#carousel').carousel({
@@ -25,8 +38,24 @@ export class CarouselComponent implements OnInit {
             this.toggleCaption();
         });
     }
-  ngOnInit() {
-      this.carouselInit();
-  }
+    loadAll() {
+        this.carouselService.query().subscribe(
+            (res: ResponseWrapper) => {
+                if (res.json.length === 3) {
+                this.carousel1 = res.json[0];
+                this.carousel2 = res.json[1];
+                this.carousel3 = res.json[2];
+                }
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+    registerChangeInCarousel() {
+        this.eventSubscriber = this.eventManager.subscribe('carouselModification', (response) => this.loadAll());
+    }
+
+    private onError(err: any) {
+        console.log(err);
+    }
 
 }
