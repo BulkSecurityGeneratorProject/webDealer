@@ -12,7 +12,7 @@
     </div>
     <div class="message-shadow"></div>
     <div class="content">
-        <div class="btn btn-group">
+        <div class="btn btn-group" *jhiHasAnyAuthority="['ROLE_ADMIN']">
             <div [routerLink]="['/', { outlets: { popup: 'carousel/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj carousel</div>
             <div [routerLink]="['/', { outlets: { popup: 'home/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj teksty</div>
         </div>
