@@ -13,10 +13,12 @@ import {HomeDialogComponent, HomePopupComponent} from './home-dialog-component';
 import {CarouselDialogComponent, CarouselPopupComponent} from './carousel/carousel-dialog.component';
 import {CarouselService} from './carousel/carousel.service';
 import {HomeService} from './';
+import {HomePopupService} from './home-popup.service';
+import {CarouselPopupService} from './carousel/carousel-popup.service';
 
 const ENTITY_STATES = [
-    carouselPopupRoute,
-    ...HOME_ROUTE
+    ...HOME_ROUTE,
+    carouselPopupRoute
 ];
 
 @NgModule({
@@ -36,10 +38,18 @@ const ENTITY_STATES = [
         CarouselDialogComponent
     ],
     entryComponents: [
+        HomeComponent,
+        CarouselComponent,
+        HomePopupComponent,
+        HomeDialogComponent,
+        CarouselPopupComponent,
+        CarouselDialogComponent
     ],
     providers: [
         CarouselService,
-        HomeService
+        HomeService,
+        HomePopupService,
+        CarouselPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
