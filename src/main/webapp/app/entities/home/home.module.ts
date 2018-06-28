@@ -8,7 +8,6 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import {LightboxModule} from 'ngx-lightbox';
-import {homePopupRoute} from './home.route';
 import {carouselPopupRoute} from './carousel/carousel.route';
 import {HomeDialogComponent, HomePopupComponent} from './home-dialog-component';
 import {CarouselDialogComponent, CarouselPopupComponent} from './carousel/carousel-dialog.component';
@@ -16,9 +15,8 @@ import {CarouselService} from './carousel/carousel.service';
 import {HomeService} from './';
 
 const ENTITY_STATES = [
-    homePopupRoute,
     carouselPopupRoute,
-    HOME_ROUTE
+    ...HOME_ROUTE
 ];
 
 @NgModule({
