@@ -14,6 +14,7 @@ import pl.ddweb.dealer.web.rest.util.HeaderUtil;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 
 @RestController
@@ -73,9 +74,9 @@ public class CarouselResource {
      */
     @GetMapping("/carousel")
     @Timed
-    public Carousel getCarousel() {
+    public List<Carousel> getCarousel() {
         log.debug("REST request to get first home element");
-        return carouselRepository.findAll().get(0);
+        return carouselRepository.findAll();
     }
 
 }
