@@ -45,7 +45,7 @@ export class CarouselDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Carousel) {
-        this.eventManager.broadcast({ name: 'contactModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'carouselModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }

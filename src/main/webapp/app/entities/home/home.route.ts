@@ -5,7 +5,7 @@ import {HomePopupComponent} from './home-dialog-component';
 import {UserRouteAccessService} from '../../shared/auth/user-route-access-service';
 
 export const HOME_ROUTE: Routes = [{
-    path: '',
+    path: 'home',
     component: HomeComponent,
     data: {
         authorities: [],

@@ -7,4 +7,6 @@ import pl.ddweb.dealer.domain.Carousel;
 
 @Repository
 public interface CarouselRepository extends JpaRepository<Carousel,Long> {
+
+
 }

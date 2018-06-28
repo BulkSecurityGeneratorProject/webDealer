@@ -56,14 +56,11 @@ public class CarouselResource {
      */
     @PutMapping("/carousel")
     @Timed
-    public ResponseEntity<Carousel> updateCarousel(@Valid @RequestBody Carousel carousel) throws URISyntaxException {
+    public ResponseEntity<List<Carousel>> updateCarousel(@Valid @RequestBody List<Carousel> carousel) throws URISyntaxException {
         log.debug("REST request to update Carousel : {}", carousel);
-        if (carousel.getId() == null) {
-            return createCarousel(carousel);
-        }
-        Carousel result = carouselRepository.save(carousel);
+        List<Carousel> result = carouselRepository.save(carousel);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, carousel.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME,"ALL"))
             .body(result);
     }
 
