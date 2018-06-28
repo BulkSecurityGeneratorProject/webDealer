@@ -1,5 +1,15 @@
 {
     "home": {
+        "createOrEditLabel": "Edytuj dane na stronie domowej",
+        "firstParagraph": "Pierwszy akapit",
+        "secondParagraph": "Drugi akapit",
+        "firstIcon": "Tytuł pierwszej ikony",
+        "secondIcon": "Tytuł drugiej ikony",
+        "thirdIcon": "Tytuł trzeciej ikony",
+        "firstIconSubtitle": "Opis pierwszej ikony",
+        "secondIconSubtitle": "Opis drugiej ikony",
+        "thirdIconSubtitle": "Opis trzeciej ikony",
+        "homeLabel": "Nagłówek strony",
         "carousel": {
             "captions":{
                 "caption1":{
