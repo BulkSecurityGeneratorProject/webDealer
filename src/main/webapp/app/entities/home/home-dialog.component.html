@@ -1,0 +1,118 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myHomeLabel" jhiTranslate="webDealerApp.home.createOrEditLabel">Edytuj dane na stronie domowej</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.homeLabel" for="field_home_label">Nagłówek strony</label>
+            <input type="text" class="form-control" name="home_label" id="field_home_label"
+                   [(ngModel)]="home.homeLabel" required/>
+            <div [hidden]="!(editForm.controls.homeLabel?.dirty && editForm.controls.homeLabel?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.homeLabel?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.firstParagraph" for="field_first_paragraph">Pierwszy akapit</label>
+            <input type="text" class="form-control" name="first_paragraph" id="field_first_paragraph"
+                   [(ngModel)]="home.firstParagraph" required/>
+            <div [hidden]="!(editForm.controls.firstParagraph?.dirty && editForm.controls.firstParagraph?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.firstParagraph?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.secondParagraph" for="field_second_paragraph">Drugi akapit</label>
+            <input type="text" class="form-control" name="second_paragraph" id="field_second_paragraph"
+                   [(ngModel)]="home.secondParagraph" required/>
+            <div [hidden]="!(editForm.controls.secondParagraph?.dirty && editForm.controls.secondParagraph?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.secondParagraph?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.firstIcon" for="field_first_icon">Tytuł pierwszej ikony</label>
+            <input type="text" class="form-control" name="first_icon" id="field_first_icon"
+                   [(ngModel)]="home.firstIcon" required/>
+            <div [hidden]="!(editForm.controls.firstIcon?.dirty && editForm.controls.firstIcon?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.firstIcon?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.firstIconSubtitile" for="field_first_icon_subtitle">Opis pierwszej ikony</label>
+            <input type="text" class="form-control" name="first_icon_subtitle" id="field_first_icon_subtitle"
+                   [(ngModel)]="home.firstIconSubtitle" required/>
+            <div [hidden]="!(editForm.controls.firstIconSubtitle?.dirty && editForm.controls.firstIconSubtitle?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.firstIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.secondIcon" for="field_second_icon">Tytuł drugiej ikony</label>
+            <input type="text" class="form-control" name="second_icon" id="field_second_icon"
+                   [(ngModel)]="home.secondIcon" required/>
+            <div [hidden]="!(editForm.controls.secondIcon?.dirty && editForm.controls.secondIcon?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.secondIcon?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.secondIconSubtitile" for="field_second_icon_subtitle">Opis drugiej ikony</label>
+            <input type="text" class="form-control" name="second_icon_subtitle" id="field_second_icon_subtitle"
+                   [(ngModel)]="home.secondIconSubtitle" required/>
+            <div [hidden]="!(editForm.controls.secondIconSubtitle?.dirty && editForm.controls.secondIconSubtitle?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.secondIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.thirdIcon" for="field_third_icon">Tytuł trzeciej ikony</label>
+            <input type="text" class="form-control" name="third_icon" id="field_third_icon"
+                   [(ngModel)]="home.thirdIcon" required/>
+            <div [hidden]="!(editForm.controls.thirdIcon?.dirty && editForm.controls.thirdIcon?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.thirdIcon?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.home.thirdIconSubtitile" for="field_third_icon_subtitle">Opis trzeciej ikony</label>
+            <input type="text" class="form-control" name="third_icon_subtitle" id="field_third_icon_subtitle"
+                   [(ngModel)]="home.thirdIconSubtitle" required/>
+            <div [hidden]="!(editForm.controls.thirdIconSubtitle?.dirty && editForm.controls.thirdIconSubtitle?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.thirdIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
