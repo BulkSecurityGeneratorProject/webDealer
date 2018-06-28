@@ -20,8 +20,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="home.firstParagraph" for="field_first_paragraph">Pierwszy akapit</label>
-            <input type="text" class="form-control" name="first_paragraph" id="field_first_paragraph"
-                   [(ngModel)]="home.firstParagraph" required/>
+            <textarea class="form-control" name="first_paragraph" id="field_first_paragraph"
+                      [(ngModel)]="home.firstParagraph" required></textarea>
             <div [hidden]="!(editForm.controls.firstParagraph?.dirty && editForm.controls.firstParagraph?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.firstParagraph?.errors?.required" jhiTranslate="entity.validation.required">
@@ -31,8 +31,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="home.secondParagraph" for="field_second_paragraph">Drugi akapit</label>
-            <input type="text" class="form-control" name="second_paragraph" id="field_second_paragraph"
-                   [(ngModel)]="home.secondParagraph" required/>
+            <textarea class="form-control" name="second_paragraph" id="field_second_paragraph"
+                      [(ngModel)]="home.secondParagraph" required></textarea>
             <div [hidden]="!(editForm.controls.secondParagraph?.dirty && editForm.controls.secondParagraph?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.secondParagraph?.errors?.required" jhiTranslate="entity.validation.required">
@@ -43,7 +43,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="home.firstIcon" for="field_first_icon">Tytuł pierwszej ikony</label>
             <input type="text" class="form-control" name="first_icon" id="field_first_icon"
-                   [(ngModel)]="home.firstIcon" required/>
+                      [(ngModel)]="home.firstIcon" required/>
             <div [hidden]="!(editForm.controls.firstIcon?.dirty && editForm.controls.firstIcon?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.firstIcon?.errors?.required" jhiTranslate="entity.validation.required">
@@ -52,9 +52,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="home.firstIconSubtitile" for="field_first_icon_subtitle">Opis pierwszej ikony</label>
-            <input type="text" class="form-control" name="first_icon_subtitle" id="field_first_icon_subtitle"
-                   [(ngModel)]="home.firstIconSubtitle" required/>
+            <label class="form-control-label" jhiTranslate="home.firstIconSubtitle" for="field_first_icon_subtitle">Opis pierwszej ikony</label>
+            <textarea class="form-control" name="first_icon_subtitle" id="field_first_icon_subtitle"
+                      [(ngModel)]="home.firstIconSubtitle" required></textarea>
             <div [hidden]="!(editForm.controls.firstIconSubtitle?.dirty && editForm.controls.firstIconSubtitle?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.firstIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
@@ -74,9 +74,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="home.secondIconSubtitile" for="field_second_icon_subtitle">Opis drugiej ikony</label>
-            <input type="text" class="form-control" name="second_icon_subtitle" id="field_second_icon_subtitle"
-                   [(ngModel)]="home.secondIconSubtitle" required/>
+            <label class="form-control-label" jhiTranslate="home.secondIconSubtitle" for="field_second_icon_subtitle">Opis drugiej ikony</label>
+            <textarea class="form-control" name="second_icon_subtitle" id="field_second_icon_subtitle"
+                      [(ngModel)]="home.secondIconSubtitle" required></textarea>
             <div [hidden]="!(editForm.controls.secondIconSubtitle?.dirty && editForm.controls.secondIconSubtitle?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.secondIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
@@ -96,9 +96,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="home.thirdIconSubtitile" for="field_third_icon_subtitle">Opis trzeciej ikony</label>
-            <input type="text" class="form-control" name="third_icon_subtitle" id="field_third_icon_subtitle"
-                   [(ngModel)]="home.thirdIconSubtitle" required/>
+            <label class="form-control-label" jhiTranslate="home.thirdIconSubtitle" for="field_third_icon_subtitle">Opis trzeciej ikony</label>
+            <textarea class="form-control" name="third_icon_subtitle" id="field_third_icon_subtitle"
+                      [(ngModel)]="home.thirdIconSubtitle" required></textarea>
             <div [hidden]="!(editForm.controls.thirdIconSubtitle?.dirty && editForm.controls.thirdIconSubtitle?.invalid)">
                 <small class="form-text text-danger"
                        [hidden]="!editForm.controls.thirdIconSubtitle?.errors?.required" jhiTranslate="entity.validation.required">
