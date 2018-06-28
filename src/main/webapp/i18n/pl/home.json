@@ -29,7 +29,7 @@
             "title": "Tytul na zdjeciu",
             "subtitle": "Podtytul na zdjeciu"
         },
-        "title": "Witamy, Java Hipsterze!",
+        "title": "Strona domowa",
         "subtitle": "To jest twoja strona domowa",
         "logged": {
             "message": "Jesteś zalogowany jako użytkownik \"{{username}}\"."
