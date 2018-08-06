@@ -11,6 +11,6 @@ const ACCOUNT_ROUTES = [
 ];
 
 export const accountState: Routes = [{
-    path: '',
+    path: 'account',
     children: ACCOUNT_ROUTES
 }];

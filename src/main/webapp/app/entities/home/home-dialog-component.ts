@@ -9,7 +9,6 @@ import {Home} from './home.model';
 import {HomeService} from './home.service';
 import {HomePopupService} from './home-popup.service';
 
-
 @Component({
     selector: 'jhi-home-dialog',
     templateUrl: './home-dialog.component.html'

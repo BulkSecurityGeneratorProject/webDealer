@@ -1,17 +1,17 @@
-import {Route, Routes} from '@angular/router';
+import {Routes} from '@angular/router';
 
 import { HomeComponent } from './';
 import {HomePopupComponent} from './home-dialog-component';
-import {UserRouteAccessService} from '../../shared/auth/user-route-access-service';
+import {UserRouteAccessService} from '../../shared';
 
-export const HOME_ROUTE: Routes = [{
-    path: 'home',
-    component: HomeComponent,
-    data: {
-        authorities: [],
-        pageTitle: 'home.title'
-    }
-},
+export const homeRoute: Routes = [
+    {
+      path: '',
+      component: HomeComponent,
+      data: {
+          pageTitle: 'home.title'
+      }
+    },
     {
         path: 'home/edit',
         component: HomePopupComponent,
@@ -21,4 +21,5 @@ export const HOME_ROUTE: Routes = [{
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
-    }];
+    }
+];

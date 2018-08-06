@@ -50,8 +50,11 @@ public class ContactResourceIntTest {
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONE1 = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE2 = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE2 = "BBBBBBBBBB";
 
     @Autowired
     private ContactRepository contactRepository;
@@ -95,7 +98,8 @@ public class ContactResourceIntTest {
             .surname(DEFAULT_SURNAME)
             .city(DEFAULT_CITY)
             .address(DEFAULT_ADDRESS)
-            .phone(DEFAULT_PHONE);
+            .phone1(DEFAULT_PHONE1)
+            .phone2(DEFAULT_PHONE2);
         return contact;
     }
 
@@ -123,7 +127,8 @@ public class ContactResourceIntTest {
         assertThat(testContact.getSurname()).isEqualTo(DEFAULT_SURNAME);
         assertThat(testContact.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testContact.getAddress()).isEqualTo(DEFAULT_ADDRESS);
-        assertThat(testContact.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testContact.getPhone1()).isEqualTo(DEFAULT_PHONE1);
+        assertThat(testContact.getPhone2()).isEqualTo(DEFAULT_PHONE2);
     }
 
     @Test
@@ -219,10 +224,28 @@ public class ContactResourceIntTest {
 
     @Test
     @Transactional
-    public void checkPhoneIsRequired() throws Exception {
+    public void checkPhone1IsRequired() throws Exception {
         int databaseSizeBeforeTest = contactRepository.findAll().size();
         // set the field null
-        contact.setPhone(null);
+        contact.setPhone1(null);
+
+        // Create the Contact, which fails.
+
+        restContactMockMvc.perform(post("/api/contacts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(contact)))
+            .andExpect(status().isBadRequest());
+
+        List<Contact> contactList = contactRepository.findAll();
+        assertThat(contactList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPhone2IsRequired() throws Exception {
+        int databaseSizeBeforeTest = contactRepository.findAll().size();
+        // set the field null
+        contact.setPhone2(null);
 
         // Create the Contact, which fails.
 
@@ -250,7 +273,8 @@ public class ContactResourceIntTest {
             .andExpect(jsonPath("$.[*].surname").value(hasItem(DEFAULT_SURNAME.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())));
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE1.toString())))
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE2.toString())));
     }
 
     @Test
@@ -268,7 +292,8 @@ public class ContactResourceIntTest {
             .andExpect(jsonPath("$.surname").value(DEFAULT_SURNAME.toString()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()));
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE1.toString()))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE2.toString()));
     }
 
     @Test
@@ -295,7 +320,8 @@ public class ContactResourceIntTest {
             .surname(UPDATED_SURNAME)
             .city(UPDATED_CITY)
             .address(UPDATED_ADDRESS)
-            .phone(UPDATED_PHONE);
+            .phone1(UPDATED_PHONE1)
+            .phone2(UPDATED_PHONE2);
 
         restContactMockMvc.perform(put("/api/contacts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -310,7 +336,8 @@ public class ContactResourceIntTest {
         assertThat(testContact.getSurname()).isEqualTo(UPDATED_SURNAME);
         assertThat(testContact.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testContact.getAddress()).isEqualTo(UPDATED_ADDRESS);
-        assertThat(testContact.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testContact.getPhone1()).isEqualTo(UPDATED_PHONE1);
+        assertThat(testContact.getPhone2()).isEqualTo(UPDATED_PHONE2);
     }
 
     @Test

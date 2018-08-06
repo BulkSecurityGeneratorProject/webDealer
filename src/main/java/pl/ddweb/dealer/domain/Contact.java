@@ -2,11 +2,14 @@ package pl.ddweb.dealer.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.ddweb.dealer.service.validation.annotation.PhoneNumber;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -41,8 +44,14 @@ public class Contact implements Serializable {
     private String address;
 
     @NotNull
-    @Column(name = "phone", nullable = false)
-    private String phone;
+    @PhoneNumber
+    @Column(name = "phone1", nullable = false)
+    private String phone1;
+
+    @NotNull
+    @PhoneNumber
+    @Column(name = "phone2", nullable = false)
+    private String phone2;
 
     @NotNull
     @Column(name = "email", nullable = false)
@@ -113,22 +122,36 @@ public class Contact implements Serializable {
         return this;
     }
 
+    public String getPhone1() {
+        return phone1;
+    }
+
+    public void setPhone1(String phone1) {
+        this.phone1 = phone1;
+    }
+
+    public Contact phone1(String phone1) {
+        this.phone1 = phone1;
+        return this;
+    }
+
+    public String getPhone2() {
+        return phone2;
+    }
+
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
+    }
+
+    public Contact phone2(String phone2) {
+        this.phone2 = phone2;
+        return this;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public Contact phone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -154,12 +177,14 @@ public class Contact implements Serializable {
     @Override
     public String toString() {
         return "Contact{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", surname='" + getSurname() + "'" +
-            ", city='" + getCity() + "'" +
-            ", address='" + getAddress() + "'" +
-            ", phone='" + getPhone() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", surname='" + surname + '\'' +
+            ", city='" + city + '\'' +
+            ", address='" + address + '\'' +
+            ", phone1='" + phone1 + '\'' +
+            ", phone2='" + phone2 + '\'' +
+            ", email='" + email + '\'' +
+            '}';
     }
 }

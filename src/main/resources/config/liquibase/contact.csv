@@ -1,2 +1,2 @@
-id;name;surname;city;address;phone;email
-1;Damian;Dworakowski;Łapy;Długa 82;85 715 22 28;email@email.pl
+id;name;surname;city;address;email;phone1;phone2
+1;Damian;Dworakowski;Łapy;Długa 82;email@email.pl;85 715 22 28;85 715 22 28

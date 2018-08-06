@@ -7,7 +7,8 @@ export class Contact implements BaseEntity {
         public surname?: string,
         public city?: string,
         public address?: string,
-        public phone?: string,
+        public phone1?: string,
+        public phone2?: string,
         public email?: string,
     ) {
     }

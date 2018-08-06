@@ -1,9 +1,8 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Carousel } from './carousel.model';
-import { CarouselService } from './carousel.service';
-import {ResponseWrapper} from "../../../shared/model/response-wrapper.model";
+import { Carousel, CarouselService } from './';
+import {ResponseWrapper} from '../../../shared';
 
 @Injectable()
 export class CarouselPopupService {

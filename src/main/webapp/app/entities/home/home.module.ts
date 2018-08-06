@@ -3,21 +3,29 @@ import { RouterModule } from '@angular/router';
 
 import { WebDealerSharedModule } from '../../shared';
 
-import { HOME_ROUTE, HomeComponent } from './';
+import {HomeComponent, homeRoute} from './';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
-import { CarouselComponent } from './carousel/carousel.component';
 import {LightboxModule} from 'ngx-lightbox';
-import {carouselPopupRoute} from './carousel/carousel.route';
-import {HomeDialogComponent, HomePopupComponent} from './home-dialog-component';
-import {CarouselDialogComponent, CarouselPopupComponent} from './carousel/carousel-dialog.component';
-import {CarouselService} from './carousel/carousel.service';
-import {HomeService} from './';
-import {HomePopupService} from './home-popup.service';
-import {CarouselPopupService} from './carousel/carousel-popup.service';
+
+import {
+    CarouselComponent,
+    carouselPopupRoute,
+    CarouselDialogComponent,
+    CarouselPopupComponent,
+    CarouselService,
+    CarouselPopupService
+} from './carousel';
+
+import {
+    HomeDialogComponent,
+    HomePopupComponent,
+    HomeService,
+    HomePopupService
+} from './';
 
 const ENTITY_STATES = [
-    ...HOME_ROUTE,
+    ...homeRoute,
     carouselPopupRoute
 ];
 
@@ -31,24 +39,24 @@ const ENTITY_STATES = [
     ],
     declarations: [
         HomeComponent,
-        CarouselComponent,
         HomePopupComponent,
         HomeDialogComponent,
+        CarouselComponent,
         CarouselPopupComponent,
         CarouselDialogComponent
     ],
     entryComponents: [
         HomeComponent,
-        CarouselComponent,
         HomePopupComponent,
         HomeDialogComponent,
+        CarouselComponent,
         CarouselPopupComponent,
         CarouselDialogComponent
     ],
     providers: [
-        CarouselService,
         HomeService,
         HomePopupService,
+        CarouselService,
         CarouselPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

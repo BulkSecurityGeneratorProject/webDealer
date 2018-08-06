@@ -37,11 +37,15 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="phone" type="varchar(255)">
+            <column name="email" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="email" type="varchar(255)">
+            <column name="phone1" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="phone2" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
