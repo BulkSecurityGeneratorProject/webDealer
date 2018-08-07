@@ -15,7 +15,7 @@
                    aria-label="Toggle navigation" (click)="toggleNavbar()">
                     <i class="fa fa-bars"></i>
                 </a>
-                <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+                <a class="navbar-brand logo float-left" routerLink="home" (click)="collapseNavbar()">
                     <span jhiTranslate="global.title" class="navbar-title">WebDealer</span>
                     <p jhiTranslate="global.subtitle" class="navbar-subtitle"></p>
                 </a>
@@ -23,7 +23,7 @@
             <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+                        <a class="nav-link" routerLink="home" (click)="collapseNavbar()">
                     <span>
                         <span jhiTranslate="global.menu.home">Home</span>
                     </span>
