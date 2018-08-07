@@ -33,6 +33,11 @@ img{
     transform: translateX(0);
     transform: translate3d(0, 0, 0);
 }
+.fix{
+    width: 100%;
+    height: auto;
+}
+
 
 .pattern{
     background: url('../../../../content/images/03.png');

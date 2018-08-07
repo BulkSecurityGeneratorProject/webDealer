@@ -11,6 +11,10 @@
 
 .image-banner{
     background: url('../../../content/images/samochody_banner.jpg') center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .banner-caption{
