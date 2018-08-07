@@ -5,7 +5,6 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { Contact } from './contact.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
-import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class ContactService {

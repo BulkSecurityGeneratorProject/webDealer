@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { WebDealerSharedModule } from '../../shared';
 
-import {HomeComponent, homeRoute} from './';
+import {HomeComponent, homePopupRoute, homeRoute} from './';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-bootstrap';
 import {LightboxModule} from 'ngx-lightbox';
@@ -26,7 +26,8 @@ import {
 
 const ENTITY_STATES = [
     ...homeRoute,
-    carouselPopupRoute
+    ...homePopupRoute,
+    ...carouselPopupRoute
 ];
 
 @NgModule({

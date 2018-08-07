@@ -2,6 +2,7 @@ package pl.ddweb.dealer.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.Email;
 import pl.ddweb.dealer.service.validation.annotation.PhoneNumber;
 
 import javax.persistence.*;
@@ -54,6 +55,7 @@ public class Contact implements Serializable {
     private String phone2;
 
     @NotNull
+    @Email
     @Column(name = "email", nullable = false)
     private String email;
 

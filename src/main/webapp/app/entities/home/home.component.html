@@ -13,8 +13,8 @@
     <div class="message-shadow"></div>
     <div class="content">
         <div class="btn btn-group" *jhiHasAnyAuthority="['ROLE_ADMIN']">
-            <div [routerLink]="['/', { outlets: { popup: 'carousel/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj carousel</div>
-            <div [routerLink]="['/', { outlets: { popup: 'home/edit'} }]" class="btn btn-primary" style="border: 3px solid"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj teksty</div>
+            <div [routerLink]="['/', { outlets: { popup: 'carousel/edit'} }]" class="btn btn-primary admin-button"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj carousel</div>
+            <div [routerLink]="['/', { outlets: { popup: 'home/edit'} }]" class="btn btn-primary admin-button"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj teksty</div>
         </div>
         <div class="row first-block vertical-align">
             <div class="col-md-6 text-center">
@@ -31,7 +31,7 @@
     <div>
         <div class="home-belka"></div>
     </div>
-    <div class="row text-center content" style="margin: 0">
+    <div class="row text-center content icons">
         <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn first-col">
             <p>
                 <i routerLink="car-shipping" class="fas fa-road home-icon"></i>

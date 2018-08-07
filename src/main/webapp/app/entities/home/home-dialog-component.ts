@@ -5,9 +5,9 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import {Home} from './home.model';
-import {HomeService} from './home.service';
-import {HomePopupService} from './home-popup.service';
+import { Home } from './home.model';
+import { HomeService } from './home.service';
+import { HomePopupService } from './home-popup.service';
 
 @Component({
     selector: 'jhi-home-dialog',

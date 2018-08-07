@@ -11,7 +11,10 @@ export const homeRoute: Routes = [
       data: {
           pageTitle: 'home.title'
       }
-    },
+    }
+];
+
+export const homePopupRoute: Routes = [
     {
         path: 'home/edit',
         component: HomePopupComponent,

@@ -5,7 +5,6 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { Home } from './home.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
-import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class HomeService {

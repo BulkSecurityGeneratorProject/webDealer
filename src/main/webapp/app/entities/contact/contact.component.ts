@@ -7,7 +7,6 @@ import {ContactService} from './contact.service';
 import {Principal, ResponseWrapper} from '../../shared';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
-import {Subject} from 'rxjs/Subject';
 
 @Component({
     selector: 'jhi-contact',

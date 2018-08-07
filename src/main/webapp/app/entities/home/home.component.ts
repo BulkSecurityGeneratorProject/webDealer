@@ -1,11 +1,10 @@
 // <reference path="jquery.d.ts" />
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {NgbCarousel, NgbCarouselConfig, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiEventManager} from 'ng-jhipster';
 
 import {Account, LoginModalService, Principal, ResponseWrapper} from '../../shared';
 
-import * as $ from 'jquery';
 import {CarouselConfig} from 'ngx-bootstrap';
 import {Lightbox} from 'ngx-lightbox';
 import {DomSanitizer} from '@angular/platform-browser';
