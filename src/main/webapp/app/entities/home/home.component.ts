@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
         this.loadAll();
         this.registerAuthenticationSuccess();
         this.registerChangeInHome();
-        console.log('home initialized')
     }
     loadAll() {
         this.homeService.get().subscribe(
