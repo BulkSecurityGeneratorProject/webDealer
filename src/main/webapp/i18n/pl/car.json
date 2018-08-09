@@ -44,11 +44,12 @@
             "power": "Moc (KM)",
             "color": "Kolor",
             "mileage": "Przebieg (km)",
-            "img": "Zdjęcie",
+            "img": "Zdjęcia (Podstawowo pierwsze zdjęcie jest głównym)",
+            "main": "Czy to zdjecie ma byc glowne?",
             "description": "Opis",
             "received": "Sprowadzony",
             "broken": "Uszkodzony",
-            "date": "Data Dodania",
+            "date": "Data Modyfikacji",
             "noCars": "Brak danego samochodu."
         }
     }

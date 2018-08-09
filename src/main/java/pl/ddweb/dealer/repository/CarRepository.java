@@ -2,12 +2,9 @@ package pl.ddweb.dealer.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import pl.ddweb.dealer.domain.Car;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import org.springframework.data.jpa.repository.*;
-
-import java.time.Instant;
+import pl.ddweb.dealer.domain.Car;
 
 
 /**
@@ -19,7 +16,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     Page<Car> findAllByReceived(Boolean received, Pageable pageable);
 
-    Page<Car> findAllByReceivedOrderByLastModifiedDate(Boolean received, Pageable pageable);
+    Page<Car> findAllByReceivedOrderByCreatedDateDesc(Boolean received, Pageable pageable);
 
-    Car findOneByIdOrderByLastModifiedDate(Long id);
+    Car findOneByIdOrderByCreatedDateDesc(Long id);
 }

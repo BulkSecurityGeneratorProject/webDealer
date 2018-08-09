@@ -11,6 +11,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -64,12 +66,9 @@ public class Car extends AbstractAuditingEntity implements Serializable {
     @Column(name = "mileage")
     private Long mileage;
 
-    @Lob
-    @Column(name = "img")
-    private byte[] img;
-
-    @Column(name = "img_content_type")
-    private String imgContentType;
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Image.class)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private List<Image> images = new ArrayList<>();
 
     @Lob
     @Type(type = "text")
@@ -238,31 +237,6 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         this.mileage = mileage;
     }
 
-    public byte[] getImg() {
-        return img;
-    }
-
-    public Car img(byte[] img) {
-        this.img = img;
-        return this;
-    }
-
-    public void setImg(byte[] img) {
-        this.img = img;
-    }
-
-    public String getImgContentType() {
-        return imgContentType;
-    }
-
-    public Car imgContentType(String imgContentType) {
-        this.imgContentType = imgContentType;
-        return this;
-    }
-
-    public void setImgContentType(String imgContentType) {
-        this.imgContentType = imgContentType;
-    }
 
     public String getDescription() {
         return description;
@@ -319,48 +293,76 @@ public class Car extends AbstractAuditingEntity implements Serializable {
         this.lastModified = lastModified;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    public Boolean getReceived() {
+        return received;
+    }
+
+    public Boolean getBroken() {
+        return broken;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        if (car.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), car.getId());
+        return Objects.equals(id, car.id) &&
+            Objects.equals(make, car.make) &&
+            Objects.equals(model, car.model) &&
+            Objects.equals(price, car.price) &&
+            Objects.equals(year, car.year) &&
+            gear == car.gear &&
+            Objects.equals(version, car.version) &&
+            Objects.equals(capacity, car.capacity) &&
+            Objects.equals(power, car.power) &&
+            Objects.equals(color, car.color) &&
+            Objects.equals(mileage, car.mileage) &&
+            Objects.equals(images, car.images) &&
+            Objects.equals(description, car.description) &&
+            Objects.equals(received, car.received) &&
+            Objects.equals(broken, car.broken) &&
+            Objects.equals(created, car.created) &&
+            Objects.equals(lastModified, car.lastModified);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(id, make, model, price, year, gear, version, capacity, power, color, mileage, images, description, received, broken, created, lastModified);
     }
 
     @Override
     public String toString() {
         return "Car{" +
-            "id=" + getId() +
-            ", date='" + getCreatedDate() + "'" +
-            ", make='" + getMake() + "'" +
-            ", model='" + getModel() + "'" +
-            ", price=" + getPrice() +
-            ", year=" + getYear() +
-            ", gear='" + getGear() + "'" +
-            ", version='" + getVersion() + "'" +
-            ", capacity=" + getCapacity() +
-            ", power=" + getPower() +
-            ", color='" + getColor() + "'" +
-            ", mileage='" + getMileage() + "'" +
-            ", img='" + getImg() + "'" +
-            ", imgContentType='" + getImgContentType() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", received='" + isReceived() + "'" +
-            ", broken='" + isBroken() + "'" +
-            "}";
+            "id=" + id +
+            ", make='" + make + '\'' +
+            ", model='" + model + '\'' +
+            ", price=" + price +
+            ", year=" + year +
+            ", gear=" + gear +
+            ", version='" + version + '\'' +
+            ", capacity=" + capacity +
+            ", power=" + power +
+            ", color='" + color + '\'' +
+            ", mileage=" + mileage +
+            ", images=" + images +
+            ", description='" + description + '\'' +
+            ", received=" + received +
+            ", broken=" + broken +
+            ", created=" + created +
+            ", lastModified=" + lastModified +
+            '}';
     }
+
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+
 }

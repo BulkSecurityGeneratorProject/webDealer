@@ -16,6 +16,7 @@ import pl.ddweb.dealer.repository.CarRepository;
 import pl.ddweb.dealer.web.rest.errors.BadRequestAlertException;
 import pl.ddweb.dealer.web.rest.util.HeaderUtil;
 import pl.ddweb.dealer.web.rest.util.PaginationUtil;
+import pl.ddweb.dealer.web.rest.util.image.ImageService;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -37,8 +38,11 @@ public class CarResource {
 
     private final CarRepository carRepository;
 
-    public CarResource(CarRepository carRepository) {
+    private final ImageService imageService;
+
+    public CarResource(CarRepository carRepository, ImageService imageService) {
         this.carRepository = carRepository;
+        this.imageService = imageService;
     }
 
     /**
@@ -56,6 +60,9 @@ public class CarResource {
             throw new BadRequestAlertException("A new car cannot already have an ID", ENTITY_NAME, "idexists");
         }
         car.setCreatedDate(car.getCreated());
+        car.getImages().forEach(image -> image.car(car));
+        imageService.setMainImage(car.getImages());
+        imageService.changeToOptimalImages(car.getImages());
         Car result = carRepository.save(car);
         return ResponseEntity.created(new URI("/api/cars/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -79,6 +86,9 @@ public class CarResource {
             return createCar(car);
         }
         car.setCreatedDate(car.getCreated());
+        car.getImages().forEach(image -> image.car(car));
+        imageService.setMainImage(car.getImages());
+        imageService.changeToOptimalImages(car.getImages());
         Car result = carRepository.save(car);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))
@@ -98,7 +108,7 @@ public class CarResource {
         Iterator<Sort.Order> iter = pageable.getSort().iterator();
         Sort.Order order = iter.next();
         Page<Car> page = order.getProperty().equals("id") ?
-            carRepository.findAllByReceivedOrderByLastModifiedDate(received.equals("true"),pageable) :
+            carRepository.findAllByReceivedOrderByCreatedDateDesc(received.equals("true"),pageable) :
             carRepository.findAllByReceived(received.equals("true"), pageable);
         page.getContent().forEach(c -> {
             c.setCreated(c.getCreatedDate());
@@ -118,7 +128,7 @@ public class CarResource {
     @Timed
     public ResponseEntity<Car> getCar(@PathVariable("id") Long id) {
         log.debug("REST request to get Car : {}", id);
-        Car car = carRepository.findOneByIdOrderByLastModifiedDate(id);
+        Car car = carRepository.findOneByIdOrderByCreatedDateDesc(id);
         car.setLastModified(car.getLastModifiedDate());
         car.setCreated(car.getCreatedDate());
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(car));

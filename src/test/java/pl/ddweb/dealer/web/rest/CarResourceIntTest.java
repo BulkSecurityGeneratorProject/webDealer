@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
+import pl.ddweb.dealer.web.rest.util.image.ImageService;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -80,6 +81,9 @@ public class CarResourceIntTest {
     @Autowired
     private EntityManager em;
 
+    @Autowired
+    private ImageService imageService;
+
     private MockMvc restCarMockMvc;
 
     private Car car;
@@ -87,7 +91,7 @@ public class CarResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CarResource carResource = new CarResource(carRepository);
+        final CarResource carResource = new CarResource(carRepository, imageService);
         this.restCarMockMvc = MockMvcBuilders.standaloneSetup(carResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -108,8 +112,6 @@ public class CarResourceIntTest {
             .price(DEFAULT_PRICE)
             .color(DEFAULT_COLOR)
             .mileage(DEFAULT_MILEAGE)
-            .img(DEFAULT_IMG)
-            .imgContentType(DEFAULT_IMG_CONTENT_TYPE)
             .received(DEFAULT_RECEIVED)
             .description(DEFAULT_DESCRIPTION);
         return car;
@@ -140,8 +142,6 @@ public class CarResourceIntTest {
         assertThat(testCar.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testCar.getColor()).isEqualTo(DEFAULT_COLOR);
         assertThat(testCar.getMileage()).isEqualTo(DEFAULT_MILEAGE);
-        assertThat(testCar.getImg()).isEqualTo(DEFAULT_IMG);
-        assertThat(testCar.getImgContentType()).isEqualTo(DEFAULT_IMG_CONTENT_TYPE);
         assertThat(testCar.isReceived()).isEqualTo(DEFAULT_RECEIVED);
         assertThat(testCar.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
@@ -342,8 +342,6 @@ public class CarResourceIntTest {
             .price(UPDATED_PRICE)
             .color(UPDATED_COLOR)
             .mileage(UPDATED_MILEAGE)
-            .img(UPDATED_IMG)
-            .imgContentType(UPDATED_IMG_CONTENT_TYPE)
             .received(UPDATED_RECEIVED)
             .description(UPDATED_DESCRIPTION);
 
@@ -361,8 +359,6 @@ public class CarResourceIntTest {
         assertThat(testCar.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testCar.getColor()).isEqualTo(UPDATED_COLOR);
         assertThat(testCar.getMileage()).isEqualTo(UPDATED_MILEAGE);
-        assertThat(testCar.getImg()).isEqualTo(UPDATED_IMG);
-        assertThat(testCar.getImgContentType()).isEqualTo(UPDATED_IMG_CONTENT_TYPE);
         assertThat(testCar.isReceived()).isEqualTo(UPDATED_RECEIVED);
         assertThat(testCar.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }

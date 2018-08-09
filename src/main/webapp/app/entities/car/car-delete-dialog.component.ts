@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
@@ -19,8 +19,10 @@ export class CarDeleteDialogComponent {
     constructor(
         private carService: CarService,
         public activeModal: NgbActiveModal,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: Router
     ) {
+        carService.find(+route.url.split('/')[2]).subscribe((car) => this.car = car);
     }
 
     clear() {

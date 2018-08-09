@@ -42,7 +42,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
             this.car = car;
             this.gear = String(this.car.gear);
             this.album = {
-                src: 'data:' + car.imgContentType + ';base64,' + car.img
+                src: 'data:' + car.imgContentType + ';base64,' + car.images
             }
         }, (res) => {
             if (this.route.snapshot.url[0].path === 'car-shipping') {

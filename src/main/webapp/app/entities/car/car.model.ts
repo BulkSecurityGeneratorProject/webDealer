@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import {Image} from './image.model';
 
 export const enum Gear {
     'MANUAL',
@@ -18,8 +19,8 @@ export class Car implements BaseEntity {
         public power?: number,
         public color?: string,
         public mileage?: number,
+        public images?: Image[],
         public imgContentType?: string,
-        public img?: any,
         public description?: any,
         public created?: Date,
         public lastModified?: Date,
