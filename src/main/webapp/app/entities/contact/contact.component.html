@@ -20,11 +20,12 @@
         <ul class="margin-bottom-none info-container">
             <li><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.address">
                 Adres:</strong> <span>{{contact?.address}}, {{contact?.city}}</span></li>
-            <li><i class="fa fa-phone"></i>&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.phone1">Telefon 1:</strong>
-                <a href="tel:{{contact?.phone1}}">{{contact?.phone1}}</a>
-            </li>
-            <li><i class="fa fa-phone"></i>&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.phone2">Telefon 2:</strong>
-                <a href="tel:{{contact?.phone2}}">{{contact?.phone2}}</a>
+            <li>
+                <div>
+                    <i class="fa fa-phone"></i>&nbsp;<strong jhiTranslate="webDealerApp.contact.tab.main.phone">Telefony:</strong>
+                    <a href="tel:{{contact?.phone1}}">{{contact?.phone1}}</a><br/>
+                    <a class="second-phone" href="tel:{{contact?.phone2}}">{{contact?.phone2}}</a>
+                </div>
             </li>
             <li class="padding-bottom-none"><i class="fa fa-envelope"></i>&nbsp;<strong
                 jhiTranslate="webDealerApp.contact.tab.main.email">Email:</strong>
