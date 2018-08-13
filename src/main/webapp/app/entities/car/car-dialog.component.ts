@@ -46,6 +46,7 @@ export class CarDialogComponent implements OnInit {
             }
             if (ind !== undefined) {
                 this.radioSelectIndex = ind;
+                this.change();
                 return true;
             }
         }
@@ -88,8 +89,8 @@ export class CarDialogComponent implements OnInit {
                             $('.checkbox-car.radio').prop('checked', true);
                         }
                         else {
-                            console.log($('.checkbox-car.radio:nth-child(2)'));
                             $('.checkbox-car.radio:nth-child(2)').prop('checked', true);
+                            this.radioSelectIndex = 1;
                         }
                     }
                     else {
