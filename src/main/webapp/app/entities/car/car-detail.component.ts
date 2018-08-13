@@ -22,6 +22,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
     private eventSubscriber: Subscription;
     private gear: string;
     private album: any;
+    private imgLoaded: boolean;
 
     constructor(private eventManager: JhiEventManager,
                 private dataUtils: JhiDataUtils,
@@ -31,6 +32,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
                 private lightbox: Lightbox,
                 private _renderer2: Renderer2,
                 @Inject(DOCUMENT) private _document) {
+        this.imgLoaded = false;
     }
 
     ngOnInit() {
@@ -39,6 +41,10 @@ export class CarDetailComponent implements OnInit, OnDestroy {
         });
         this.registerChangeInCars();
 
+    }
+
+
+    invokeGallery(){
         const script = this._renderer2.createElement('script');
         script.type = `text/javascript`;
         script.text = `
@@ -61,11 +67,12 @@ export class CarDetailComponent implements OnInit, OnDestroy {
                             });
                         } 
                       });
-                },700);
+                },500);
             });
         }
     `;
         this._renderer2.appendChild(this._document.body, script);
+        setTimeout(() => this.imgLoaded = true, 250);
     }
 
     load(id) {
@@ -75,6 +82,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
             // this.album = {
             //     src: 'data:' + car.imgContentType + ';base64,' + car.images
             // }
+            this.invokeGallery();
         }, (res) => {
             if (this.route.snapshot.url[0].path === 'car-shipping') {
                 this.router.navigateByUrl('/car-shipping');

@@ -42,8 +42,7 @@
             <div style="margin-bottom: 70px">
                 <div *ngIf="car.images.length > 0; else noImg">
                     <div class="img-car">
-
-                        <ul id="imageGallery">
+                        <ul id="imageGallery" [hidden]="!imgLoaded">
                             <li *ngFor="let image of car.images" [attr.data-thumb]="'data:' + image.imgContentType + ';base64,' + image.thumbnail" [attr.data-src]="'data:' + image.imgContentType + ';base64,' + image.img">
                                 <img class="img-thumbnail img-responsive img-car" [src]="'data:' + image.imgContentType + ';base64,' + image.img" style="max-width: 100%;"  />
                             </li>

@@ -18,5 +18,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     Page<Car> findAllByReceivedOrderByCreatedDateDesc(Boolean received, Pageable pageable);
 
+//    @Query(value = "SELECT car FROM Car car INNER JOIN car.images im WHERE (im.car = car.id)")
+//    Page<Car> findAllByReceived(Boolean received, Pageable pageable);
+
     Car findOneByIdOrderByCreatedDateDesc(Long id);
 }

@@ -26,8 +26,6 @@ public class ImageServiceImpl implements ImageService {
     private static final int HEIGHT = 768;
 
 
-
-
     @Override
     public void setMainImage(List<Image> img) {
         if (img.size() > 0) {
@@ -36,16 +34,16 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void changeToOptimalImages(List<Image> img) {
-        for (Image image : img) {
-            image.setImg(cropImage(image.getImg(), ImageServiceImpl.WIDTH,ImageServiceImpl.HEIGHT));
-        }
-    }
+    public void changeImagesToSize(List<Image> img, ImageResizeType imageResizeType) {
+        if (ImageResizeType.THUMB == imageResizeType) {
+            for (Image image : img) {
+                image.setThumbnail(cropImage(image.getImg(), ImageServiceImpl.THUMB_WIDTH, ImageServiceImpl.THUMB_HEIGHT));
+            }
+        } else {
+            for (Image image : img) {
+                image.setImg(cropImage(image.getImg(), ImageServiceImpl.WIDTH, ImageServiceImpl.HEIGHT));
+            }
 
-    @Override
-    public void changeImagesToSize(List<Image> img) {
-        for (Image image : img) {
-            image.setThumbnail(cropImage(image.getImg(), ImageServiceImpl.THUMB_WIDTH, ImageServiceImpl.THUMB_HEIGHT));
         }
     }
 
@@ -74,5 +72,9 @@ public class ImageServiceImpl implements ImageService {
             e.printStackTrace();
         }
         return outputStream.toByteArray();
+    }
+
+    public enum ImageResizeType {
+        MAIN, THUMB
     }
 }

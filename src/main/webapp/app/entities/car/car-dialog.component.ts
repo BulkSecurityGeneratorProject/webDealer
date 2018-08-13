@@ -95,10 +95,10 @@ export class CarDialogComponent implements OnInit {
                 }
                 this.change();
             }
+            else if(this.car.images.length === 0 )
+                document.getElementById('fake-file-button').setAttribute('value', 'Dodaj zdjęcie');
         });
     }
-    // gdzies umiescic tego pana document.getElementById('fake-file-button').setAttribute('value', this.car.images.length > 0 ? 'Dodaj kolejne zdjęcie' : 'Dodaj zdjęcie');
-
     handleImageClick() {
         const real = document.getElementById('file_img');
         real.click();
@@ -124,6 +124,7 @@ export class CarDialogComponent implements OnInit {
             this.car.images[i].main = false;
         }
         this.car.images[this.radioSelectIndex].main = true;
+        document.getElementById('fake-file-button').setAttribute('value', 'Dodaj kolejne zdjęcie');
     }
 
     private subscribeToSaveResponse(result: Observable<Car>) {

@@ -22,7 +22,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/js/lightgallery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lg-thumbnail/1.1.0/lg-thumbnail.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#000000",
+                        "text": "#ffffff"
+                    },
+                    "button": {
+                        "background": "#ff0000"
+                    }
+                }
+            })});
+    </script>
 
 </head>
 <body>

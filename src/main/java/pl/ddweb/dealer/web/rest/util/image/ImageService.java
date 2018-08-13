@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface ImageService {
     void setMainImage(List<Image> img);
-    void changeToOptimalImages(List<Image> img);
-    void changeImagesToSize(List<Image> img);
+    void changeImagesToSize(List<Image> img, ImageServiceImpl.ImageResizeType imageResizeType);
 }
