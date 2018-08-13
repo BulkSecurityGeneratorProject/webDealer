@@ -18,8 +18,11 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     Page<Car> findAllByReceivedOrderByCreatedDateDesc(Boolean received, Pageable pageable);
 
-//    @Query(value = "SELECT car FROM Car car INNER JOIN car.images im WHERE (im.car = car.id)")
-//    Page<Car> findAllByReceived(Boolean received, Pageable pageable);
+//    @Query(value = "select new pl.ddweb.dealer.web.rest.dto.ImageDTO(image.id, image.thumbnail, image.isMain, image.imgContentType, image.car) from Image image WHERE (image.car.received =:received)")
+//    Page<Car> findAllByReceived(@Param("received") Boolean received, Pageable pageable);
+//
+//    @Query(value = "select new pl.ddweb.dealer.web.rest.dto.ImageDTO(image.id, image.thumbnail, image.isMain, image.imgContentType, image.car) from Image image WHERE (image.car.received =:received) ORDER BY image.car.createdDate")
+//    Page<Car> findAllByReceivedOrderByCreatedDateDesc(@Param("received") Boolean received, Pageable pageable);
 
     Car findOneByIdOrderByCreatedDateDesc(Long id);
 }
