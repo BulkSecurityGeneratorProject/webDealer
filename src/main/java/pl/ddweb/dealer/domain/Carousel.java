@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Carousel")
@@ -21,7 +22,7 @@ public class Carousel implements Serializable{
 
     @NotNull
     @Column(name = "sub_title", nullable = false)
-    private String subTitle;
+    private String subtitle;
 
 
     public Long getId() {
@@ -40,32 +41,28 @@ public class Carousel implements Serializable{
         this.title = title;
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getSubtitle() {
+        return subtitle;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Carousel carousel = (Carousel) o;
-
-        if (id != null ? !id.equals(carousel.id) : carousel.id != null) return false;
-        if (title != null ? !title.equals(carousel.title) : carousel.title != null) return false;
-        return subTitle != null ? subTitle.equals(carousel.subTitle) : carousel.subTitle == null;
+        return Objects.equals(id, carousel.id) &&
+            Objects.equals(title, carousel.title) &&
+            Objects.equals(subtitle, carousel.subtitle);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (subTitle != null ? subTitle.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, title, subtitle);
     }
 
     @Override
@@ -73,7 +70,7 @@ public class Carousel implements Serializable{
         return "Carousel{" +
             "id=" + id +
             ", title='" + title + '\'' +
-            ", subTitle='" + subTitle + '\'' +
+            ", subtitle='" + subtitle + '\'' +
             '}';
     }
 }

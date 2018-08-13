@@ -28,7 +28,7 @@
                 <label class="form-control-label" jhiTranslate="home.carousel.subtitle"
                        for="field_surname">Caption SubTitle</label>
                 <input type="text" class="form-control" [name]="'subtitle'+i" id="field_surname"
-                       [(ngModel)]="item.subTitle" required/>
+                       [(ngModel)]="item.subtitle" required/>
                 <div [hidden]="!((editForm.controls.subtitle+i)?.dirty && (editForm.controls.subtitle+i)?.invalid)">
                     <small class="form-text text-danger"
                            [hidden]="!(editForm.controls.subtitle+i)?.errors?.required"
