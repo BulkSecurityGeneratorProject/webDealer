@@ -71,7 +71,7 @@ export class CarDialogComponent implements OnInit {
         obj.img = null;
         obj.type = null;
         this.dataUtils.setFileData(event, obj, field, isImage, () => {
-            this.car.images.push(new Image(undefined, obj.img, false, obj.type));
+            this.car.images.push(new Image(undefined, obj.img, null, false, obj.type));
             if (!this.selectRadio()) {
                 this.radioSelectIndex = 0;
                 this.change();
@@ -83,9 +83,17 @@ export class CarDialogComponent implements OnInit {
         this.dataUtils.clearInputImage(this.car, this.elementRef, field, fieldContentType, idInput, index, () => {
             if (!this.selectRadio()) {
                 if (this.car.images.length > 0) {
-                    this.radioSelectIndex = 0;
-                    if (this.car.images.length === 1) {
-                        $('.checkbox-car.radio').prop('checked', true);
+                    if (this.radioSelectIndex === 0) {
+                        if (this.car.images.length === 1) {
+                            $('.checkbox-car.radio').prop('checked', true);
+                        }
+                        else {
+                            console.log($('.checkbox-car.radio:nth-child(2)'));
+                            $('.checkbox-car.radio:nth-child(2)').prop('checked', true);
+                        }
+                    }
+                    else {
+                        this.radioSelectIndex = 0;
                     }
                     this.change();
                 }

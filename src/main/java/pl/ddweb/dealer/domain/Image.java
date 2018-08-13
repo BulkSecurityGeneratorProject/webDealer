@@ -24,6 +24,10 @@ public class Image implements Serializable{
     @Column(name = "img")
     private byte[] img;
 
+    @Lob
+    @Column(name = "img_thumbnail")
+    private byte[] thumbnail;
+
     @Column(name = "main")
     private boolean isMain;
 
@@ -76,6 +80,14 @@ public class Image implements Serializable{
         return this;
     }
 
+    public byte[] getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(byte[] thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,6 +96,7 @@ public class Image implements Serializable{
         return isMain == image.isMain &&
             Objects.equals(id, image.id) &&
             Arrays.equals(img, image.img) &&
+            Arrays.equals(thumbnail, image.thumbnail) &&
             Objects.equals(imgContentType, image.imgContentType) &&
             Objects.equals(car, image.car);
     }
@@ -93,6 +106,7 @@ public class Image implements Serializable{
 
         int result = Objects.hash(id, isMain, imgContentType, car);
         result = 31 * result + Arrays.hashCode(img);
+        result = 31 * result + Arrays.hashCode(thumbnail);
         return result;
     }
 

@@ -63,6 +63,7 @@ public class CarResource {
         car.getImages().forEach(image -> image.car(car));
         imageService.setMainImage(car.getImages());
         imageService.changeToOptimalImages(car.getImages());
+        imageService.changeImagesToSize(car.getImages());
         Car result = carRepository.save(car);
         return ResponseEntity.created(new URI("/api/cars/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -89,6 +90,7 @@ public class CarResource {
         car.getImages().forEach(image -> image.car(car));
         imageService.setMainImage(car.getImages());
         imageService.changeToOptimalImages(car.getImages());
+        imageService.changeImagesToSize(car.getImages());
         Car result = carRepository.save(car);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))

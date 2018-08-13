@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.ddweb.dealer.domain.Carousel;
-import pl.ddweb.dealer.domain.Home;
 import pl.ddweb.dealer.repository.CarouselRepository;
 import pl.ddweb.dealer.web.rest.errors.BadRequestAlertException;
 import pl.ddweb.dealer.web.rest.util.HeaderUtil;
