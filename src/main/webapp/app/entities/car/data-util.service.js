@@ -21,8 +21,8 @@ import { Injectable } from '@angular/core';
 /**
  * An utility service for data.
  */
-var JhiDataUtils = (function () {
-    function JhiDataUtils() {
+var DDwebDataUtils = (function () {
+    function DDwebDataUtils() {
     }
     /**
      * Method to abbreviate the text given
@@ -30,7 +30,7 @@ var JhiDataUtils = (function () {
     /**
          * Method to abbreviate the text given
          */
-    JhiDataUtils.prototype.abbreviate = /**
+    DDwebDataUtils.prototype.abbreviate = /**
          * Method to abbreviate the text given
          */
     function (text, append) {
@@ -46,7 +46,7 @@ var JhiDataUtils = (function () {
     /**
          * Method to find the byte size of the string provides
          */
-    JhiDataUtils.prototype.byteSize = /**
+    DDwebDataUtils.prototype.byteSize = /**
          * Method to find the byte size of the string provides
          */
     function (base64String) {
@@ -58,7 +58,7 @@ var JhiDataUtils = (function () {
     /**
          * Method to open file
          */
-    JhiDataUtils.prototype.openFile = /**
+    DDwebDataUtils.prototype.openFile = /**
          * Method to open file
          */
     function (contentType, data) {
@@ -72,7 +72,7 @@ var JhiDataUtils = (function () {
     /**
          * Method to convert the file to base64
          */
-    JhiDataUtils.prototype.toBase64 = /**
+    DDwebDataUtils.prototype.toBase64 = /**
          * Method to convert the file to base64
          */
     function (file, cb) {
@@ -89,7 +89,7 @@ var JhiDataUtils = (function () {
     /**
          * Method to clear the input
          */
-    JhiDataUtils.prototype.clearInputImage = /**
+    DDwebDataUtils.prototype.clearInputImage = /**
          * Method to clear the input
          */
     function (entity, elementRef, field, fieldContentType, idInput, index,callback) {
@@ -103,10 +103,10 @@ var JhiDataUtils = (function () {
             }
         }
     };
-    JhiDataUtils.prototype.endsWith = function (suffix, str) {
+    DDwebDataUtils.prototype.endsWith = function (suffix, str) {
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     };
-    JhiDataUtils.prototype.paddingSize = function (value) {
+    DDwebDataUtils.prototype.paddingSize = function (value) {
         if (this.endsWith('==', value)) {
             return 2;
         }
@@ -115,13 +115,13 @@ var JhiDataUtils = (function () {
         }
         return 0;
     };
-    JhiDataUtils.prototype.size = function (value) {
+    DDwebDataUtils.prototype.size = function (value) {
         return value.length / 4 * 3 - this.paddingSize(value);
     };
-    JhiDataUtils.prototype.formatAsBytes = function (size) {
+    DDwebDataUtils.prototype.formatAsBytes = function (size) {
         return size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' bytes';
     };
-    JhiDataUtils.prototype.setFileData = function (event, entity, field, isImage, callback) {
+    DDwebDataUtils.prototype.setFileData = function (event, entity, field, isImage, callback) {
         if (event && event.target.files && event.target.files[0]) {
             var file_1 = event.target.files[0];
             if (isImage && !/^image\//.test(file_1.type)) {
@@ -134,11 +134,11 @@ var JhiDataUtils = (function () {
             });
         }
     };
-    JhiDataUtils.decorators = [
+    DDwebDataUtils.decorators = [
         { type: Injectable },
     ];
     /** @nocollapse */
-    JhiDataUtils.ctorParameters = function () { return []; };
-    return JhiDataUtils;
+    DDwebDataUtils.ctorParameters = function () { return []; };
+    return DDwebDataUtils;
 }());
 export { DDwebDataUtils };
