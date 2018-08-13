@@ -4,7 +4,8 @@ import {Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {JhiEventManager, JhiDataUtils} from 'ng-jhipster';
+import {JhiEventManager} from 'ng-jhipster';
+import {DDwebDataUtils} from './data-util.service';
 
 import {Car} from './car.model';
 import {CarPopupService} from './car-popup.service';
@@ -25,7 +26,7 @@ export class CarDialogComponent implements OnInit {
     radioSelectIndex: number;
 
     constructor(public activeModal: NgbActiveModal,
-                private dataUtils: JhiDataUtils,
+                private dataUtils: DDwebDataUtils,
                 private carService: CarService,
                 private elementRef: ElementRef,
                 private eventManager: JhiEventManager) {
