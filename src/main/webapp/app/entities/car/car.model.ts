@@ -20,7 +20,6 @@ export class Car implements BaseEntity {
         public color?: string,
         public mileage?: number,
         public images?: Image[],
-        public imgContentType?: string,
         public description?: any,
         public created?: Date,
         public lastModified?: Date,

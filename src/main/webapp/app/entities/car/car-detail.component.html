@@ -14,12 +14,9 @@
 <div *ngIf="car ; else noCars">
 
 
-
-
     <br/>
 
     <div class="content">
-
         <button type="submit"
                 (click)="previousState()"
                 class="btn btn-info">
@@ -41,12 +38,17 @@
         </div>
         <hr>
         <jhi-alert-error></jhi-alert-error>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <div *ngIf="car.img; else noImg">
-                        <img class="img-thumbnail img-responsive img-car"
-                             [src]="'data:' + car.imgContentType + ';base64,' + car.img" (click)="open()" style="max-width: 100%;"
-                             alt="car image"/>
+        <div>
+            <div style="margin-bottom: 70px">
+                <div *ngIf="car.images.length > 0; else noImg">
+                    <div class="img-car">
+
+                        <ul id="imageGallery">
+                            <li *ngFor="let image of car.images" [attr.data-thumb]="'data:' + image.imgContentType + ';base64,' + image.thumbnail" [attr.data-src]="'data:' + image.imgContentType + ';base64,' + image.img">
+                                <img class="img-thumbnail img-responsive img-car" [src]="'data:' + image.imgContentType + ';base64,' + image.img" style="max-width: 100%;"  />
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <ng-template #noImg>
                     <img class="img-thumbnail img-responsive img-car"
@@ -54,7 +56,7 @@
                          alt="car image"/>
                 </ng-template>
             </div>
-            <div class="col col-md-6 col-xs-12 col-sm-12">
+            <div style="border: 1px solid; padding-left: 10px">
                 <div class="row">
                     <div class="col col-xs-6">
                         <div class="detail-title"><span jhiTranslate="webDealerApp.car.detail.year">Rok produkcji</span>:

@@ -1,6 +1,6 @@
 // TODO dodac do niego lightscribe.
 
-import {Component, OnInit, OnDestroy, Renderer2, Inject, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, Renderer2, Inject, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {JhiEventManager, JhiDataUtils} from 'ng-jhipster';
@@ -8,6 +8,8 @@ import {JhiEventManager, JhiDataUtils} from 'ng-jhipster';
 import {Car} from './car.model';
 import {CarService} from './car.service';
 import {Lightbox, LightboxModule} from 'ngx-lightbox';
+import * as $ from 'jquery';
+import {DOCUMENT} from '@angular/platform-browser';
 
 @Component({
     selector: 'jhi-car-detail',
@@ -26,7 +28,9 @@ export class CarDetailComponent implements OnInit, OnDestroy {
                 private carService: CarService,
                 private route: ActivatedRoute,
                 private router: Router,
-                private lightbox: Lightbox) {
+                private lightbox: Lightbox,
+                private _renderer2: Renderer2,
+                @Inject(DOCUMENT) private _document) {
     }
 
     ngOnInit() {
@@ -35,15 +39,42 @@ export class CarDetailComponent implements OnInit, OnDestroy {
         });
         this.registerChangeInCars();
 
+        const script = this._renderer2.createElement('script');
+        script.type = `text/javascript`;
+        script.text = `
+        {
+            $(document).ready(function () {
+                setTimeout(function(){
+                     $('#imageGallery').lightSlider({
+                        gallery: true,
+                        item: 1,
+                        slideMargin: 0,
+                        loop: true,
+                        thumbitem: 5,
+                        enableDrag: false,
+                        currentPagerPosition:'left',
+                        onSliderLoad: function(el){
+                            el.lightGallery({
+                            selector: '#imageGallery .lslide',
+                            thumbnail: true,
+                            showThumbByDefault: true
+                            });
+                        } 
+                      });
+                },700);
+            });
+        }
+    `;
+        this._renderer2.appendChild(this._document.body, script);
     }
 
     load(id) {
         this.carService.find(id).subscribe((car) => {
             this.car = car;
             this.gear = String(this.car.gear);
-            this.album = {
-                src: 'data:' + car.imgContentType + ';base64,' + car.images
-            }
+            // this.album = {
+            //     src: 'data:' + car.imgContentType + ';base64,' + car.images
+            // }
         }, (res) => {
             if (this.route.snapshot.url[0].path === 'car-shipping') {
                 this.router.navigateByUrl('/car-shipping');

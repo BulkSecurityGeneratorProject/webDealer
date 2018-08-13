@@ -71,9 +71,25 @@
 }
 
 .img-car{
-    height: 300px;
-    width: 400px;
+    height: 400px;
+    width: 600px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .img-car{
+        height: 300px;
+        width: 450px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .img-car{
+        height: 300px;
+        width: 350px;
+        cursor: pointer;
+    }
 }
 
 .data{

@@ -17,9 +17,15 @@ public class ImageServiceImpl implements ImageService {
 
     private BufferedImage bufferedImage;
 
-    private static final int HEIGHT = 200;
+    private static final int THUMB_WIDTH = 400;
 
-    private static final int WIDTH = 200;
+    private static final int THUMB_HEIGHT = 400;
+
+    private static final int WIDTH = 1024;
+
+    private static final int HEIGHT = 768;
+
+
 
 
     @Override
@@ -32,14 +38,14 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void changeToOptimalImages(List<Image> img) {
         for (Image image : img) {
-            image.setImg(cropImage(image.getImg()));
+            image.setImg(cropImage(image.getImg(), ImageServiceImpl.WIDTH,ImageServiceImpl.HEIGHT));
         }
     }
 
     @Override
     public void changeImagesToSize(List<Image> img) {
         for (Image image : img) {
-            image.setThumbnail(cropImage(image.getImg(), ImageServiceImpl.WIDTH, ImageServiceImpl.HEIGHT));
+            image.setThumbnail(cropImage(image.getImg(), ImageServiceImpl.THUMB_WIDTH, ImageServiceImpl.THUMB_HEIGHT));
         }
     }
 
@@ -55,29 +61,14 @@ public class ImageServiceImpl implements ImageService {
         return exist;
     }
 
-    private byte[] cropImage(byte[] image) {
-        inputStream = new ByteArrayInputStream(image);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try {
-            bufferedImage = ImageIO.read(inputStream);
-            BufferedImage bf = Scalr.createOptimalImage(bufferedImage);
-            inputStream.close();
-            ImageIO.write(bufferedImage, "png", outputStream);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return outputStream.toByteArray();
-    }
-
     private byte[] cropImage(byte[] image, int width, int height) {
         inputStream = new ByteArrayInputStream(image);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
             bufferedImage = ImageIO.read(inputStream);
-            BufferedImage bf = Scalr.createOptimalImage(bufferedImage, width, height);
+            BufferedImage bf = Scalr.resize(bufferedImage, Scalr.Method.BALANCED, width, height);
             inputStream.close();
-            ImageIO.write(bufferedImage, "png", outputStream);
+            ImageIO.write(bf, "png", outputStream);
 
         } catch (IOException e) {
             e.printStackTrace();
