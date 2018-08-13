@@ -3,8 +3,7 @@
         "title": "Kontakt",
         "contact":{
             "address":"Adres:",
-            "phone1":"Telefon 1:",
-            "phone2":"Telefon 2:",
+            "phone":"Telefony:",
             "email":"E-mail:"
         }
     }

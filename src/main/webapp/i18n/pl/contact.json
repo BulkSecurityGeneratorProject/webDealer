@@ -18,8 +18,7 @@
             "tab": {
                 "main": {
                     "title": "Informacje kontaktowe",
-                    "phone1": " Telefon 1:",
-                    "phone2": " Telefon 2:",
+                    "phone": " Telefony:",
                     "email": " Email:",
                     "address": " Adres:",
                     "web": " Web:"

@@ -82,24 +82,26 @@ export class CarDialogComponent implements OnInit {
 
     clearInputImage(field: string, fieldContentType: string, idInput: string, index: number) {
         this.dataUtils.clearInputImage(this.car, this.elementRef, field, fieldContentType, idInput, index, () => {
-            if (!this.selectRadio()) {
-                if (this.car.images.length > 0) {
-                    if (this.radioSelectIndex === 0) {
-                        if (this.car.images.length === 1) {
-                            $('.checkbox-car.radio').prop('checked', true);
-                        }
-                        else {
-                            $('.checkbox-car.radio:nth-child(2)').prop('checked', true);
-                            this.radioSelectIndex = 1;
-                        }
+            if (!this.selectRadio() && this.car.images.length > 0) {
+                if (this.radioSelectIndex === 0) {
+                    if (this.car.images.length === 1) {
+                        $('.checkbox-car.radio').prop('checked', true);
+                    } else {
+                        $('.checkbox-car.radio:nth-child(2)').prop('checked', true);
+                        this.radioSelectIndex = 1;
                     }
-                    else {
-                        this.radioSelectIndex = 0;
-                    }
-                    this.change();
+                } else {
+                    this.radioSelectIndex = 0;
                 }
+                this.change();
             }
         });
+    }
+    // gdzies umiescic tego pana document.getElementById('fake-file-button').setAttribute('value', this.car.images.length > 0 ? 'Dodaj kolejne zdjęcie' : 'Dodaj zdjęcie');
+
+    handleImageClick() {
+        const real = document.getElementById('file_img');
+        real.click();
     }
 
     clear() {
