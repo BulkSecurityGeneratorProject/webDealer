@@ -13,12 +13,12 @@ import {Image} from '../image.model';
 export class CarEntryComponent implements OnInit {
 
     @Input()
-    private car: Car;
+    car: Car;
 
     @Input()
-    private received: boolean;
+    received: boolean;
 
-    private gear: string;
+    gear: string;
     constructor() {
     }
 

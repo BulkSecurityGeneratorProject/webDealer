@@ -22,6 +22,7 @@ import {CarEntryComponent} from './carEntry/car-entry.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import {SafeHtmlPipe} from '../../pipes/safehtml.pipe';
 import { NgwWowModule } from 'ngx-wow';
+import {DDwebDataUtils} from './data-util.service';
 const ENTITY_STATES = [
     ...carRoute,
     ...carPopupRoute,
@@ -57,6 +58,7 @@ const ENTITY_STATES = [
         CarService,
         CarPopupService,
         CarResolvePagingParams,
+        DDwebDataUtils,
         {
           provide: LOCALE_ID, useValue: 'en_US'
         },
