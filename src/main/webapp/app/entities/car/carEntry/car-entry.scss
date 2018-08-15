@@ -313,6 +313,11 @@ table td.spec, .spec {
     font-size: 25px;
     margin: 3px 0 33px 0;
 }
+@include media('<smWidth') {
+    .price-small {
+        font-size: 20px;
+    }
+}
 
 .figure {
     color: #3d3d3d;

@@ -84,13 +84,14 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@include media('<xsWidth') {
     .img-car{
-        height: 300px;
-        width: 350px;
+        height: 250px;
+        width: 300px;
         cursor: pointer;
     }
 }
+
 
 .data{
     font-size: 18px;
