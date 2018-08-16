@@ -50,7 +50,7 @@
             "received": "Sprowadzony",
             "broken": "Uszkodzony",
             "date": "Data Modyfikacji",
-            "noCars": "Brak danego samochodu."
+            "noCars": "Wczytywanie podglądu samochodu..."
         }
     }
 }
