@@ -68,16 +68,25 @@ export class CarDialogComponent implements OnInit {
         }
         const obj = {
             img: null,
-            type: null
+            type: null,
+            name: null
         };
-        obj.img = null;
-        obj.type = null;
         this.dataUtils.setFileData(event, obj, field, isImage, () => {
-            this.car.images.push(new Image(undefined, obj.img, null, false, obj.type));
-            if (!this.selectRadio()) {
-                this.radioSelectIndex = 0;
-                this.change();
+            let isExist = false;
+            for (let i = 0; i < this.car.images.length; i++) {
+                if (this.car.images[i].name === obj.name) {
+                    isExist = true;
+                    break;
+                }
             }
+            if (!isExist) {
+                this.car.images.push(new Image(undefined, obj.img, obj.name, false, obj.type));
+                if (!this.selectRadio()) {
+                    this.radioSelectIndex = 0;
+                    this.change();
+                }
+            }
+            else alert('Istnieje juz zdjecie o takiej nazwie !');
         });
     }
 
@@ -96,10 +105,11 @@ export class CarDialogComponent implements OnInit {
                 }
                 this.change();
             }
-            else if(this.car.images.length === 0 )
+            else if (this.car.images.length === 0)
                 document.getElementById('fake-file-button').setAttribute('value', 'Dodaj zdjęcie');
         });
     }
+
     handleImageClick() {
         const real = document.getElementById('file_img');
         real.click();

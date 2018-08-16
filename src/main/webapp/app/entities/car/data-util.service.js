@@ -130,6 +130,7 @@ var DDwebDataUtils = (function () {
             this.toBase64(file_1, function (base64Data) {
                 entity.img = base64Data;
                 entity.type = file_1.type;
+                entity.name = file_1.name.substring(0, file_1.name.lastIndexOf('.'));
                 callback();
             });
         }

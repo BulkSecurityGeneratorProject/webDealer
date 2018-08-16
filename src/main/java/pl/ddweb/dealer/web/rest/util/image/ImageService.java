@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface ImageService {
     void setMainImage(List<Image> img);
-    void changeImagesToSize(List<Image> img, ImageServiceImpl.ImageResizeType imageResizeType);
+    void saveChangeImagesToSize(Long carId, List<Image> images);
+    void deleteImages(Long carId, List<Image> images);
+    void deleteCar(Long carId);
+    void updateImages(Long carId, List<Image> images);
 }

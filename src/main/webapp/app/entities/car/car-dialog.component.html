@@ -105,12 +105,13 @@
                     <span class="question-main" jhiTranslate="webDealerApp.car.main">Czy to zdjecie ma byc glowne ? </span>
                         <input class="checkbox-car radio" type="radio" name="img-radio" [(ngModel)]="radioSelectIndex" [value]="i" (ngModelChange)="change()"/>
                     </div>
-                <img [src]="'data:' + carO.imgContentType + ';base64,' + carO.img" style="max-height: 100px;" *ngIf="carO.img" alt="car image"/>
-                <div *ngIf="carO.img" class="form-text text-danger clearfix">
-                    <span class="pull-left">{{carO.imgContentType}}, {{byteSize(carO.img)}}</span>
+                    <img [src]="'data:' + carO.imgContentType + ';base64,' + carO.img" style="max-height: 100px;" *ngIf="carO.img != null" alt="car image"/>
+                    <img [src]="'/images/cars/' + car.id + '/larges/' + carO.name + '.png'" style="max-height: 100px;" *ngIf="carO.img == null" alt="car image"/>
                     <button type="button" (click)="clearInputImage('images', 'imgContentType', 'fileImage', i)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
+                <div *ngIf="carO.img" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{carO.imgContentType}}, {{byteSize(carO.img)}}</span>
                 </div>
             </div>
             <input [hidden]="car.images && car.images.length >= 5" type="button" id="fake-file-button" class="btn btn-success" value="Dodaj zdjęcie" (click)="handleImageClick()" />

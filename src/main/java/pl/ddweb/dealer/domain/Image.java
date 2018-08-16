@@ -1,6 +1,8 @@
 package pl.ddweb.dealer.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -20,20 +22,19 @@ public class Image implements Serializable{
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Lob
-    @Column(name = "img")
-    @Basic(fetch = FetchType.LAZY)
+    @Transient
+    @JsonSerialize
+    @JsonDeserialize
     private byte[] img;
-
-    @Lob
-    @Column(name = "img_thumbnail")
-    private byte[] thumbnail;
 
     @Column(name = "main")
     private boolean isMain;
 
     @Column(name = "img_content_type")
     private String imgContentType;
+
+    @Column(name = "img_name")
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
@@ -76,17 +77,17 @@ public class Image implements Serializable{
         return car;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Image car(Car car) {
         this.car = car;
         return this;
-    }
-
-    public byte[] getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(byte[] thumbnail) {
-        this.thumbnail = thumbnail;
     }
 
     @Override
@@ -97,17 +98,16 @@ public class Image implements Serializable{
         return isMain == image.isMain &&
             Objects.equals(id, image.id) &&
             Arrays.equals(img, image.img) &&
-            Arrays.equals(thumbnail, image.thumbnail) &&
             Objects.equals(imgContentType, image.imgContentType) &&
+            Objects.equals(name, image.name) &&
             Objects.equals(car, image.car);
     }
 
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(id, isMain, imgContentType, car);
+        int result = Objects.hash(id, isMain, imgContentType, name, car);
         result = 31 * result + Arrays.hashCode(img);
-        result = 31 * result + Arrays.hashCode(thumbnail);
         return result;
     }
 
@@ -117,6 +117,7 @@ public class Image implements Serializable{
             "id=" + id +
             ", isMain=" + isMain +
             ", imgContentType='" + imgContentType + '\'' +
+            ", name='" + name + '\'' +
             '}';
     }
 }

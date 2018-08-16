@@ -36,6 +36,7 @@ export class CarEntryComponent implements OnInit {
         if (em === undefined) {
             em = this.car.images[0];
         }
-        return 'data:' + em.imgContentType + ';base64,' + em.thumbnail;
+        // return 'data:' + em.imgContentType + ';base64,' + em.thumbnail;
+        return '/images/cars/' + this.car.id + '/thumbnails/' + em.name + '.png' ;
     }
 }

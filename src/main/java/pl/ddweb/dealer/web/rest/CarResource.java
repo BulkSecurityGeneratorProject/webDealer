@@ -17,7 +17,6 @@ import pl.ddweb.dealer.web.rest.errors.BadRequestAlertException;
 import pl.ddweb.dealer.web.rest.util.HeaderUtil;
 import pl.ddweb.dealer.web.rest.util.PaginationUtil;
 import pl.ddweb.dealer.web.rest.util.image.ImageService;
-import pl.ddweb.dealer.web.rest.util.image.ImageServiceImpl;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -63,9 +62,8 @@ public class CarResource {
         car.setCreatedDate(car.getCreated());
         car.getImages().forEach(image -> image.car(car));
         imageService.setMainImage(car.getImages());
-        imageService.changeImagesToSize(car.getImages(), ImageServiceImpl.ImageResizeType.MAIN);
-        imageService.changeImagesToSize(car.getImages(), ImageServiceImpl.ImageResizeType.THUMB);
         Car result = carRepository.save(car);
+        imageService.saveChangeImagesToSize(result.getId(), car.getImages());
         return ResponseEntity.created(new URI("/api/cars/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -94,9 +92,8 @@ public class CarResource {
         car.setCreatedDate(car.getCreated());
         car.getImages().forEach(image -> image.car(car));
         imageService.setMainImage(car.getImages());
-        imageService.changeImagesToSize(car.getImages(), ImageServiceImpl.ImageResizeType.MAIN);
-        imageService.changeImagesToSize(car.getImages(), ImageServiceImpl.ImageResizeType.THUMB);
         Car result = carRepository.save(car);
+        imageService.updateImages(result.getId(),car.getImages());
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, car.getId().toString()))
             .body(result);
@@ -154,6 +151,7 @@ public class CarResource {
     @Timed
     public ResponseEntity<Void> deleteCar(@PathVariable Long id) {
         log.debug("REST request to delete Car : {}", id);
+        imageService.deleteCar(id);
         carRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }

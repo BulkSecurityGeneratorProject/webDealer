@@ -35,7 +35,9 @@ public class LoggingAspect {
      */
     @Pointcut("within(@org.springframework.stereotype.Repository *)" +
         " || within(@org.springframework.stereotype.Service *)" +
-        " || within(@org.springframework.web.bind.annotation.RestController *)")
+        " || within(@org.springframework.web.bind.annotation.RestController *)" +
+        "&& !@annotation(pl.ddweb.dealer.annotations.NoLogged)" +
+        "&& @target(pl.ddweb.dealer.annotations.NoLogged)")
     public void springBeanPointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
@@ -45,7 +47,9 @@ public class LoggingAspect {
      */
     @Pointcut("within(pl.ddweb.dealer.repository..*)"+
         " || within(pl.ddweb.dealer.service..*)"+
-        " || within(pl.ddweb.dealer.web.rest..*)")
+        " || within(pl.ddweb.dealer.web.rest..*)" +
+        "&& !@annotation(pl.ddweb.dealer.annotations.NoLogged)" +
+        "&& @target(pl.ddweb.dealer.annotations.NoLogged)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
