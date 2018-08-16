@@ -29,7 +29,6 @@ export class CarDetailComponent implements OnInit, OnDestroy {
                 private carService: CarService,
                 private route: ActivatedRoute,
                 private router: Router,
-                private lightbox: Lightbox,
                 private _renderer2: Renderer2,
                 @Inject(DOCUMENT) private _document) {
         this.imgLoaded = false;
@@ -44,7 +43,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
     }
 
 
-    invokeGallery(){
+    invokeGallery() {
         const script = this._renderer2.createElement('script');
         script.type = `text/javascript`;
         script.text = `
@@ -79,10 +78,8 @@ export class CarDetailComponent implements OnInit, OnDestroy {
         this.carService.find(id).subscribe((car) => {
             this.car = car;
             this.gear = String(this.car.gear);
-            // this.album = {
-            //     src: 'data:' + car.imgContentType + ';base64,' + car.images
-            // }
             this.invokeGallery();
+            this.car.images = this.setMainImage(this.car.images);
         }, (res) => {
             if (this.route.snapshot.url[0].path === 'car-shipping') {
                 this.router.navigateByUrl('/car-shipping');
@@ -92,10 +89,18 @@ export class CarDetailComponent implements OnInit, OnDestroy {
         });
     }
 
-    open() {
-        const albums = [];
-        albums.push(this.album);
-        this.lightbox.open(albums, 0);
+
+    setMainImage(images: any): any {
+        if (images && images.length > 1) {
+            for (let i = 0; i < images.length; i++) {
+                if (images[i].isMain) {
+                    const temp = images[i];
+                    images[i] = images[0];
+                    images[0] = temp;
+                }
+            }
+            return images;
+        }
     }
 
     byteSize(field) {
