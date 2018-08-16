@@ -26,6 +26,11 @@ agm-map {
     padding-top: 185px;
     right: 0;
 }
+@include media('<smWidth') {
+    .banner-caption {
+        padding-top: 170px;
+    }
+}
 
 .banner-text {
     padding: 15px;
@@ -56,6 +61,15 @@ agm-map {
 @include media('<smWidth') {
     .info-container {
         padding-left: 45px;
+    }
+}
+
+@include media('<xsWidth') {
+    .contact-info {
+        padding: 10px ($padding-navbar-leftright/4);
+    }
+    .info-container {
+        padding-left: 25px;
     }
 }
 
