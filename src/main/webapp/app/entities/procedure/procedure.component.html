@@ -17,6 +17,36 @@
     <div class="btn btn-group" *jhiHasAnyAuthority="['ROLE_ADMIN']">
         <div [routerLink]="['/', { outlets: { popup: 'procedure/edit'} }]" class="btn btn-primary admin-button"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj tekst</div>
     </div>
-
+    <div class="main-text">
     <span class="justify" [innerHTML]="procedure?.text | safeHTMLProcedure"></span>
+    </div>
+
+</div>
+
+<div>
+    <div class="procedure-belka"></div>
+</div>
+
+<div class="row text-center content icons">
+    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn first-col">
+        <p>
+            <a href="https://www.iaai.com/pl-pl/">
+            <img src="../../../content/images/iaa.png">
+            </a>
+        </p>
+    </div>
+    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn second-col">
+        <p>
+            <a href="https://www.iaai.com/pl-pl/">
+                <img src="../../../content/images/iaa.png">
+            </a>
+        </p>
+    </div>
+    <div class="col-md-6 col-lg-4 col-xs-12 col-sm-12 wow zoomIn third-col">
+        <p>
+            <a href="https://www.iaai.com/pl-pl/">
+                <img src="../../../content/images/iaa.png">
+            </a>
+        </p>
+    </div>
 </div>
