@@ -1,0 +1,48 @@
+@import '../../../content/scss/variables';
+
+.procedure-banner {
+    background: #000 center 0;
+    border-bottom: solid 2px #fff;
+    text-shadow: 2px 2px #2f2f2f;
+    color: white;
+    height: 302px;
+    position: relative;
+}
+
+.image-banner {
+    background: url('../../../content/images/procedura_banner.jpg') center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.banner-caption {
+    padding-top: 185px;
+    right: 0;
+}
+@include media('<smWidth') {
+    .banner-caption {
+        padding-top: 170px;
+    }
+}
+
+.banner-text {
+    padding: 15px;
+    text-shadow: 2px 2px 3px black;
+}
+
+.banner-text h2 {
+    font-family: 'Open Sans', sans-serif, Arial;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.banner-text h4 {
+    font-family: 'Open Sans', sans-serif, Arial;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.1px;
+}
+.admin-button {
+    border: 3px solid
+}

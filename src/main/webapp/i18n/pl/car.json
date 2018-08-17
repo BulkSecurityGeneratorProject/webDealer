@@ -44,7 +44,7 @@
             "power": "Moc (KM)",
             "color": "Kolor",
             "mileage": "Przebieg (km)",
-            "img": "Zdjęcia (Maksymalnie 5 zdjec)",
+            "img": "Zdjęcia",
             "main": "Czy to zdjecie ma byc glowne?",
             "description": "Opis",
             "received": "Sprowadzony",

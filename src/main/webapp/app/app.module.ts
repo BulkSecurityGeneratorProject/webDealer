@@ -23,6 +23,7 @@ import {
 } from './layouts';
 import {NgwWowModule} from 'ngx-wow';
 import {CarouselModule} from 'ngx-bootstrap';
+import {SafeHtmlPipe} from './pipes/safehtml.pipe';
 
 @NgModule({
     imports: [
@@ -41,7 +42,7 @@ import {CarouselModule} from 'ngx-bootstrap';
         NavbarComponent,
         ErrorComponent,
         ActiveMenuDirective,
-        FooterComponent,
+        FooterComponent
     ],
     providers: [
         ProfileService,

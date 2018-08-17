@@ -14,6 +14,21 @@
 <div class="message-shadow"></div>
 
 <div class="content">
+    <div class="row car-nav">
+        <div class="col-sm-6 col-6">
+            <a class="btn car-nav-btn float-right" routerLink="/car" routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }">
+                <span>Na miejscu</span>
+            </a>
+
+        </div>
+        <div class="col-sm-6 col-6" style="padding-left: 3px">
+            <a class="btn car-nav-btn" routerLink="/car-shipping" routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }">
+                <span>W drodze</span>
+            </a>
+        </div>
+    </div>
     <h2>
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-car"
                 [routerLink]="['/' , { outlets: { popup: 'car-new/' + (received | shipped)  } }]">

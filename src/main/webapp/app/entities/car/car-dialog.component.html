@@ -100,6 +100,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="webDealerApp.car.img" for="field_img">Img</label>
             <br/>
+            <input [hidden]="!car.images || car.images.length === 0" type="button" id="clear-file-button" class="btn btn-success" value="Wyczysc wszystkie zdjecia" (click)="clearAllImages()" />
             <div *ngFor="let carO of car.images ; index as i">
                     <div>
                     <span class="question-main" jhiTranslate="webDealerApp.car.main">Czy to zdjecie ma byc glowne ? </span>
@@ -114,8 +115,8 @@
                     <span class="pull-left">{{carO.imgContentType}}, {{byteSize(carO.img)}}</span>
                 </div>
             </div>
-            <input [hidden]="car.images && car.images.length >= 5" type="button" id="fake-file-button" class="btn btn-success" value="Dodaj zdjęcie" (click)="handleImageClick()" />
-            <input type="file" id="file_img" (change)="setFileData($event, 'img', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            <input type="button" id="fake-file-button" class="btn btn-success" value="Dodaj zdjęcie" (click)="handleImageClick()" />
+            <input type="file" id="file_img" multiple (change)="setFileData($event, 'img', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             <input type="hidden" class="form-control" name="img" id="field_img"
                     />
             <input type="hidden" class="form-control" name="imgContentType" id="field_imgContentType"

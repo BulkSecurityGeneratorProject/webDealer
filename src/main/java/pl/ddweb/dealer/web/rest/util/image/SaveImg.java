@@ -1,5 +1,6 @@
 package pl.ddweb.dealer.web.rest.util.image;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -57,10 +58,13 @@ public class SaveImg {
             new File(DEFAULT_IMAGE_PATH_LARGE).mkdirs();
             bufferedImage = ImageIO.read(inputStream);
             File outputFile = new File(DEFAULT_IMAGE_PATH_LARGE + "/" + name + "." + DEFAULT_IMAGE_TYPE);
-            BufferedImage large = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, LARGE_WIDTH, LARGE_HEIGHT); // opcjonalnie
+//            BufferedImage large = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, LARGE_WIDTH, LARGE_HEIGHT); // opcjonalnie
+            BufferedImage large = Thumbnails.of(bufferedImage).size(LARGE_WIDTH,LARGE_HEIGHT).asBufferedImage();
             ImageIO.write(large, DEFAULT_IMAGE_TYPE, outputFile); // opcjonalnie
-            BufferedImage medium = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, MEDIUM_WIDTH, MEDIUM_HEIGHT);
-            BufferedImage small = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, THUMB_WIDTH, THUMB_HEIGHT);
+//            BufferedImage medium = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, MEDIUM_WIDTH, MEDIUM_HEIGHT);
+            BufferedImage medium = Thumbnails.of(bufferedImage).size(MEDIUM_WIDTH,MEDIUM_HEIGHT).asBufferedImage();
+//            BufferedImage small = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, THUMB_WIDTH, THUMB_HEIGHT);
+            BufferedImage small = Thumbnails.of(bufferedImage).size(THUMB_WIDTH,THUMB_HEIGHT).asBufferedImage();
             inputStream.close();
             outputFile = new File(DEFAULT_IMAGE_PATH_MEDIUM + "/" + name + "." + DEFAULT_IMAGE_TYPE);
             ImageIO.write(medium, DEFAULT_IMAGE_TYPE, outputFile);

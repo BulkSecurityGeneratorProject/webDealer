@@ -41,3 +41,41 @@
 .clear-button {
     cursor: pointer;
 }
+.car-nav{
+    margin-top: 5px;
+}
+
+.car-nav-btn.active{
+    color: #fff;
+    background-color: $color-navbar-active;
+    border-color: $color-navbar-active;
+}
+.car-nav-btn.active > span{
+    color: white;
+}
+
+.car-nav-btn {
+    color: $color-navbar-active;
+    background-color: transparent;
+    background-image: none;
+    border-color: $color-navbar-active;
+    font-size: larger;
+}
+
+@media screen and (max-width: 390px){
+    .car-nav-btn {
+        color: $color-navbar-active;
+        background-color: transparent;
+        background-image: none;
+        border-color: $color-navbar-active;
+        font-size: small;
+    }
+}
+
+.car-nav-btn:hover {
+    font-weight: normal;
+    text-decoration: none;
+    color: #fff;
+    background-color: $color-navbar-active;
+    border-color: $color-navbar-active;
+}

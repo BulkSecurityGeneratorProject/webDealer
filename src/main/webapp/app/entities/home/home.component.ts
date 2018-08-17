@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
     open(target) {
         if (target) {
             const albums = [];
-            albums.push({src: this.sanitizer.bypassSecurityTrustUrl(target.target.getAttribute('src'))});
+            albums.push({src: this.sanitizer.bypassSecurityTrustUrl(target.target.getAttribute('src').substring(0, target.target.getAttribute('src').lastIndexOf('.')) + '_large.jpg')});
             this.lightbox.open(albums, 0);
         }
     }

@@ -1,0 +1,22 @@
+<div class="procedure-banner image-banner">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 banner-caption">
+                <div class="banner-text">
+                    <h2 jhiTranslate="webDealerApp.procedure.detail.title">Procedura</h2>
+                    <h4 jhiTranslate="webDealerApp.procedure.detail.subtitle">Krok po kroku</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="message-shadow"></div>
+
+<div class="content">
+    <div class="btn btn-group" *jhiHasAnyAuthority="['ROLE_ADMIN']">
+        <div [routerLink]="['/', { outlets: { popup: 'procedure/edit'} }]" class="btn btn-primary admin-button"><i class="fas fa-pencil-alt"></i>&nbsp;Edytuj tekst</div>
+    </div>
+
+    <span class="justify" [innerHTML]="procedure?.text | safeHTMLProcedure"></span>
+</div>

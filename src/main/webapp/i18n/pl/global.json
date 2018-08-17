@@ -10,7 +10,7 @@
                 "main": "Encje",
                 "contact": "Kontakt",
                 "car": "Samochody",
-                "car-shipping": "W drodze",
+                "procedure": "Procedura",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

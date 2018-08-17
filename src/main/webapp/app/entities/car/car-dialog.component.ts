@@ -86,8 +86,15 @@ export class CarDialogComponent implements OnInit {
                     this.change();
                 }
             }
-            else alert('Istnieje juz zdjecie o takiej nazwie !');
+            else {
+                alert('Istnieje juz zdjecie o takiej nazwie !');
+            }
         });
+    }
+
+    clearAllImages(){
+        this.car.images = [];
+        document.getElementById('fake-file-button').setAttribute('value', 'Dodaj zdjęcie');
     }
 
     clearInputImage(field: string, fieldContentType: string, idInput: string, index: number) {

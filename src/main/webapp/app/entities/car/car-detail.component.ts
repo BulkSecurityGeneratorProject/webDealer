@@ -10,6 +10,7 @@ import {CarService} from './car.service';
 import {Lightbox, LightboxModule} from 'ngx-lightbox';
 import * as $ from 'jquery';
 import {DOCUMENT} from '@angular/platform-browser';
+import {Principal} from '../../shared';
 
 @Component({
     selector: 'jhi-car-detail',
@@ -23,6 +24,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
     private gear: string;
     private album: any;
     private imgLoaded: boolean;
+    currentAccount: any;
 
     constructor(private eventManager: JhiEventManager,
                 private dataUtils: JhiDataUtils,
@@ -30,6 +32,7 @@ export class CarDetailComponent implements OnInit, OnDestroy {
                 private route: ActivatedRoute,
                 private router: Router,
                 private _renderer2: Renderer2,
+                private principal: Principal,
                 @Inject(DOCUMENT) private _document) {
         this.imgLoaded = false;
     }
@@ -39,6 +42,9 @@ export class CarDetailComponent implements OnInit, OnDestroy {
             this.load(params['id']);
         });
         this.registerChangeInCars();
+    this.principal.identity().then((account) => {
+        this.currentAccount = account;
+    });
 
     }
 

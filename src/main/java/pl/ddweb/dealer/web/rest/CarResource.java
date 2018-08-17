@@ -56,8 +56,8 @@ public class CarResource {
     @Timed
     public ResponseEntity<Car> createCar(@Valid @RequestBody Car car) throws URISyntaxException {
         log.debug("REST request to save Car : {}", car);
-        if (car.getId() != null || car.getImages().size() > 5) {
-            throw new BadRequestAlertException("A new car cannot already have an ID or images > 5", ENTITY_NAME, "idexists");
+        if (car.getId() != null) {
+            throw new BadRequestAlertException("A new car cannot already have an ID", ENTITY_NAME, "idexists");
         }
         car.setCreatedDate(car.getCreated());
         car.getImages().forEach(image -> image.car(car));
@@ -82,10 +82,6 @@ public class CarResource {
     @Timed
     public ResponseEntity<Car> updateCar(@Valid @RequestBody Car car) throws URISyntaxException {
         log.debug("REST request to update Car : {}", car);
-        if(car.getImages().size() > 5)
-        {
-            throw new BadRequestAlertException("You cannot add more images than 5", ENTITY_NAME, "large");
-        }
         if (car.getId() == null) {
             return createCar(car);
         }

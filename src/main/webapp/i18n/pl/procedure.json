@@ -1,0 +1,13 @@
+{
+    "webDealerApp": {
+        "procedure": {
+            "home": {
+                "title": "Procedura"
+            },
+            "detail":{
+                "title": "Procedura",
+                "subtitle": "Krok po kroku"
+            }
+        }
+    }
+}

@@ -122,17 +122,20 @@ var DDwebDataUtils = (function () {
         return size.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' bytes';
     };
     DDwebDataUtils.prototype.setFileData = function (event, entity, field, isImage, callback) {
-        if (event && event.target.files && event.target.files[0]) {
-            var file_1 = event.target.files[0];
-            if (isImage && !/^image\//.test(file_1.type)) {
-                return;
+        if (event && event.target.files) {
+            for(var i = 0 ; i < event.target.files.length ; i++) {
+                let file_1 = event.target.files[i];
+                if (isImage && !/^image\//.test(file_1.type)) {
+                    return;
+                }
+
+                this.toBase64(file_1, (base64Data) => {
+                    entity.img = base64Data;
+                    entity.type = file_1.type;
+                    entity.name = file_1.name.substring(0, file_1.name.lastIndexOf('.'));
+                    callback();
+                });
             }
-            this.toBase64(file_1, function (base64Data) {
-                entity.img = base64Data;
-                entity.type = file_1.type;
-                entity.name = file_1.name.substring(0, file_1.name.lastIndexOf('.'));
-                callback();
-            });
         }
     };
     DDwebDataUtils.decorators = [
