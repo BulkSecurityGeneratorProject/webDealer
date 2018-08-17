@@ -57,7 +57,8 @@ public class SaveImg {
             new File(DEFAULT_IMAGE_PATH_LARGE).mkdirs();
             bufferedImage = ImageIO.read(inputStream);
             File outputFile = new File(DEFAULT_IMAGE_PATH_LARGE + "/" + name + "." + DEFAULT_IMAGE_TYPE);
-            ImageIO.write(bufferedImage, DEFAULT_IMAGE_TYPE, outputFile);
+            BufferedImage large = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, LARGE_WIDTH, LARGE_HEIGHT); // opcjonalnie
+            ImageIO.write(large, DEFAULT_IMAGE_TYPE, outputFile); // opcjonalnie
             BufferedImage medium = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, MEDIUM_WIDTH, MEDIUM_HEIGHT);
             BufferedImage small = Scalr.resize(bufferedImage, Scalr.Mode.FIT_EXACT, THUMB_WIDTH, THUMB_HEIGHT);
             inputStream.close();

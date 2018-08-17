@@ -91,9 +91,9 @@ export class CarDetailComponent implements OnInit, OnDestroy {
 
 
     setMainImage(images: any): any {
-        if (images && images.length > 1) {
+        if (images) {
             for (let i = 0; i < images.length; i++) {
-                if (images[i].isMain) {
+                if (images[i].main) {
                     const temp = images[i];
                     images[i] = images[0];
                     images[0] = temp;
