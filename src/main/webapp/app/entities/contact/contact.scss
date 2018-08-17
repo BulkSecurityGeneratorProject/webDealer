@@ -33,7 +33,7 @@ agm-map {
 }
 
 .banner-text {
-    padding: 15px 0 15px 7px;
+    padding: 15px 0 15px 0px;
     text-shadow: 2px 2px 3px black;
 }
 
@@ -51,7 +51,7 @@ agm-map {
 }
 
 .contact-info {
-    padding: 10px $padding-navbar-leftright/2;
+    padding: 10px $padding-navbar-leftright;
 }
 
 .contact-button {
@@ -61,6 +61,15 @@ agm-map {
 @include media('<smWidth') {
     .info-container {
         padding-left: 45px;
+    }
+    .inner-right{
+        float: none !important;
+    }
+}
+
+@include media('<mdWidth') {
+    .contact-info {
+        padding: 10px $padding-navbar-leftright/2;
     }
 }
 
