@@ -8,23 +8,45 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="webDealerApp.contact.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="contact.name" required/>
-            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.name1" for="field_name1">Name1</label>
+            <input type="text" class="form-control" name="name1" id="field_name1"
+                [(ngModel)]="contact.name1" required/>
+            <div [hidden]="!(editForm.controls.name1?.dirty && editForm.controls.name1?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.name1?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="webDealerApp.contact.surname" for="field_surname">Surname</label>
-            <input type="text" class="form-control" name="surname" id="field_surname"
-                [(ngModel)]="contact.surname" required/>
-            <div [hidden]="!(editForm.controls.surname?.dirty && editForm.controls.surname?.invalid)">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.name2" for="field_name2">Name2</label>
+            <input type="text" class="form-control" name="name2" id="field_name2"
+                [(ngModel)]="contact.name2" required/>
+            <div [hidden]="!(editForm.controls.name2?.dirty && editForm.controls.name2?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.surname?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.name2?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.surname1" for="field_surname1">Surname1</label>
+            <input type="text" class="form-control" name="surname1" id="field_surname1"
+                [(ngModel)]="contact.surname1" required/>
+            <div [hidden]="!(editForm.controls.surname1?.dirty && editForm.controls.surname1?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.surname1?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.surname2" for="field_surname2">Surname2</label>
+            <input type="text" class="form-control" name="surname2" id="field_surname2"
+                [(ngModel)]="contact.surname2" required/>
+            <div [hidden]="!(editForm.controls.surname2?.dirty && editForm.controls.surname2?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.surname2?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
@@ -74,12 +96,23 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="webDealerApp.contact.email" for="field_email">Email</label>
-            <input type="email" class="form-control" name="email" id="field_email"
-                [(ngModel)]="contact.email" required/>
-            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.email1" for="field_email1">Email1</label>
+            <input type="email1" class="form-control" name="email1" id="field_email1"
+                [(ngModel)]="contact.email1" required/>
+            <div [hidden]="!(editForm.controls.email1?.dirty && editForm.controls.email1?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.email1?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="webDealerApp.contact.email2" for="field_email2">Email2</label>
+            <input type="email2" class="form-control" name="email2" id="field_email2"
+                [(ngModel)]="contact.email2" required/>
+            <div [hidden]="!(editForm.controls.email2?.dirty && editForm.controls.email2?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email2?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>

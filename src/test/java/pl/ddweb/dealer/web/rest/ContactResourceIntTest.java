@@ -38,11 +38,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = WebDealerApp.class)
 public class ContactResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME1 = "AAAAAAAAAA";
+    private static final String UPDATED_NAME1 = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME2 = "AAAAAAAAAA";
+    private static final String UPDATED_NAME2 = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SURNAME = "AAAAAAAAAA";
-    private static final String UPDATED_SURNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_SURNAME1 = "AAAAAAAAAA";
+    private static final String UPDATED_SURNAME1 = "BBBBBBBBBB";
+    private static final String DEFAULT_SURNAME2 = "AAAAAAAAAA";
+    private static final String UPDATED_SURNAME2 = "BBBBBBBBBB";
 
     private static final String DEFAULT_CITY = "AAAAAAAAAA";
     private static final String UPDATED_CITY = "BBBBBBBBBB";
@@ -94,8 +98,10 @@ public class ContactResourceIntTest {
      */
     public static Contact createEntity(EntityManager em) {
         Contact contact = new Contact()
-            .name(DEFAULT_NAME)
-            .surname(DEFAULT_SURNAME)
+            .name1(DEFAULT_NAME1)
+            .name2(DEFAULT_NAME2)
+            .surname1(DEFAULT_SURNAME1)
+            .surname2(DEFAULT_SURNAME2)
             .city(DEFAULT_CITY)
             .address(DEFAULT_ADDRESS)
             .phone1(DEFAULT_PHONE1)
@@ -123,8 +129,10 @@ public class ContactResourceIntTest {
         List<Contact> contactList = contactRepository.findAll();
         assertThat(contactList).hasSize(databaseSizeBeforeCreate + 1);
         Contact testContact = contactList.get(contactList.size() - 1);
-        assertThat(testContact.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testContact.getSurname()).isEqualTo(DEFAULT_SURNAME);
+        assertThat(testContact.getName1()).isEqualTo(DEFAULT_NAME1);
+        assertThat(testContact.getName2()).isEqualTo(DEFAULT_NAME2);
+        assertThat(testContact.getSurname1()).isEqualTo(DEFAULT_SURNAME1);
+        assertThat(testContact.getSurname2()).isEqualTo(DEFAULT_SURNAME2);
         assertThat(testContact.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testContact.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testContact.getPhone1()).isEqualTo(DEFAULT_PHONE1);
@@ -152,10 +160,27 @@ public class ContactResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNameIsRequired() throws Exception {
+    public void checkName1IsRequired() throws Exception {
         int databaseSizeBeforeTest = contactRepository.findAll().size();
         // set the field null
-        contact.setName(null);
+        contact.setName1(null);
+
+        // Create the Contact, which fails.
+
+        restContactMockMvc.perform(post("/api/contacts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(contact)))
+            .andExpect(status().isBadRequest());
+
+        List<Contact> contactList = contactRepository.findAll();
+        assertThat(contactList).hasSize(databaseSizeBeforeTest);
+    }
+    @Test
+    @Transactional
+    public void checkName2IsRequired() throws Exception {
+        int databaseSizeBeforeTest = contactRepository.findAll().size();
+        // set the field null
+        contact.setName2(null);
 
         // Create the Contact, which fails.
 
@@ -170,10 +195,27 @@ public class ContactResourceIntTest {
 
     @Test
     @Transactional
-    public void checkSurnameIsRequired() throws Exception {
+    public void checkSurname1IsRequired() throws Exception {
         int databaseSizeBeforeTest = contactRepository.findAll().size();
         // set the field null
-        contact.setSurname(null);
+        contact.setSurname1(null);
+
+        // Create the Contact, which fails.
+
+        restContactMockMvc.perform(post("/api/contacts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(contact)))
+            .andExpect(status().isBadRequest());
+
+        List<Contact> contactList = contactRepository.findAll();
+        assertThat(contactList).hasSize(databaseSizeBeforeTest);
+    }
+    @Test
+    @Transactional
+    public void checkSurname2IsRequired() throws Exception {
+        int databaseSizeBeforeTest = contactRepository.findAll().size();
+        // set the field null
+        contact.setSurname2(null);
 
         // Create the Contact, which fails.
 
@@ -269,12 +311,14 @@ public class ContactResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(contact.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].surname").value(hasItem(DEFAULT_SURNAME.toString())))
+            .andExpect(jsonPath("$.[*].name1").value(hasItem(DEFAULT_NAME1.toString())))
+            .andExpect(jsonPath("$.[*].name2").value(hasItem(DEFAULT_NAME2.toString())))
+            .andExpect(jsonPath("$.[*].surname1").value(hasItem(DEFAULT_SURNAME1.toString())))
+            .andExpect(jsonPath("$.[*].surname2").value(hasItem(DEFAULT_SURNAME2.toString())))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE1.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE2.toString())));
+            .andExpect(jsonPath("$.[*].phone1").value(hasItem(DEFAULT_PHONE1.toString())))
+            .andExpect(jsonPath("$.[*].phone2").value(hasItem(DEFAULT_PHONE2.toString())));
     }
 
     @Test
@@ -288,12 +332,14 @@ public class ContactResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(contact.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.surname").value(DEFAULT_SURNAME.toString()))
+            .andExpect(jsonPath("$.name1").value(DEFAULT_NAME1.toString()))
+            .andExpect(jsonPath("$.name2").value(DEFAULT_NAME2.toString()))
+            .andExpect(jsonPath("$.surname1").value(DEFAULT_SURNAME1.toString()))
+            .andExpect(jsonPath("$.surname2").value(DEFAULT_SURNAME2.toString()))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE1.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE2.toString()));
+            .andExpect(jsonPath("$.phone1").value(DEFAULT_PHONE1.toString()))
+            .andExpect(jsonPath("$.phone2").value(DEFAULT_PHONE2.toString()));
     }
 
     @Test
@@ -316,8 +362,10 @@ public class ContactResourceIntTest {
         // Disconnect from session so that the updates on updatedContact are not directly saved in db
         em.detach(updatedContact);
         updatedContact
-            .name(UPDATED_NAME)
-            .surname(UPDATED_SURNAME)
+            .name1(UPDATED_NAME1)
+            .name2(UPDATED_NAME2)
+            .surname1(UPDATED_SURNAME1)
+            .surname2(UPDATED_SURNAME2)
             .city(UPDATED_CITY)
             .address(UPDATED_ADDRESS)
             .phone1(UPDATED_PHONE1)
@@ -332,8 +380,10 @@ public class ContactResourceIntTest {
         List<Contact> contactList = contactRepository.findAll();
         assertThat(contactList).hasSize(databaseSizeBeforeUpdate);
         Contact testContact = contactList.get(contactList.size() - 1);
-        assertThat(testContact.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testContact.getSurname()).isEqualTo(UPDATED_SURNAME);
+        assertThat(testContact.getName1()).isEqualTo(UPDATED_NAME1);
+        assertThat(testContact.getName2()).isEqualTo(UPDATED_NAME2);
+        assertThat(testContact.getSurname1()).isEqualTo(UPDATED_SURNAME1);
+        assertThat(testContact.getSurname2()).isEqualTo(UPDATED_SURNAME2);
         assertThat(testContact.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testContact.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testContact.getPhone1()).isEqualTo(UPDATED_PHONE1);
