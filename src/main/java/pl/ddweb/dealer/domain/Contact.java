@@ -29,12 +29,20 @@ public class Contact implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "name1", nullable = false)
+    private String name1;
 
     @NotNull
-    @Column(name = "surname", nullable = false)
-    private String surname;
+    @Column(name = "name2", nullable = false)
+    private String name2;
+
+    @NotNull
+    @Column(name = "surname1", nullable = false)
+    private String surname1;
+
+    @NotNull
+    @Column(name = "surname2", nullable = false)
+    private String surname2;
 
     @NotNull
     @Column(name = "city", nullable = false)
@@ -56,8 +64,13 @@ public class Contact implements Serializable {
 
     @NotNull
     @Email
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name = "email1", nullable = false)
+    private String email1;
+
+    @NotNull
+    @Email
+    @Column(name = "email2", nullable = false)
+    private String email2;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,40 +79,6 @@ public class Contact implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Contact name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public Contact surname(String surname) {
-        this.surname = surname;
-        return this;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getCity() {
@@ -150,6 +129,54 @@ public class Contact implements Serializable {
         return this;
     }
 
+    public String getName1() {
+        return name1;
+    }
+
+    public void setName1(String name1) {
+        this.name1 = name1;
+    }
+
+    public String getName2() {
+        return name2;
+    }
+
+    public void setName2(String name2) {
+        this.name2 = name2;
+    }
+
+    public String getSurname1() {
+        return surname1;
+    }
+
+    public void setSurname1(String surname1) {
+        this.surname1 = surname1;
+    }
+
+    public String getSurname2() {
+        return surname2;
+    }
+
+    public void setSurname2(String surname2) {
+        this.surname2 = surname2;
+    }
+
+    public String getEmail1() {
+        return email1;
+    }
+
+    public void setEmail1(String email1) {
+        this.email1 = email1;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public void setEmail2(String email2) {
+        this.email2 = email2;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -180,13 +207,43 @@ public class Contact implements Serializable {
     public String toString() {
         return "Contact{" +
             "id=" + id +
-            ", name='" + name + '\'' +
-            ", surname='" + surname + '\'' +
+            ", name1='" + name1 + '\'' +
+            ", name2='" + name2 + '\'' +
+            ", surname1='" + surname1 + '\'' +
+            ", surname2='" + surname2 + '\'' +
             ", city='" + city + '\'' +
             ", address='" + address + '\'' +
             ", phone1='" + phone1 + '\'' +
             ", phone2='" + phone2 + '\'' +
-            ", email='" + email + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
             '}';
+    }
+
+    public Contact name1(String name1) {
+        this.name1 = name1;
+        return this;
+    }
+    public Contact name2(String name2) {
+        this.name2 = name2;
+        return this;
+    }
+
+    public Contact surname1(String surname1) {
+        this.surname1 = surname1;
+        return this;
+    }
+    public Contact surname2(String surname2) {
+        this.surname2 = surname2;
+        return this;
+    }
+
+    public Contact email1(String email1) {
+        this.email1 = email1;
+        return this;
+    }
+    public Contact email2(String email2) {
+        this.email2 = email2;
+        return this;
     }
 }

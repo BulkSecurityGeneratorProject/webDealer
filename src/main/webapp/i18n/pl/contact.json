@@ -18,7 +18,7 @@
             "tab": {
                 "main": {
                     "title": "Informacje kontaktowe",
-                    "phone": " Telefony:",
+                    "phone": " Telefon:",
                     "email": " Email:",
                     "address": " Adres:",
                     "web": " Web:"
@@ -27,13 +27,16 @@
                     "availability": "Dostępność"
                 }
             },
-            "name": "Imię",
-            "surname": "Nazwisko",
+            "name1": "Imię 1",
+            "name2": "Imię 2",
+            "surname1": "Nazwisko 1",
+            "surname2": "Nazwisko 2",
             "city": "Miasto",
             "address": "Adres",
             "phone1": "Telefon 1",
             "phone2": "Telefon 2",
-            "email": "Email",
+            "email1": "Email 1",
+            "email2": "Email 2",
             "edit": "Edytuj dane"
         }
     }

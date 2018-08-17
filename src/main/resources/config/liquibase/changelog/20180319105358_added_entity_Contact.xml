@@ -21,11 +21,18 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="name1" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name2" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="surname" type="varchar(255)">
+            <column name="surname1" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="surname2" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -37,7 +44,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="email" type="varchar(255)">
+            <column name="email1" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="email2" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
