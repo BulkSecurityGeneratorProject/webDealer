@@ -81,7 +81,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeActiveOnStartCar(){
-        this.isShippingState = this.router.url === '/car-shipping' || this.router.url === '/car';
+        this.isShippingState = this.router.url.split('/')[1] === 'car-shipping' || this.router.url.split('/')[1] === 'car';
     }
 
     collapseNavbar() {
@@ -121,7 +121,7 @@ export class NavbarComponent implements OnInit {
 
     registerChangeInState() {
         this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-            this.isShippingState = event.url === '/car-shipping' || event.url === '/car';
+            this.isShippingState = event.url.split('/')[1] === 'car-shipping' || event.url.split('/')[1] === 'car';
         })
     }
 
