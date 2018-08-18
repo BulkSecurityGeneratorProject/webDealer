@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {JhiAlertService, JhiEventManager, JhiLanguageService} from 'ng-jhipster';
 
@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
     version: string;
     contact: Contact;
     eventSubscriber: Subscription;
+    isShippingState: boolean;
 
     constructor(private loginService: LoginService,
                 private languageService: JhiLanguageService,
@@ -40,6 +41,7 @@ export class NavbarComponent implements OnInit {
                 private eventManager: JhiEventManager) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+        this.isShippingState = false;
     }
 
     fixNavbarCollapse() {
@@ -73,7 +75,13 @@ export class NavbarComponent implements OnInit {
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
         this.loadData();
+        this.changeActiveOnStartCar();
         this.registerChangeInContact();
+        this.registerChangeInState();
+    }
+
+    changeActiveOnStartCar(){
+        this.isShippingState = this.router.url === '/car-shipping' || this.router.url === '/car';
     }
 
     collapseNavbar() {
@@ -109,6 +117,16 @@ export class NavbarComponent implements OnInit {
 
     registerChangeInContact() {
         this.eventSubscriber = this.eventManager.subscribe('contactModification', (response) => this.loadData());
+    }
+
+    registerChangeInState() {
+        this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+            this.isShippingState = event.url === '/car-shipping' || event.url === '/car';
+        })
+    }
+
+    toggleActiveClass() {
+        this.isShippingState = !this.isShippingState;
     }
 
     private onError(error) {

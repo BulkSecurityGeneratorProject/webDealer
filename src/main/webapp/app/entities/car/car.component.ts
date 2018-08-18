@@ -40,6 +40,7 @@ currentAccount: any;
         private activatedRoute: ActivatedRoute,
         private dataUtils: JhiDataUtils,
         private router: Router,
+        private route: ActivatedRoute,
         private eventManager: JhiEventManager
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
@@ -50,6 +51,14 @@ currentAccount: any;
             this.predicate = data.pagingParams.predicate;
         });
         this.received = activatedRoute.snapshot.data.received;
+    }
+    ngOnInit() {
+        this.loadAll();
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+        this.registerChangeInCars();
+
     }
 
     loadAll() {
@@ -85,13 +94,6 @@ currentAccount: any;
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
         this.loadAll();
-    }
-    ngOnInit() {
-        this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInCars();
     }
 
     ngOnDestroy() {

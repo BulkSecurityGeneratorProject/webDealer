@@ -31,8 +31,8 @@
                     </li>
                     <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="car" routerLinkActive="active"
-                           [routerLinkActiveOptions]="{ exact: false }" (click)="collapseNavbar()">
+                        <a class="nav-link" id="car-link" routerLink="car" [ngClass]="{'active': isShippingState}"
+                            (click)="collapseNavbar()">
                             <span jhiTranslate="global.menu.entities.car">Car</span>
                         </a>
                     </li>
