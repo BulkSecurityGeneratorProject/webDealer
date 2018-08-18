@@ -33,8 +33,13 @@
                     <li>
                         <a href="mailto:example">
                             <i class="fa fa-envelope"></i>&nbsp;
-                            <strong jhiTranslate="footer.contact.email">Email:</strong>
-                            &nbsp;{{contact?.email}}
+                            <strong jhiTranslate="footer.contact.email">E-maile:</strong>
+                            &nbsp;{{contact?.email1}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="second-email" href="tel:{{contact?.email2}}">
+                            &nbsp;{{contact?.email2}}
                         </a>
                     </li>
                 </ul>
