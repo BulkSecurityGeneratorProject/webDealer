@@ -23,6 +23,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import {SafeHtmlPipe} from '../../pipes/safehtml.pipe';
 import { NgwWowModule } from 'ngx-wow';
 import {DDwebDataUtils} from './data-util.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 const ENTITY_STATES = [
     ...carRoute,
     ...carPopupRoute,
@@ -34,7 +35,7 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES),
         LightboxModule,
         CKEditorModule,
-        NgwWowModule
+        NgwWowModule,
     ],
     declarations: [
         CarComponent,

@@ -16,15 +16,13 @@
 <div class="content">
     <div class="row car-nav">
         <div class="col-sm-6 col-6">
-            <a class="btn car-nav-btn float-right" routerLink="/car" routerLinkActive="active"
-               [routerLinkActiveOptions]="{ exact: true }">
+            <a class="btn car-nav-btn float-right" routerLink="/car" [ngClass]="{active:received}">
                 <span>Na miejscu</span>
             </a>
 
         </div>
         <div class="col-sm-6 col-6" style="padding-left: 3px">
-            <a class="btn car-nav-btn" routerLink="/car-shipping" routerLinkActive="active"
-               [routerLinkActiveOptions]="{ exact: true }">
+            <a class="btn car-nav-btn" routerLink="/car-shipping" [ngClass]="{active:!received}">
                 <span>W drodze</span>
             </a>
         </div>

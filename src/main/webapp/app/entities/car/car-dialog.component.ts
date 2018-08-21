@@ -12,6 +12,7 @@ import {CarPopupService} from './car-popup.service';
 import {CarService} from './car.service';
 import {Image} from './image.model';
 import * as $ from 'jquery';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
     selector: 'jhi-car-dialog',
@@ -24,12 +25,14 @@ export class CarDialogComponent implements OnInit {
     isEdit: boolean;
     isSaving: boolean;
     radioSelectIndex: number;
+    carVersionHasError: boolean;
 
     constructor(public activeModal: NgbActiveModal,
                 private dataUtils: DDwebDataUtils,
                 private carService: CarService,
                 private elementRef: ElementRef,
                 private eventManager: JhiEventManager) {
+        this.carVersionHasError = false;
     }
 
     ngOnInit() {
@@ -60,6 +63,10 @@ export class CarDialogComponent implements OnInit {
 
     openFile(contentType, field) {
         return this.dataUtils.openFile(contentType, field);
+    }
+
+    versionChangeListener(event: any) {
+        this.carVersionHasError = event.length > 255;
     }
 
     setFileData(event, field, isImage) {

@@ -121,7 +121,8 @@ export class NavbarComponent implements OnInit {
 
     registerChangeInState() {
         this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-            this.isShippingState = event.url.split('/')[1] === 'car-shipping' || event.url.split('/')[1] === 'car';
+            const splittedUrl = event.url.split('?')[0].split('/')[1];
+            this.isShippingState = splittedUrl === 'car-shipping' || splittedUrl === 'car';
         })
     }
 

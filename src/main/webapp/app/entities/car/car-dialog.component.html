@@ -73,9 +73,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="webDealerApp.car.version" for="field_version">Version</label>
-            <input type="text" class="form-control" name="version" id="field_version"
-                   [(ngModel)]="car.version" />
+            <label class="form-control-label" jhiTranslate="webDealerApp.car.version" maxlength="255" for="field_version">Version</label>
+            <textarea class="form-control" name="version" id="field_version"
+                   [(ngModel)]="car.version" (ngModelChange)="versionChangeListener($event)" ></textarea>
+            <div [hidden]="!carVersionHasError">
+                <small class="form-text text-danger">
+                    Wyposażenie może składać się maksymalnie z 255 znaków.
+                </small>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="webDealerApp.car.capacity" for="field_capacity">Capacity</label>
@@ -154,7 +159,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving || carVersionHasError" class="btn btn-primary">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>
